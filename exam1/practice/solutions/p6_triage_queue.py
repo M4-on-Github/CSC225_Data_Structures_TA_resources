@@ -16,7 +16,7 @@
 # whole point of Topic 5.
 #
 # THE TRICK, and the thing worth remembering: Python compares tuples left to right, so
-# a heap of tuples sorts by the first element, then the second, and so on. Putting
+# a heap of tuples prioritises the first element, then the second, and so on. Putting
 # urgency first is what makes the heap a priority queue. Putting the arrival counter
 # SECOND is what makes equal urgencies come out in arrival order -- without it, the heap
 # would silently tie-break on the patient's name, and "Adams" would beat "Zhang" for no
@@ -29,7 +29,7 @@ class TriageQueue:
 
     def __init__(self):
         self._heap = MinHeap()
-        # Counts arrivals so equal urgencies break the tie by who got here first.
+        # Counts arrivals so ties in urgency are broken by who got here first.
         # It only ever goes up, so it can never tie either.
         self._arrivals = 0
 
@@ -60,7 +60,7 @@ class TriageQueue:
 
     def treat_all(self):
         # Drain the room, returning names in treatment order. Useful for checking your
-        # own reasoning: the order out is NOT the order in, and it is not alphabetical.
+        # own reasoning: the order out follows urgency, then arrival order.
         order = []
         while not self._heap.is_empty():
             order.append(self.treat_next())

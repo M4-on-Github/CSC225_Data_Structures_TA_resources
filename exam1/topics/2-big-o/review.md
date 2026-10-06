@@ -35,13 +35,14 @@ structures that do the same job. Without it, "a list is slow at the front" is an
 - **n(n−1)/2** is the count you get when an inner loop shrinks by one each pass:
   (n−1) + (n−2) + … + 1. It is **O(n²)**, and it is exactly selection sort's comparison
   count.
-- **O(log n) means repeated halving.** Twenty halvings get you through a million items,
-  and that is the entire argument for binary search over linear search.
+- **Repeated halving gives O(log n).** About twenty halvings get you through a million
+  items, which explains binary search's growth rate on sorted data.
 - **Big-O is an upper bound on growth, not a prediction of a stopwatch reading.** An
   O(n²) algorithm can beat an O(n log n) one at n = 10. The claim is about large n.
 - **Best, average and worst case are three different questions.** This course usually
-  starts with the **worst** case. Some algorithms have all three the same (selection sort,
-  merge sort) and the ones that differ are where the interesting questions live.
+  starts with the **worst** case. Some algorithms have the same growth class in all three
+  cases (selection sort, standard merge sort); the ones that differ are where the
+  interesting questions live.
 
 ---
 
@@ -49,9 +50,9 @@ structures that do the same job. Without it, "a list is slow at the front" is an
 
 | Class | Name | Where you meet it in this course | One-line reason |
 |---|---|---|---|
-| O(1) | constant | `len(lst)`, `lst[i]`, `lst.pop()`, `heap.peek()` | doesn't care how big n is |
+| O(1) | constant | `len(lst)`, `lst[i]`, `lst.pop()` (amortized), `heap.peek()` | doesn't care how big n is |
 | O(log n) | logarithmic | binary search, heap `insert` and `remove_min` | halve the problem each step |
-| O(n) | linear | one loop over the data, linear search, `build_heap` | touch each item once |
+| O(n) | linear | one loop over the data, linear search, `build_heap` | total work proportional to n |
 | O(n log n) | linearithmic | merge sort, heap sort, quick sort (average) | n items, log n levels of work |
 | O(n²) | quadratic | selection, bubble and insertion sort; nested loops over n | every item against every item |
 | O(2ⁿ) | exponential | named for contrast; nothing in this course is this | unusable past tiny n |
@@ -64,7 +65,9 @@ and lower-order terms. (Deck 3 s18–s19, s25–s27.)
 
 ## Reading the shape off a loop
 
-This is the mechanical skill the written exam tests, so it is worth having as a reflex:
+This is the mechanical skill the written exam tests, so it is worth having as a reflex.
+Assume constant-time loop bodies unless another operation is named, and take n to be
+the length of each list:
 
 | What you see | Cost | Why |
 |---|---|---|
@@ -94,8 +97,9 @@ much as a reversed one. (Deck 3 s10–s12.)
 
 ### Why binary search is O(log n)
 
-Each comparison throws away **half** the remaining range. Starting from n items, the
-number of halvings needed to get down to one is log₂ n. On a million items that is about
+Each unsuccessful middle-item check throws away **about half** the remaining range.
+Starting from n items, the number of halvings needed is about log₂ n. Here, a "comparison"
+means one middle-item check, as in the practice counter. On a million items that is about
 **20** comparisons, against a million for linear search — and on a billion it is about 30,
 because each extra comparison doubles the number of items you can handle.
 (Deck 3 s28–s32.)
@@ -110,10 +114,10 @@ because each extra comparison doubles the number of items you can handle.
 | "Big-O compares shapes, not exact stopwatch times." | Deck 3 s16 |
 | "Big-O gives an upper bound on how fast the work grows." | Deck 3 s17 |
 | "For this class, we usually begin with worst-case Big-O." | Deck 3 s14 |
-| "A linear algorithm with a big constant can beat quadratic at first, but not forever." | Deck 3 s22 |
 
-That last one is the "constants can fool us" table on s22, and it is the sentence that
-answers almost every objection to Big-O.
+The "constants can fool us" table on s22 illustrates the same point: a quadratic
+algorithm with a small constant can beat a linear algorithm with a large constant on
+small inputs, but the linear algorithm eventually wins as n grows.
 
 ---
 
@@ -149,9 +153,6 @@ answers almost every objection to Big-O.
 
 - Work [mock.md](mock.md) with this page closed, then check yourself against
   [solutions.md](solutions.md).
-- Write the code: `practice/p2_search.py`, checked by `python test_p2_search.py`. The two
-  counting functions in it turn O(log n) from a phrase into a number you can look at —
-  run `binary_search_count` on a thousand items and then on a million and watch the
-  comparison count go up by ten.
-- Then read [Topic 3](../3-arrays/review.md), which is where this vocabulary first earns
-  its keep.
+- Continue to [Topic 3](../3-arrays/review.md) before coding the searches in
+  `practice/p2_search.py`. After that review, compare the counting searches on a
+  thousand items and a million items.

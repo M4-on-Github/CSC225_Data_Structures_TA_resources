@@ -2,17 +2,15 @@
 
 Part 1 is five quick drills, Part 2 is five exam-style questions.
 
-**Attempt everything before you open [solutions.md](solutions.md).** The answers are in
-that file, in order, with a note on what a complete answer needs. Reading them first feels
-like studying and is
-not — the thing being examined is whether you can produce the answer, and you cannot
-practise that by recognising one.
+**Try each question before opening [solutions.md](solutions.md).** If stuck, read one relevant explanation, close it, and retry. You may type or write your answers.
 
 No time limit is printed here on purpose. Work until you are done, note how long it took,
 and compare that with however long you get in the real exam.
 
 **Throughout:** give the Big-O **and one line of justification**. A bare `O(...)` with no
 reason is only half an answer — the reasoning is the part worth practising.
+Use worst-case costs unless another case is requested. Assume individual arithmetic,
+comparison and output operations take constant time.
 
 ---
 
@@ -27,7 +25,8 @@ stopwatch?
 
 **2.4** Give the Big-O of each: (i) `return L[0]` · (ii) one loop over `L` · (iii) two
 loops one after the other · (iv) a loop inside a loop · (v) halving the search range each
-step.
+step. In (ii)–(iv), each loop traverses all n items of `L`, and the innermost body takes
+constant time.
 
 **2.5** A friend says "my algorithm is O(n²) but it ran fast, so Big-O is wrong." Answer
 them.
@@ -37,7 +36,7 @@ them.
 ## Part 2 — Exam-style questions
 
 ### Q1 — Counting operations
-For each function, `values` holds n items.
+For (a) and (b), `values` holds n items. For (c), n is a positive integer.
 
 ```python
 def total(values):                      # (a)
@@ -88,8 +87,8 @@ O(log n).
 its input. What is its Big-O, and is it a fast algorithm?
 
 ### Q3 — The two laws
-Each snippet loops over a list of n items. Give the Big-O of each **and the law or rule
-that decides it**.
+In each snippet, `values` holds n items, with n ≥ 1; `sorted_other_list` also holds n
+items. Give the Big-O of each **and the law or rule that decides it**.
 
 ```python
 # (a)
@@ -124,10 +123,12 @@ Selection sort performs exactly **n(n−1)/2** comparisons.
 ### Q5 — Halving, and what Big-O is claiming
 **(a)** Linear search and binary search on **1,000,000** sorted items: give the
 worst-case number of comparisons for each, roughly, and the Big-O of each.
+Count one comparison per item examined, as the practice counters do.
 
-**(b)** You run a counting version of binary search on 1,000 items and it reports 9
-comparisons. Predict what it reports on 1,000,000 items **before** reading on, then
-explain in one sentence why a thousand times more data costs so little more.
+**(b)** Using the practice implementation of `binary_search_count`, you search for `-1`
+in `list(range(1000))` and it reports 9 comparisons. Predict roughly what it reports
+when you search for `-1` in `list(range(1000000))` **before** reading on, then explain in
+one sentence why a thousand times more data costs so little more.
 
 **(c)** Your friend's program sorts 20 items and finishes instantly, so they conclude
 their O(n²) sort is fine and ship it. Six months later the list holds 20,000 items and the

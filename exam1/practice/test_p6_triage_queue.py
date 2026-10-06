@@ -10,7 +10,7 @@ import unittest
 
 from p6_triage_queue import TriageQueue
 
-# urgency 1 is the most urgent. Arrival order is the order of this list.
+# Urgency 1 is the most urgent. Arrival order is the order of this list.
 ARRIVALS = [
     ("Ruiz", 3),
     ("Okafor", 1),

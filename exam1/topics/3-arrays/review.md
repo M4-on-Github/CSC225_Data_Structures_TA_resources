@@ -23,11 +23,11 @@ place to watch an O(log n) halving actually happen.
 - **An array is contiguous slots, all the same size.** That single layout fact gives you
   `address of A[i] = address of A[0] + i × slot size`: one multiply, one add, **O(1)**, no
   matter how big `i` is.
-- **Break either condition and the arithmetic stops working.** Gaps, or slots of different
-  sizes, and there is no formula — you would have to walk.
+- **Break either condition and this arithmetic stops working.** Gaps or slots of different
+  sizes require more information about the layout; the simple formula no longer applies.
 - **Size versus capacity.** **Size** is how many elements are actually stored; **capacity**
   is how many slots have been reserved. `len(L)` reports the **size**. Capacity is
-  invisible from Python, which is why the resize is invisible too.
+  not exposed by the list interface, which handles resizing for you.
 - **Static arrays** have a fixed capacity. Growing one means allocating a new, larger block
   and copying everything over by hand — *"this is the main motivation for dynamic arrays"*
   (Deck 4 s17).
@@ -48,8 +48,8 @@ place to watch an O(log n) halving actually happen.
   `len`, iterate, get at `i`, set at `i`, insert, delete. The implementation chooses
   **how** — and therefore chooses what each operation **costs**. Same interface, different
   implementation, very different costs. That comparison is the one every later topic makes.
-- **Linear search is O(n); binary search is O(log n)** — but binary search is only correct
-  on a **sorted** list, and on unsorted input it returns a wrong answer rather than an error.
+- **Linear search is O(n); binary search is O(log n)** — but binary search requires a
+  **sorted** list, and on unsorted input it may return a wrong answer without an error.
 
 ---
 
@@ -63,14 +63,15 @@ place to watch an O(log n) halving actually happen.
 | `for x in lst` | O(n) | visits every element |
 | `x in lst` | O(n) | linear search — it does not know the list is sorted |
 | `lst.append(x)` | **amortized O(1)** | usually there is spare capacity; sometimes it resizes |
-| `lst.pop()` | O(1) | removes the last item, nothing shifts |
+| `lst.pop()` | amortized O(1) | removes the last item; nothing shifts, but storage may occasionally shrink |
 | `lst.insert(0, x)` | O(n) | every element shifts right to make room |
 | `lst.pop(0)` | O(n) | every remaining element shifts left |
 | `lst.insert(i, x)` / `lst.pop(i)` | O(n) | shifting again, even in the middle |
 | build a list of n items | O(n) | n appends |
 | grow a **static** array by one slot | O(n) | allocate, copy all n items, discard the old block |
 
-**The distinction the deck keeps coming back to.** `lst.pop()` is **O(1)**; `lst.pop(0)` is **O(n)**.
+**The distinction the deck keeps coming back to.** `lst.pop()` is **amortized O(1)**;
+`lst.pop(0)` is **O(n)**. The usual O(1) label for an end-pop ignores occasional storage shrinking.
 `lst.append(x)` is **amortized O(1)**; `lst.insert(0, x)` is **O(n)**. One character of
 difference and a whole factor of n. This pair shows up on four separate slides
 (Deck 4 s32–s36).
@@ -81,26 +82,29 @@ difference and a whole factor of n. This pair shows up on four separate slides
 |---|---|---|
 | Read / write by index | O(1) | O(1) |
 | Insert / delete at the front | O(n) | O(n) |
-| Append at the end | O(n) | **amortized O(1)** |
-| Grow past the current size | you cannot — allocate a new array and copy by hand | resize-and-copy, handled for you |
+| Append when full | O(n) to allocate a larger array and copy | O(n) for this append; **amortized O(1)** over a sequence |
+| Grow past the current capacity | you cannot — allocate a new array and copy by hand | resize-and-copy, handled for you |
 
 Both are O(1) to index and O(n) at the front, because both are contiguous equal-size
-slots — the address arithmetic and the shifting are identical either way. The **only**
-difference is who handles growing, and that one difference is the whole amortized
-argument. (Deck 4 s18, s23–s24.)
+slots — the address arithmetic and the shifting are identical either way. When there is
+spare capacity, storing an item at the end is O(1) in either structure. Dynamic arrays
+handle growth automatically and reserve extra space; that growth policy is what supports
+the amortized argument. (Deck 4 s18, s23–s24.)
 
 ---
 
 ## Why append is amortized O(1)
 
-Capacity doubles: 1, 2, 4, 8, 16, … So the items copied across all the resizes total
+In the doubling model, capacity grows as 1, 2, 4, 8, 16, … So the items copied across all the resizes total
 1 + 2 + 4 + … + 2ᵏ, which is less than 2ᵏ⁺¹ and so **at most 2n**. n appends therefore cost
-O(n) **in total**, which is O(1) per append on average. (Deck 4 s25.)
+O(n) **in total**, starting from an empty array, which is O(1) per append on average.
+The argument works for other fixed growth factors greater than 1 too; Python lists need
+not double their capacity. (Deck 4 s25.)
 
 Now the contrast that makes it land. Suppose the array grew by **one slot** instead of
 doubling. Then *every* append finds the array full and copies, so the total is
 0 + 1 + 2 + … + (n−1) = **n(n−1)/2** copies — **O(n²)** to build the list. Doubling makes
-each resize buy **twice as many** cheap appends as the last one, so the expensive appends
+each resize leave roughly **twice as much** spare capacity as the last one, so the expensive appends
 get rarer exactly as fast as they get dearer.
 
 That `n(n−1)/2` is the same sum as selection sort's comparison count in
@@ -132,11 +136,11 @@ This is the version given in full on Deck 3 s30. Two details decide whether it w
    one-element range never gets checked, so some hits are reported as misses;
 2. `mid` is `(low + high) // 2`, with **integer** division.
 
-Get either wrong and the function still returns answers, just wrong ones on some inputs.
-That is why you test misses as well as hits.
+Using `<` can return a wrong answer; using `/` instead of `//` produces a float index and
+raises `TypeError` when the loop tries to index the list. Test misses as well as hits.
 
 And the precondition is not optional: **the list must be sorted**. On unsorted input binary
-search does not error, it quietly returns the wrong answer, because every halving decision
+search may quietly return the wrong answer, because every halving decision
 assumes order.
 
 ---

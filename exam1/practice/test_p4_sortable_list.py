@@ -2,7 +2,7 @@
 #
 #     python test_p4_sortable_list.py
 #
-# Problem 3 was the algorithms. This is the same algorithms in the likelier exam form:
+# Problem 3 covered the algorithms. This problem puts the same algorithms into
 # methods on a class, operating on self.values.
 
 import unittest

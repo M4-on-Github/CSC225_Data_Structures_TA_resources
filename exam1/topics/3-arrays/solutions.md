@@ -9,11 +9,11 @@ Answers to [mock.md](mock.md), in order, each followed by what a complete answer
 
 **3.1** The slots must be **contiguous** (no gaps) and **all the same size**. Then
 `address of A[i] = address of A[0] + i × slot size`. Break either one and the arithmetic
-stops working. (Deck 4 s7, s9.)
+no longer applies without more information about the layout. (Deck 4 s7, s9.)
 
 **3.2** **Size** is how many elements are actually stored; **capacity** is how many slots
-have been reserved. `len(L)` reports the **size**. Capacity is invisible from Python, which
-is why the resize is invisible too. (Deck 4 s20.)
+have been reserved. `len(L)` reports the **size**. Capacity is not exposed by the list
+interface, which handles resizing for you. (Deck 4 s20.)
 
 **3.3** Allocate a **new, larger** block (the growth is multiplicative, not +1), **copy all
 n existing elements** across, release the old block, then store the new element. That one
@@ -25,8 +25,9 @@ over a long run of appends is constant — **O(1) amortized**. The trap, in the 
 be O(n). (Deck 4 s25–s26.)
 
 **3.5** (i) **O(1)** · (ii) **O(1) amortized** · (iii) **O(n)** — everything shifts up ·
-(iv) **O(1)** · (v) **O(n)** — everything shifts down · (vi) **O(n)** — a linear scan.
+(iv) **O(1) amortized** · (v) **O(n)** — everything shifts down · (vi) **O(n)** — a linear scan.
 (Deck 4 s35–s36, the deck's own answer key.)
+The usual O(1) label for an end-pop ignores occasional storage shrinking.
 
 **3.6** The **interface** is what the structure promises you can do (`append`, `pop`,
 `len`). The **implementation** is how it keeps that promise (a dynamic array that quietly
@@ -36,8 +37,8 @@ exactly the comparison every later topic makes. (Deck 4 s8.)
 **3.7** Linear: **1,000,000** — O(n). Binary: about **20**, since 2²⁰ ≈ 1,000,000 —
 O(log n). (Deck 3 s28–s30.)
 
-**3.8** It must be **sorted**. On unsorted input binary search does not error — it quietly
-returns the wrong answer, because every halving decision assumes order. (Deck 3 s30; the
+**3.8** It must be **sorted**. On unsorted input binary search may quietly return the
+wrong answer, because every halving decision assumes order. (Deck 3 s30; the
 halving argument is s31–s32.)
 
 ---
@@ -45,8 +46,8 @@ halving argument is s31–s32.)
 ## Part 2 — Exam-style questions
 
 ### Q1 — Amortized append
-**(a)** That the **total** cost of n appends is O(n), so the **average cost per append** is
-constant. (Deck 4 s25–s26.)
+**(a)** That the **total** cost of n appends, starting from an empty array, is O(n), so the
+**average cost per append** is constant. (Deck 4 s25–s26.)
 
 **(b)** The append that finds the array **full**. It allocates a larger array, **copies all
 n existing elements**, then adds the new one — that append is **O(n)**. (Deck 4 s23.)
@@ -71,7 +72,7 @@ capacity, a growth factor — and therefore chooses **what each operation costs*
 (Deck 4 s8.)
 
 **(b)** **2024.** `address of A[6] = address of A[0] + 6 × 4 = 2000 + 24`. It is one
-multiply and one add whatever the length is, so it is **O(1)** — the formula changes, the
+multiply and one add whatever the length is, so it is **O(1)** — the index can change, the
 **number of steps** does not. (Deck 4 s7, s11.)
 
 **(c)** **References** — a stored address pointing at an object somewhere else in memory.
@@ -95,7 +96,7 @@ is exactly why the types may differ. (Deck 4 s30.)
 | Python list | `len(lst)` | **O(1)** — the size is stored, not counted |
 | Python list | `lst.append(x)` | **amortized O(1)** — usually there is spare capacity |
 | Python list | `lst.insert(0, x)` | **O(n)** — shift everything right |
-| Python list | `lst.pop()` | **O(1)** — remove the last item, nothing moves |
+| Python list | `lst.pop()` | **amortized O(1)** — no shifting; storage may occasionally shrink |
 | Python list | `lst.pop(0)` | **O(n)** — shift everything left |
 | Python list | `x in lst` | **O(n)** — linear search |
 | Static array | grow it by one slot | **O(n)** — allocate, copy all n, discard the old |
@@ -108,8 +109,7 @@ The pattern worth seeing: a Python list is **fast at the end and slow at the fro
 
 **What a complete answer needs**
 
-- All eight cells. Plain **O(1)** for `append` is fine here — Q1 is where the amortized
-  wording matters.
+- All eight cells. Include **amortized** for `append`, as in Q1.
 - `lst.pop()` and `lst.pop(0)` are the two that separate careful readers. Writing both
   O(n), or both O(1), is the common answer and misses that one end of a list is cheap and
   the other is not.
@@ -138,9 +138,10 @@ is the bound given: the copies form the doubling sum 1 + 2 + … + 2ᵏ, which i
 so at most **2n**. So nine appends cost O(n) in total, which is what **amortized O(1) per
 append** means. (Deck 4 s25.)
 
-**(c)** Because adding one slot means **every** append is full, so every append copies:
+**(c)** Because adding one slot means **every append after the first** finds the array
+full, so it copies the existing items:
 0 + 1 + 2 + … + (n−1) = n(n−1)/2 copies, **O(n²)** to build the list. Doubling makes each
-resize buy **twice as many** cheap appends as the last one, so the expensive appends get
+resize leave roughly **twice as much** spare capacity as the last one, so the expensive appends get
 rarer exactly as fast as they get dearer. The slides: *"each resize buys many cheap
 appends."* (Deck 4 s24.)
 
@@ -189,7 +190,7 @@ Three things this code makes concrete, each of which turns up elsewhere on the p
   end of the list and raise `IndexError`.
 
 The condition `if self._size == len(self._slots)` is the line the whole topic is about: it
-fires on appends 2, 3, 5 and 9 and nowhere else, which is the first column of the table in
+fires on appends 2, 3, 5 and 9 in this nine-append example, as shown in the table in
 part (a).
 
 **What a complete answer needs**
@@ -198,24 +199,24 @@ part (a).
   1, so there is room. Writing 1 there shifts the whole table down a row.
 - (b) **15**, compared against 18 or against 2n. The number alone misses the point, which
   is that the total copying is linear in n.
-- (c) That +1 growth makes **every** append copy. Naming n(n−1)/2 or O(n²) is better
+- (c) That +1 growth makes **every append after the first** copy. Naming n(n−1)/2 or O(n²) is better
   still — it is the same sum as selection sort's comparisons in
   [Topic 2](../2-big-o/mock.md) Q4.
 - (d) Five separate things:
   - `size` returns the counter and `capacity` returns `len(self._slots)`. Returning
     `len(self._slots)` from `size` breaks the first assertion.
   - `get` guards **both** ends and returns `None` rather than raising. Guarding only the
-    upper end means `a.get(-1)` returns the last stored element — a silent wrong answer
-    rather than an error, which is what the assertion is there to catch.
+    upper end means `get(-1)` reads the last storage slot. A spare slot containing `None`
+    can hide the bug; the assertion on the full array `b` catches it.
   - `append` resizes **only when full**, then stores at index `self._size`, then
     increments. Storing before resizing, or incrementing before storing, both break it.
   - `_resize` builds a new list of **double** the length and copies the stored elements
-    across. Growing by a fixed amount works and defeats the purpose; forgetting to
+    across. Growing by a fixed amount works but defeats the purpose; forgetting to
     reassign `self._slots` throws the copy away.
   - No banned list method anywhere — no `append`, `insert`, `pop` or `remove` on
-    `self._slots`. `self._slots.append(element)` makes every assertion pass and answers
-    nothing: the question is how a dynamic array is built, and that line *is* the thing
-    being built.
+    `self._slots`. Delegating storage growth to `self._slots.append(element)` bypasses
+    the task: the question is how a dynamic array is built, and that method already does
+    the resizing for you.
 
 ---
 

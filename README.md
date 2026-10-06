@@ -4,10 +4,13 @@ Study material I prepare as the course TA.
 
 ## Exam 1
 
-**[→ Start here: `exam1/README.md`](exam1/README.md)**
+**[Start here: foundation check and study paths](exam1/START_HERE.md)**
+
+Begin with 12 short questions, choose one area to review, and use hints when needed.
+The diagnostic is available in Markdown, Word and printable PDF, with a separate answer guide.
 
 Five topics, each with a review sheet, a mock test and a solutions file, plus six practice
-coding problems that check themselves with `unittest`:
+coding problems with `unittest` checks:
 
 | | Topic |
 |---|---|
@@ -19,7 +22,7 @@ coding problems that check themselves with `unittest`:
 
 ```
 cd exam1/practice
-python test_p3_sorts.py      # check one problem
+python test_p3_sorts.py       # check one problem
 python check.py              # check all six
 ```
 

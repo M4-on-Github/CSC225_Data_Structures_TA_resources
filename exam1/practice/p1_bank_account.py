@@ -1,7 +1,7 @@
 # PROBLEM 1 -- Topic 1: classes and argument passing
 #
 # Check your work:   python test_p1_bank_account.py
-# Reference answer:  solutions/p1_bank_account.py  (open it AFTER the tests pass)
+# Reference answer:  solutions/p1_bank_account.py  (try first; consult one section if stuck)
 #
 # ---------------------------------------------------------------------------
 # PART A -- BankAccount
@@ -17,7 +17,7 @@
 #                                    AND the account holds at least that much.
 #                                    Returns True or False the same way.
 #   get_balance(self)                returns the balance. This is how the outside world
-#                                    reads it -- nobody touches _balance directly.
+#                                    reads it -- callers do not touch _balance directly.
 #   transfer(self, other, amount)    moves money into another BankAccount, but ONLY if
 #                                    the withdrawal from this account succeeds.
 #                                    Returns True or False.
@@ -29,7 +29,7 @@
 #
 # PART B -- argument passing
 #
-# Four one-line functions. None of them returns anything. For each one, the question the
+# Four one-line functions. Each implicitly returns None. For each one, the question the
 # tests ask is: after the call, what does the CALLER's list look like?
 #
 #   mutate_list(values)         append 100 to it

@@ -2,17 +2,13 @@
 
 > ⚠ **Heap provenance.** The heap property and the three costs are slide-derived
 > (Deck 6 s32, s35). **The index arithmetic, the sift code, `build_heap` and both heap
-> sorts are your TA's** — there is no heap deck in this course. Practice, not a prediction.
+> sorts are your TA's** — no dedicated heap deck was available for this package. Practice, not a prediction.
 > Confirm with your instructor that heaps are on the exam. Full explanation in
 > [review.md](review.md).
 
-Part 1 is eleven drills, Part 2 is five exam-style questions.
+Part 1 is eleven drills; Part 2 is five exam-style questions.
 
-**Attempt everything before you open [solutions.md](solutions.md).** The answers are in
-that file, in order, with a note on what a complete answer needs. Reading them first feels
-like studying and is
-not — the thing being examined is whether you can produce the answer, and you cannot
-practise that by recognising one.
+**Try each question before opening [solutions.md](solutions.md).** If stuck, read one relevant explanation, close it, and retry. You may type or write your answers.
 
 No time limit is printed here on purpose. Work until you are done, note how long it took,
 and compare that with however long you get in the real exam.
@@ -27,7 +23,7 @@ implementation stores it. **No imports, no `heapq`, no `sort()`, no `sorted()`.*
 **5.1** State the heap property precisely. Then say what it does **not** tell you — compare
 it with what being *sorted* tells you.
 
-**5.2** Why is the list inside a heap not sorted, even though the smallest value is always
+**5.2** Why is the list inside a heap not necessarily sorted, even though the smallest value is always
 at index 0?
 
 **5.3** Write the three index formulas, then apply them: a heap holds 10 items. For the item
@@ -44,20 +40,20 @@ Then insert 4 and say how many swaps it costs.
 call, and state the two steps `remove_min` takes before it sifts.
 
 **5.7** `build_heap([9, 7, 5, 3, 1, 8, 2])` — write the resulting list. Then explain why
-building a heap this way is **O(n)** while inserting the same seven values one at a time is
-O(n log n).
+building a heap this way is **O(n)** in general, while inserting n values one at a time is
+O(n log n) in the worst case.
 
-**5.8** `build_heap([1, 2, 3, 4, 5])` returns `[1, 2, 3, 4, 5]`, unchanged. Is that a bug?
+**5.8** `build_heap([1, 2, 3, 4, 5]).to_list()` gives `[1, 2, 3, 4, 5]`, unchanged. Is that a bug?
 What does it tell you about the relationship between sorted lists and heaps?
 
 **5.9** Costs for a min-heap of n items: (i) `peek` · (ii) `insert` · (iii) `remove_min` ·
 (iv) finding out whether the value 42 is in the heap · (v) `build_heap` · (vi) `heap_sort`.
 
-**5.10** Heap sort is O(n log n) with no best case and no worst case. Say why, and name one
+**5.10** Heap sort is O(n log n) in the worst case. Say why, and name one
 situation where that makes it the right choice over quick sort.
 
 **5.11** `heap_sort_in_place` sorts ascending using a **max**-heap, not a min-heap. Why does
-sorting in place force that switch?
+moving each root to the end of the shrinking heap require that choice?
 
 ---
 
@@ -89,7 +85,7 @@ The heap holds n items in a list.
 **(b)** Where does the `log n` in `insert` come from? Name the property of the tree that
 puts it there.
 
-**(c)** Building a heap by calling `insert` n times costs O(n log n). `build_heap` does
+**(c)** Building a heap by calling `insert` n times costs O(n log n) in the worst case. `build_heap` does
 the same job in **O(n)**. What does it do differently?
 
 ### Q3 — A min-heap by hand

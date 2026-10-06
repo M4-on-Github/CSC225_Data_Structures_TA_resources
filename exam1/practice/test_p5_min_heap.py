@@ -115,8 +115,8 @@ class TestInsert(unittest.TestCase):
                             "heap property broken after inserting " + str(value))
 
     def test_the_list_is_not_sorted(self):
-        # The headline fact of the topic: index 0 is the minimum, and that is ALL the
-        # list promises.
+        # The headline fact of the topic: index 0 is the minimum, but the heap property
+        # does not promise that the whole list is sorted.
         h = MinHeap()
         for value in [5, 3, 8, 1, 9, 2]:
             h.insert(value)
@@ -181,7 +181,7 @@ class TestBuildHeap(unittest.TestCase):
                          [1, 3, 2, 9, 7, 8, 5])
 
     def test_an_already_sorted_list_is_already_a_heap(self):
-        # Not a bug. Every sorted list satisfies the heap property, because
+        # Not a bug. Every ascending list satisfies the min-heap property, because
         # values[i] <= values[2i+1] follows from being sorted. The converse is false,
         # which is the whole asymmetry of the topic.
         self.assertEqual(build_heap([1, 2, 3, 4, 5]).to_list(), [1, 2, 3, 4, 5])

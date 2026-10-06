@@ -1,8 +1,7 @@
 # Reference solution -- Problem 4. Topic 4 (sorting), in class form.
 #
-# A coding question on this material is most likely to be set as a class, since that is
-# the part of the prerequisite course people struggle with most. Problem 3 is the
-# algorithms; this is the same material in that shape.
+# This combines the sorting algorithms with class-writing skills from the prerequisite
+# course. Problem 3 covers the algorithms; this is the same material in class form.
 #
 # The asymmetry below IS the lesson, not an inconsistency:
 #   - selection / bubble / insertion are written out as real methods. They sort
@@ -67,7 +66,7 @@ class SortableList:
         return self.values
 
     def merge_sort(self):
-        # The function returns a NEW list; the method's job is to adopt it.
+        # Adopt the returned list, which is NEW for inputs of two or more items.
         self.values = merge_sort(self.values)
         return self.values
 

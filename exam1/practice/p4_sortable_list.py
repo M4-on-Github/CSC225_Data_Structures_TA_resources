@@ -1,14 +1,14 @@
 # PROBLEM 4 -- Topic 4: sorting, in class form
 #
 # Check your work:   python test_p4_sortable_list.py
-# Reference answer:  solutions/p4_sortable_list.py  (open it AFTER the tests pass)
+# Reference answer:  solutions/p4_sortable_list.py  (try first; consult one section if stuck)
 #
 # Do Problem 3 first. This problem assumes p3_sorts.py works, because it imports from it.
 #
 # ---------------------------------------------------------------------------
-# WHY THIS PROBLEM EXISTS. A coding question on this material is most likely to be set as
-# a class, since that is the part of the prerequisite course people struggle with most.
-# Problem 3 is the algorithms. This is the same algorithms in that shape.
+# WHY THIS PROBLEM EXISTS. This combines the sorting algorithms with the class-writing
+# skills from the prerequisite course. Problem 3 covers the algorithms. This problem
+# puts the same algorithms into methods on a class.
 #
 # Write a SortableList class holding a list of numbers in self.values.
 #
@@ -34,14 +34,15 @@
 #       which are plain lists, not SortableLists -- a self-recursive version would build
 #       a new object per recursive call for no reason.
 #
-#       Instead: call the module-level function from p3_sorts, and ADOPT the new list it
+#       Instead: call the module-level function from p3_sorts, and ADOPT the list it
 #       returns:
 #
 #           self.values = merge_sort(self.values)
 #
-#       That assignment is the step students miss. The function returns a new list and
-#       leaves the argument alone, so without the assignment the object keeps its old
-#       unsorted data and the method looks like it did nothing.
+#       That assignment is the step students miss. For inputs of two or more items,
+#       the function returns a new list and leaves the argument unchanged. Without the
+#       assignment, the object keeps its old unsorted data and the method looks like
+#       it did nothing.
 #
 #       The division of labour -- the method owns the data, the function owns the
 #       algorithm -- is the part worth copying into your own code.

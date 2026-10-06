@@ -1,14 +1,9 @@
 # Topic 4 — mock test: sorting
 
 Part 1 is ten drills, Part 2 is nine exam-style questions. This is the
-longest paper in the package, because sorting is the biggest topic on the exam and the one
-most likely to carry a coding question.
+longest paper in the package, with particular emphasis on writing and tracing code.
 
-**Attempt everything before you open [solutions.md](solutions.md).** The answers are in
-that file, in order, with a note on what a complete answer needs. Reading them first feels
-like studying and is
-not — the thing being examined is whether you can produce the answer, and you cannot
-practise that by recognising one.
+**Try each question before opening [solutions.md](solutions.md).** If stuck, read one relevant explanation, close it, and retry. You may type or write your answers.
 
 No time limit is printed here on purpose. Work until you are done, note how long it took,
 and compare that with however long you get in the real exam.
@@ -44,6 +39,7 @@ the pivot and write the three groups.
 the worst case for *that* pivot choice, and why?
 
 **4.9** Fill in the summary table from memory — best / average / worst for all five sorts.
+For quick sort, distinguish all-equal input from input with distinct values.
 
 | Sort | Best | Average | Worst |
 |---|---|---|---|
@@ -53,8 +49,8 @@ the worst case for *that* pivot choice, and why?
 | Merge | | | |
 | Quick | | | |
 
-**4.10** Which of the five return a new list, and which sort in place? Why does the exam
-care?
+**4.10** Which of the five build a new list, and which sort in place? Note any base-case
+exceptions, and explain why the return convention matters.
 
 ---
 
@@ -70,8 +66,9 @@ case.
 **(a)** Bubble sort's best case is O(n). What one feature gives it that, and why does
 selection sort not have it?
 
-**(b)** You run a counting selection sort on ten items in sorted order, and again on
-the same ten items reversed. One of the two counts it reports is identical both times and
+**(b)** You run a counting selection sort on ten distinct items in sorted order, and again on
+the same ten items reversed. It counts comparisons and swaps between different positions.
+One of the two counts it reports is identical both times and
 one is not. Which is which, and why?
 
 ### Q3 — Where the growth rates come from
@@ -141,7 +138,7 @@ print(data2, b is data2)
 ### Q7 — Two sorts out of a student's homework
 Neither is the lecture version.
 
-**(a)** This insertion sort is one token short. Say what is missing, what happens when
+**(a)** This insertion sort is missing a guard in its `while` condition. Say what is missing, what happens when
 you run it on `[5, 2, 4, 1, 3]`, and why `[1, 2, 3]` survives it.
 
 ```python

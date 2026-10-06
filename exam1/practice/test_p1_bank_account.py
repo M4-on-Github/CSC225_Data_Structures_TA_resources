@@ -2,8 +2,8 @@
 #
 #     python test_p1_bank_account.py
 #
-# Read the failures. A unittest failure tells you the input, what your code returned and
-# what was expected, which is more useful than an answer key.
+# Read the failures. A unittest failure identifies the assertion that failed and usually
+# shows the actual and expected values. Check the named test to see its input.
 
 import unittest
 
@@ -23,7 +23,7 @@ class TestConstructor(unittest.TestCase):
                          "get_balance() should report the opening balance")
 
     def test_underscore_name(self):
-        # Encapsulation is a naming convention here, not enforcement -- but the exam
+        # Encapsulation is a naming convention here, not enforcement -- the problem
         # expects the convention, so the test expects it too.
         a = BankAccount("Ada", 100)
         self.assertTrue(hasattr(a, "_balance"),
@@ -150,7 +150,7 @@ class TestArgumentPassing(unittest.TestCase):
                          "values + [4] builds a new list and rebinds the local name")
 
     def test_the_pair_differs(self):
-        # Same two lines to look at, opposite outcomes. This is the exam question.
+        # Similar-looking lines, different outcomes. This is the distinction to explain.
         a = [1, 2, 3]
         b = [1, 2, 3]
         add_with_plus_equal(a)

@@ -11,8 +11,9 @@ Answers to [mock.md](mock.md), in order, each followed by what a complete answer
 **two** arguments to a 3-parameter `__init__`, and **one** to a 2-parameter `deposit`:
 `self` is supplied by Python. (Deck 2 s9.)
 
-**1.2** It runs **automatically, once, the moment an object is created** — you never call
-it by name. It returns nothing; its job is to attach attributes to `self`. (Deck 2 s7–s8.)
+**1.2** It runs **automatically when you create an instance of these classes** — you do
+not need to call it by name. It returns `None`; its job is to initialise attributes on
+`self`. (Deck 2 s7–s8.)
 
 **1.3** The underscore is a **convention meaning "internal — don't touch from outside"**.
 Python does not enforce it. The point is that the balance should only change through
@@ -36,7 +37,7 @@ different things you have to tell apart. *Mutability is about the object, not th
 name.* (Deck 2 s23, s27.)
 
 **1.8** **Rebinding** points a name at a different object; the old object is unchanged and
-anyone else holding it sees nothing. **Mutating** changes the object itself, so every name
+anyone else holding it sees no change. **Mutating** changes the object itself, so every name
 pointing at it sees the change. A variable is a **name tag attached to an object** —
 rebinding moves the tag, mutating alters the thing the tag is stuck to. (Deck 2 s61.)
 
@@ -49,8 +50,8 @@ rebinding moves the tag, mutating alters the thing the tag is stuck to. (Deck 2 
 (Deck 2 s7.)
 
 **(b)** `self` is passed **automatically** by Python: it is the object the method was
-called on. `account.deposit(50)` becomes `deposit(account, 50)`, so the one visible
-argument lands in `amount`. (Deck 2 s9.)
+called on. `account.deposit(50)` is equivalent to `BankAccount.deposit(account, 50)`, so
+the one visible argument lands in `amount`. (Deck 2 s9.)
 
 **(c)** The leading underscore is a **convention meaning "internal, do not touch from
 outside"**. Python does not enforce it. The point is that the balance should only change
@@ -62,8 +63,9 @@ to protect. (Deck 2 s11.)
 - (a) Both blanks. "Blueprint / instance" is fine.
 - (b) `self` named as **the object**, and the fact that Python supplies it for you.
   "`self` is the class" is the standard confusion — if you wrote that, reread Deck 2 s9.
-- (c) Either "convention, not enforced" **or** "so it can only change through the guarded
-  methods". The second is the better answer, because it says what the convention is *for*.
+- (c) The underscore marks an internal attribute **by convention**, so callers should use
+  the guarded methods. It does not prevent direct access; explain what the convention is
+  *for* without claiming that Python enforces it.
 
 ### Q2 — Code reading
 ```
@@ -77,17 +79,17 @@ to protect. (Deck 2 s11.)
 points the local name at a brand-new list; the caller's list was never touched.
 (Deck 2 s27–s34.)
 
-**`plus_equal`** is the surprising one: `items += [99]` **mutates in place** (it is
-`extend`, not an assignment), so the caller sees it. **`plus`** builds a new list and
-rebinds, so the caller does not. `+=` and `x = x + ...` are **not** the same operation on
-a list. (Deck 2 s32.)
+**`plus_equal`** is the surprising one: `items += [99]` **mutates in place** (like
+`extend`), so the caller sees it. **`plus`** builds a new list and rebinds, so the caller
+does not. `+=` and `x = x + ...` are **not** the same operation on a list. (Deck 2 s32.)
 
 **What a complete answer needs**
 
-- All three lines, in order.
+- All four lines, in order.
 - Lines 1 and 2 are the baseline — most people get these.
 - Line 3 (`+=` giving `[1, 2, 3, 99]`) is the one that separates understanding from
   guessing. Miss it and Deck 2 s32 is the first thing to go back to.
+- Line 4 builds a new list, so the caller's list stays unchanged.
 
 ### Q3 — Code writing
 **(a)** and **(b)**:
@@ -142,14 +144,14 @@ both names point at.
     A version that assigns first and then returns `False` looks right and is not — the
     assertion `t.get_target() == 25` after a refused change is what catches it.
   - `warmer` goes **through** `set_target` and returns its result. Reassigning
-    `self._target` directly, or re-writing the bounds check inside `warmer`, misses the
+    `self._target` directly, or rewriting the bounds check inside `warmer`, misses the
     point of the question even when every assertion passes.
 - (b) `return len(self._readings)`.
 - (c) `list(readings)` or any explicit copy, **and** the aliasing bug named: the object and
   the caller share one list, so the caller's later mutation is visible inside the object.
   "It would be wrong" with no mechanism means you spotted it without understanding it.
 
-**Where the real content is.** Parts (a) and (b) are typing; part (c) is the topic. Writing
+**Where the real content is.** Parts (a) and (b) practise class mechanics; part (c) connects them to aliasing. Writing
 all five methods perfectly with `self._readings = readings` gets you working code with a
 live bug in it, and that is exactly the shape of the argument-passing questions in Part 1.
 

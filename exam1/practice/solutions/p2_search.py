@@ -14,8 +14,8 @@ def linear_search(values, target):
 
 
 def binary_search(values, element):
-    # REQUIRES a sorted list. On an unsorted list this returns a wrong answer rather
-    # than an error, which is the trap worth remembering.
+    # REQUIRES a list sorted in ascending order. On an unsorted list this may return
+    # a wrong answer without raising an error, which is the trap worth remembering.
     low = 0
     high = len(values) - 1
 
@@ -32,9 +32,9 @@ def binary_search(values, element):
 
 
 def binary_search_count(values, element):
-    # The same search, reporting how many comparisons it made. Run it on lists of
-    # 1,000 and 1,000,000 items: the count goes up by 10, not by 1,000. That is what
-    # O(log n) means in numbers rather than in words.
+    # The same search, counting one middle-item probe per loop iteration rather than
+    # each == or < test. Search for -1 in list(range(1000)) and list(range(1000000)):
+    # the counts are 9 and 19, illustrating O(log n) growth.
     low = 0
     high = len(values) - 1
     comparisons = 0

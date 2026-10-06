@@ -2,12 +2,11 @@
 #
 #     python test_p3_sorts.py
 #
-# These tests check three separate things, and the second and third are the ones that
-# cost marks:
+# These tests check three separate things:
 #   1. does it sort
 #   2. does it return the SAME list object or a NEW one -- the lecture conventions differ
-#      per sort and the exam asks about it
-#   3. does it match the lecture version's observable behaviour (stability, counts)
+#      per sort
+#   3. does it match the expected counts, snapshots and duplicate handling
 
 import unittest
 
@@ -46,8 +45,8 @@ class TestTheySort(unittest.TestCase):
 
 
 class TestReturnConventions(unittest.TestCase):
-    # Graded. In-place sorts return the list they were given; merge and quick build a
-    # new one and leave the argument alone.
+    # In-place sorts return the list they were given; merge and quick build a new one
+    # for inputs of two or more items and leave the argument alone.
 
     def test_in_place_sorts_return_the_same_object(self):
         for sort in IN_PLACE:
@@ -85,8 +84,8 @@ class TestReturnConventions(unittest.TestCase):
 class TestLectureBehaviour(unittest.TestCase):
 
     def test_merge_sort_is_stable(self):
-        # Stability is observable: tag equal keys and check the tags keep their order.
-        # merge_sort compares with "<=", which is what makes this pass.
+        # This checks tuple sorting. Python compares both tuple fields, so these data
+        # alone cannot establish stability for items with equal comparison keys.
         pairs = [(1, "a"), (0, "b"), (1, "c"), (0, "d"), (1, "e")]
         result = merge_sort(list(pairs))
         ones = [tag for key, tag in result if key == 1]
@@ -127,7 +126,7 @@ class TestSelectionSortCount(unittest.TestCase):
 
     def test_sorted_and_reversed_cost_the_same_comparisons(self):
         # The result worth remembering: selection sort does not care about the input
-        # order. Its inner loop never stops early, so there is no best case.
+        # order. Its inner loop never stops early, so even the best case is quadratic.
         _, sorted_comparisons, sorted_swaps = selection_sort_count(list(range(1, 11)))
         _, reversed_comparisons, reversed_swaps = selection_sort_count(list(range(10, 0, -1)))
         self.assertEqual(sorted_comparisons, reversed_comparisons)

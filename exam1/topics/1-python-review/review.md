@@ -24,14 +24,14 @@ dictionaries are assumed. Classes and argument passing are the parts that get ex
 
 - **A class is a blueprint; an object is one thing built from it.** The class is written
   once; objects are made from it many times, each with its own attribute values.
-- **`__init__` runs automatically** the moment an object is created. You never call it by
-  name. Its job is to attach attributes to `self`.
+- **`__init__` runs automatically** when you create an instance of these classes. You do
+  not need to call it by name. Its job is to initialise attributes on `self`.
 - **`self` is the current object.** Python supplies it, which is why a method defined
   with two parameters is called with one argument.
 - **Encapsulation** is a leading underscore plus discipline: `_balance` says "go through
   `deposit` and `withdraw`", and those methods can refuse a bad amount. Python does not
   enforce it; the convention is the whole mechanism.
-- **Inheritance, for vocabulary only.** A child class gets everything the parent has;
+- **Inheritance, for vocabulary only.** A child class inherits the parent's methods;
   `super().__init__(...)` runs the parent's setup; redefining a method **overrides** it;
   calling the same method on different types and getting different behaviour is
   **polymorphism**. Nothing in this package's drills, mock papers or practice problems
@@ -67,17 +67,18 @@ class BankAccount:
 
 Three things to notice, because all three are easy to get wrong:
 
-1. `self.owner` is public and `self._balance` is not. The difference is that the balance
-   has a **rule** attached to it and the owner's name does not.
+1. `self.owner` is public and `self._balance` is internal **by convention**. The
+   difference is that the balance has a **rule** attached to it and the owner's name does
+   not.
 2. The guard `if amount <= 0: return False` comes **before** the assignment. A guard
    placed after the assignment protects nothing.
 3. `deposit` is written with two parameters and called with one argument:
-   `account.deposit(50)` becomes `deposit(account, 50)`.
+   `account.deposit(50)` is equivalent to `BankAccount.deposit(account, 50)`.
 
 ## The pattern the slides contrast
 
-The four one-line functions from Deck 2 s31–s32. These are the entire
-mutate-versus-rebind family, and one of them is on the mock paper for this topic:
+The four one-line functions from Deck 2 s31–s32. These cover the
+mutate-versus-rebind patterns, and all four are on the mock paper for this topic:
 
 ```python
 def mutate(items):
@@ -94,8 +95,8 @@ def plus(items):
 ```
 
 `items += [99]` is **not** shorthand for `items = items + [99]` on a list. The first
-mutates in place (it is `extend`); the second builds a new list and rebinds the local
-name. One character of difference, opposite outcomes.
+mutates in place (like `extend`); the second builds a new list and rebinds the local
+name. Similar-looking code, different outcomes.
 
 The diagnostic question from the slides, and the one to ask before you trace anything:
 
@@ -124,14 +125,16 @@ that object sees the change.
 
 - Leaving `self` off a method's parameter list, then being confused by *"takes 0
   positional arguments but 1 was given"*.
-- Writing `balance = balance + amount` inside a method. That creates a local variable and
-  the object never changes. It must be `self._balance`.
+- Writing `balance = balance + amount` inside `deposit`. That tries to read an
+  uninitialised local variable and raises `UnboundLocalError`; it does not update the
+  object. Use `self._balance = self._balance + amount`.
 - Letting a guard "fail" silently: check the condition, then `return` **before** the
   assignment, not after it.
 - Answering a mutate-versus-rebind question by running the code in your head without
   deciding which of the two it is. Ask that question first, then trace.
-- Assuming a child class automatically runs the parent's `__init__`. It does not, unless
-  you call `super().__init__(...)`.
+- Assuming an overriding `__init__` automatically runs the parent's `__init__`. It does
+  not: call `super().__init__(...)` when the parent's setup is needed. A child that does
+  not override `__init__` inherits it.
 - Thinking `+=` and `x = x + ...` are the same thing. On a list they are not.
 
 ---

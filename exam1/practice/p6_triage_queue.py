@@ -1,9 +1,9 @@
 # PROBLEM 6 -- Topic 5: applying a heap to a problem
 #
 # Check your work:   python test_p6_triage_queue.py
-# Reference answer:  solutions/p6_triage_queue.py  (open it AFTER the tests pass)
+# Reference answer:  solutions/p6_triage_queue.py  (try first; consult one section if stuck)
 #
-# Do Problem 5 first. This one imports MinHeap from it.
+# Finish MinHeap in Problem 5 first. Its heap-sort extensions can wait until later.
 #
 # The heap provenance warning at the top of p5_min_heap.py applies to this problem too:
 # confirm with your instructor that heaps are on the exam before relying on it.
@@ -20,7 +20,7 @@
 # use it to solve a problem. The data structure is the heap; the problem is the waiting
 # room.
 #
-# WHY A HEAP. Think about the two obvious alternatives before you write anything:
+# WHY A HEAP. Think about these two alternatives before you write anything:
 #   - a plain list, searched for the minimum each time: the search is O(n) per patient
 #   - a list kept sorted on arrival: the insertion has to shift items, also O(n)
 # A heap does both halves in O(log n), and arrivals interleaved with treatments are

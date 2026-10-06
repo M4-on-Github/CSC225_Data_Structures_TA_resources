@@ -8,7 +8,7 @@ Answers to [mock.md](mock.md), in order, each followed by what a complete answer
 ## Part 1 — Drills
 
 **2.1** Wall-clock time depends on the machine, the language and what else is running. An
-operation count depends only on the algorithm and the input size, so it still means
+operation count depends on the algorithm and the input, so it still means
 something on a different computer. (Deck 3 s6–s7.)
 
 **2.2** **O(1)** indexing a list · **O(log n)** binary search · **O(n)** linear search ·
@@ -25,8 +25,9 @@ O(n) + O(n) = O(2n) = O(n) · (iv) **O(n²)** — nesting **multiplies** · (v) 
 
 **2.5** Big-O is about **growth, not a stopwatch reading at one input size**. An O(n²)
 algorithm can easily beat an O(n log n) one on small n. The claim it makes is about what
-happens when n gets large — and it is a **worst-case upper bound**, not a prediction of the
-run you just did. (Deck 3 s17, s22 — the "constants can fool us" table.)
+happens when n gets large. In this question, it is a **worst-case upper bound**, not a
+prediction of the run you just did. Big-O can also describe best- or average-case costs
+when those are the cases being analysed. (Deck 3 s17, s22 — the "constants can fool us" table.)
 
 ---
 
@@ -44,8 +45,8 @@ For n = 6 with no duplicates the count is exactly 15, which is 6 × 5 / 2.
 
 Best case **O(1)**, from an input whose **first two items are equal** — for example
 `[7, 7, 1, 2, 3, 4]`. It returns on the very first comparison, so the count is 1 whatever
-n is. This is an algorithm whose best and worst cases are in different growth classes
-entirely, which is why the question has to say which one it wants.
+n is, for n ≥ 2. This is an algorithm whose best and worst cases are in different growth
+classes entirely, which is why the question has to say which one it wants.
 
 **(c)** **O(log n)** — the loop divides `n` by two each pass, so the number of passes is
 the number of halvings. For `n = 1000` it returns **9**: 1000 → 500 → 250 → 125 → 62 → 31
@@ -54,11 +55,11 @@ the number of halvings. For `n = 1000` it returns **9**: 1000 → 500 → 250 �
 **What a complete answer needs**
 
 - (a) **n** *and* **O(n)**. "O(n)" on its own skips the counting, which is the thing being
-  practised. "n + 2", counting the initialisation and the return, is also right — then say
-  it simplifies.
+  practised. "n + 2" is not the addition count: the initialisation and the return are not
+  additions.
 - (b) Three things: the shrinking sum **and** n(n−1)/2; **O(n²)**; and the **O(1)** best
-  case **with an input that shows it**. An input with the duplicate at the end is a worst
-  case, not a best case.
+  case **with an input that shows it**. If the only equal pair is the final two items,
+  the function still makes all n(n−1)/2 comparisons, so that is a worst case.
 - (c) **O(log n)** *and* **9**. 10 is the common slip — count the divisions, not the
   numbers in the chain.
 
@@ -84,8 +85,8 @@ of the "constants can fool us" point (Deck 3 s22).
 
 **What a complete answer needs**
 
-- (a) All four rows. `O(3n²)` is the wrong answer — the constant is the thing the question
-  is testing.
+- (a) All four rows. `O(3n²)` is equivalent to `O(n²)`, but it is not simplified — dropping
+  the constant is the thing the question is testing.
 - (b) The exact order; a single transposition means the ranking is not yet automatic.
 - (c) **O(1)**, and then the harder half: O(1) is about **growth**, not about size.
   "Yes, O(1) is the fastest class" is the trained reflex, and it is the trap here.
@@ -135,8 +136,9 @@ lower-order term n/2 and what is left is n². Same growth class, so the same Big
 (Deck 3 s28–s30.)
 
 **(b)** About **19 or 20** — and the measured answer from `binary_search_count` in
-`practice/p2_search.py` is exactly **19**. The reason is that binary search's cost grows
-with the number of **halvings**, not with the number of items: 1,000 needs about 10
+`practice/p2_search.py` is exactly **19** for the specified search for `-1`. The reason is
+that binary search's cost grows with the number of **halvings**, not with the number of
+items: 1,000 needs about 10
 halvings and 1,000,000 needs about 20. Each extra comparison **doubles** the size of list
 you can handle, so multiplying the data by a thousand adds roughly ten comparisons, not a
 thousand.
@@ -144,11 +146,12 @@ thousand.
 That sentence is the whole value of O(log n), and it is why 9 → 19 is a better thing to
 have seen than any amount of asserting that logarithms grow slowly.
 
-**(c)** Nothing went wrong, and nothing about Big-O was wrong either. At n = 20 the
-quadratic term is small — 400 units of work — and constants and overheads dominate, so the
-program looked instant. Going from 20 to 20,000 multiplies n by 1,000 and therefore
-multiplies an O(n²) cost by **1,000,000**. An O(n log n) sort over the same change would
-get roughly 1,000 × (14/4.3) ≈ 3,300 times slower, not a million times.
+**(c)** The small test hid the growth rate. At n = 20, n² is only 400, so a quadratic
+algorithm can finish quickly. Going from 20 to 20,000 multiplies n by 1,000 and therefore
+multiplies the **n² term** by **1,000,000**. If that term dominates the work, the operation
+count grows by about that factor. For a cost proportional to n log₂ n, the corresponding
+factor is roughly 1,000 × (14.3/4.3) ≈ 3,300. These are growth estimates, not exact running
+times guaranteed by Big-O.
 
 What Big-O **was** claiming: how the cost **grows** as n grows, as an upper bound on the
 worst case. What it was **not** claiming: that the program would be slow at n = 20, or that
@@ -163,7 +166,7 @@ Big-O never made and drew a conclusion about one it did. (Deck 3 s17, s22.)
 - (b) A prediction in the high teens or twenty, **and** the doubling argument — each
   comparison doubles the list size you can cover. A prediction of 9,000 or of 9,000,000
   means the halving has not landed yet.
-- (c) The growth argument with actual numbers (n × 1,000 gives cost × 1,000,000), **and**
+- (c) The growth argument with actual numbers (n × 1,000 gives the n² term × 1,000,000), **and**
   the separation between what Big-O claims (growth, worst case, large n) and what it does
   not (seconds, small n). "O(n²) is slow" does not answer the question, which is *why the
   small test was misleading*.

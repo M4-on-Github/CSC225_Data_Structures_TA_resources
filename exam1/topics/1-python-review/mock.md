@@ -2,11 +2,7 @@
 
 Part 1 is eight quick drills, Part 2 is three exam-style questions.
 
-**Attempt everything before you open [solutions.md](solutions.md).** The answers are in
-that file, in order, with a note on what a complete answer needs. Reading them first feels
-like studying and is
-not — the thing being examined is whether you can produce the answer, and you cannot
-practise that by recognising one. Work in pencil, close this file, check yourself honestly.
+**Try each question before opening [solutions.md](solutions.md).** If stuck, read one relevant explanation, close it, and retry. You may type or write your answers.
 
 No time limit is printed here on purpose. Work until you are done, note how long it took,
 and compare that with however long you get in the real exam.
@@ -46,8 +42,8 @@ f(nums)
 print(nums)
 ```
 
-**1.6** `values += [4]` versus `values = values + [4]` inside a function — which one the
-caller sees, and why.
+**1.6** `values += [4]` versus `values = values + [4]` inside a function, where `values`
+is a list — which change does the caller see, and why?
 
 **1.7** `x = 5; y = x; y = 6` — what is `x`? Why is this not the same situation as the
 list case?
@@ -93,7 +89,7 @@ for function in (mutate, rebind, plus_equal, plus):
 Write real, runnable Python. Keep the signatures given. No imports.
 
 A `Thermostat` holds a target temperature and a list of recent readings. A target is
-legal only if it is **between 10 and 30 inclusive**.
+legal only if it is **between 10 and 30 inclusive**. Assume the initial `target` is legal.
 
 ```python
 class Thermostat:
@@ -129,8 +125,9 @@ assert t2.readings_count() == 2        # the caller's later change must not reac
 ```
 
 **(a)** Write `__init__`, `get_target`, `set_target` and `warmer`. `warmer` raises the
-target by `degrees` and returns `True`, but only if the result is still legal — and it
-must do that by going **through** `set_target`, not by assigning to the attribute itself.
+target by `degrees` and returns `True` if the result is still legal; otherwise, it returns
+`False` and leaves the target unchanged. It must go **through** `set_target`, not assign
+to the attribute itself.
 
 **(b)** Write `readings_count`, the method the last assertion calls.
 

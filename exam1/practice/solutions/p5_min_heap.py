@@ -1,9 +1,9 @@
 # Reference solution -- Problem 5. Topic 5 (heaps).
 #
-# PROVENANCE WARNING. There is no heap deck among the eight PDFs. Deck 6 s32 says
+# PROVENANCE WARNING. No dedicated heap deck was available for this package. Deck 6 s32 says
 # "Recall the central idea from our heap data structure lecture" and states three costs
 # -- peek O(1), insert O(log n), remove O(log n) -- and s35 says a heap list is not
-# fully sorted. That is the ENTIRE slide-derived heap record for this course.
+# fully sorted. Those are the heap property and costs cited by this package.
 #
 # Everything below the cost statements is standard material written for this package by
 # your TA. It is correct and it is tested. It is not a prediction of what will be asked.
@@ -103,7 +103,7 @@ class MinHeap:
 
     def _sift_down(self, i):
         # Sink while this node is bigger than its SMALLER child. Swapping with the
-        # smaller child is the step students get wrong -- swapping with either child
+        # smaller child is the step students get wrong -- choosing either child arbitrarily
         # can break the heap property on the other side.
         n = len(self._items)
         while True:
@@ -131,8 +131,8 @@ class MinHeap:
 def build_heap(values):
     # Heapify an existing list in O(n), not O(n log n).
     #
-    # Inserting n items one at a time costs O(n log n). Sifting DOWN from the last
-    # parent back to index 0 costs O(n), because most nodes are near the bottom of the
+    # Inserting n items one at a time costs O(n log n) in the worst case. Sifting DOWN
+    # from the last parent back to index 0 costs O(n), because most nodes are near the bottom of the
     # tree and barely move. That gap is the classic heap result and the reason this
     # function exists at all.
     heap = MinHeap()
@@ -149,9 +149,9 @@ def build_heap(values):
 def heap_sort(values):
     # Build a heap, then drain it. Returns a NEW list.
     #
-    # O(n log n) always -- no best case, no worst case, no input order that helps or
-    # hurts. That is the honest selling point against quick sort, whose O(n log n) is
-    # only an average.
+    # O(n log n) in the worst case, unlike quick sort's O(n^2) worst case.
+    # Actual work can vary: with all values equal, sifts stop immediately and this
+    # implementation takes O(n) time.
     #
     # Note the return convention: like merge and quick sort, this BUILDS A NEW LIST and
     # leaves the argument alone. heap_sort_in_place below is the other half of the pair.

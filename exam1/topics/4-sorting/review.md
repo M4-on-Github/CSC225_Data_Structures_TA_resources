@@ -1,16 +1,14 @@
 # Topic 4 — Sorting: all five algorithms
 
 **Source:** Merge / Bubble / Pivot Sorting (34 frames), plus selection sort from Algorithm
-Efficiency (Deck 3 s10–s12). **Lecture weight:** heavy — this is the biggest topic on the
-paper.
+Efficiency (Deck 3 s10–s12). This is the largest topic in this practice package.
 
 ---
 
 ## What this topic is
 
-Five algorithms that do the same job at wildly different costs, which makes it the natural
-place for a coding question — the likeliest one being to write another sorting method
-from scratch. The homework on Deck 7 s33 assigns exactly four of
+Five algorithms that do the same job at wildly different costs, which makes this a natural
+place to practise writing sorting methods from scratch. The homework on Deck 7 s33 assigns exactly four of
 them — selection, bubble, merge and quick — while **insertion sort is taught in full but
 left off that list**, under the heading "Insertion Sort: Why Mention It?". Read that how
 you like; the sane response is to be able to write **all five**.
@@ -36,21 +34,26 @@ packages.** You are being asked to write the sort, not to call one.
   compares with `<=`.
 - **Quick sort:** pick a pivot, partition, recurse. The lecture version takes **`values[-1]`** and does
   a three-way split into `left` / `middle` / `right`. O(n log n) average, but **O(n²) when
-  the pivot keeps landing at an extreme** — which, for a last-element pivot, means sorted
-  input.
+  the pivot keeps landing at an extreme** — which, for a last-element pivot, happens on
+  sorted input with distinct values. All-equal input takes only O(n): every item goes into
+  `middle` in one pass.
 - **In place versus new list:** selection, bubble and insertion sort **in place** and return
-  **the same object**. Merge and quick **return a new list**. This is graded, and it is the
-  single most common way a correct algorithm becomes a wrong answer.
+  **the same object**. Merge and quick **return a new list** for inputs of length at least
+  two; their empty-list and singleton base cases return the original list. The practice
+  tests check this convention.
 - **Stability** means equal items keep their original relative order. Bubble, insertion and
-  merge are stable; selection and quick are not.
+  merge are stable; selection is not. The three-way quick sort shown here is also stable,
+  because it appends to each partition in the original order. Many in-place quick sorts
+  are not stable.
 - **Recursion lives here**, not as a topic of its own: merge and quick are both "solve two
   smaller versions of the same problem, then combine".
 
 ---
 
-## The summary table (Deck 7 s24)
+## The summary table (compare Deck 7 s24)
 
-The single most memorisable page in the deck.
+Use the costs for the exact implementations below; quick sort's stability and all-equal
+best case depend on its three-way split.
 
 | Sort | Best | Average | Worst | In place? | Stable? | The one thing to say about it |
 |---|---|---|---|---|---|---|
@@ -58,10 +61,10 @@ The single most memorisable page in the deck.
 | Bubble | **O(n)** | O(n²) | O(n²) | yes | yes | the O(n) best case **is** the `swapped` early exit |
 | Insertion | **O(n)** | O(n²) | O(n²) | yes | yes | fast on nearly-sorted data; good on small inputs |
 | Merge | O(n log n) | O(n log n) | O(n log n) | no | yes | the only one with no bad case; needs extra space |
-| Quick | O(n log n) | O(n log n) | **O(n²)** | no | no | the worst case is a pivot that splits badly every time |
+| Quick | **O(n)** with all-equal values; O(n log n) with distinct values | O(n log n) | **O(n²)** | no | yes, for this version | the worst case is a pivot that splits badly every time |
 
 Three cells carry most of the content: bubble's **O(n)** best case, selection's
-**missing** best case, and quick's **O(n²)** worst case.
+**quadratic** best case, and quick's **O(n²)** worst case.
 
 ---
 
@@ -69,13 +72,14 @@ Three cells carry most of the content: bubble's **O(n)** best case, selection's
 
 | If the situation is … | Use | Because |
 |---|---|---|
-| The file is nearly sorted already | Insertion sort | its inner `while` exits on the first check for every item already in place: O(n) |
-| Ties must keep the order they arrived in | Merge sort | the `<=` in its merge step makes it stable; quick sort is not |
-| One pass, and you cannot afford a worst case | Merge or heap sort | both are O(n log n) on **every** input; quick sort degrades to O(n²) on a bad pivot |
-| … and memory is tight, so no second list | Heap sort, in place | merge sort needs O(n) extra space; the in-place heap sort needs none |
+| The file is nearly sorted already | Insertion sort | its work is O(n + I), where I is the number of out-of-order pairs; it is O(n) when I is O(n) |
+| Ties must keep the order they arrived in | Merge sort | the `<=` in its merge step makes it stable, with an O(n log n) worst-case guarantee |
+| You need a guaranteed worst-case bound | Merge or heap sort | both have an O(n log n) worst-case guarantee; quick sort degrades to O(n²) on bad pivots |
+| … and memory is tight, so no second list | Heap sort, in place | merge sort needs O(n) extra space; in-place heap sort needs O(1) |
 
 The last row is the bridge to [Topic 5](../5-heaps/review.md): of everything in this
-course, in-place heap sort is the only sort that is **both** O(n log n) **and** in place.
+course, in-place heap sort is the only sort that is **both** O(n log n) in the worst case
+**and** in place.
 
 ---
 
@@ -178,18 +182,19 @@ with `middle` kept.
 **Selection sort, n(n−1)/2.** The first pass compares the candidate against n−1 items, the
 next against n−2, down to 1: (n−1) + (n−2) + … + 1 = n(n−1)/2 = n²/2 − n/2, so **O(n²)**.
 Nothing about the data appears anywhere in that count — on ten items it is 45 comparisons
-whether the list is sorted or reversed. (Only the number of *swaps* changes: 0 against 5.)
+whether the list is sorted or reversed. The counting version skips self-swaps, so it
+reports 0 swaps against 5. The plain version above performs its assignment every pass.
 
 **Merge sort, n log n.** The `log n` is the **number of levels**: `mid = len(values) // 2`
 halves the list, and n can only be halved down to 1 about log₂ n times. The `n` is the
-**work on one level**: across a level, every element is copied exactly once. Levels × work
+**work on one level**: merging all the pieces takes O(n) work in total. Levels × work
 per level = n log n, and nothing about the data changes either factor.
 
 **Quick sort's worst case.** With the pivot at `values[-1]`, feed it `[1, 2, 3, 4, 5]`:
 pivot 5, `left = [1, 2, 3, 4]`, `middle = [5]`, `right = []`. One side gets everything and
 the other gets nothing, so the recursion shrinks by **one element per level** instead of
 halving — n levels, O(n) work each, **O(n²)**. Already-sorted input is the worst case for
-*that* pivot choice, which is the opposite of what people expect.
+*that* pivot choice when the values are distinct, which is the opposite of what people expect.
 
 **Bubble sort's best case.** One pass over a sorted list makes no swap, `swapped` stays
 `False`, and the `break` fires: n−1 comparisons, **O(n)**. Take the flag out and the same
@@ -215,20 +220,21 @@ version* it means.
 
 - Giving bubble sort's best case as O(n²). With the `swapped` exit it is **O(n)** — and
   without the flag it would be O(n²), so say which version you mean.
-- Giving selection sort a best case of O(n). It has **none**; the scan happens regardless.
+- Giving selection sort a best case of O(n). Its best case is still **O(n²)**; the scan happens regardless.
 - Writing `merge_sort(nums)` and then printing `nums`. Merge sort returns a **new** list;
   you just threw it away.
-- Letting the bubble inner loop run to `n - 1`, which reads past the end on `values[i+1]`
-  or wastes passes over the already-parked tail.
+- Using `range(n)` for bubble's inner loop, which reads past the end on `values[i + 1]`.
+  Using `range(n - 1)` is safe but repeats work over the already-parked tail.
 - Putting `swapped = False` **outside** the outer loop. The sort still works, but the early
-  exit is dead and the O(n) best case is gone — a bug with no wrong output.
+  exit stops working after the first swap. Already-sorted input still takes O(n), but
+  even one out-of-order pair can force O(n²) work — a bug with no wrong output.
 - Dropping insertion sort's `j >= 0`. `values[-1]` is legal Python, so the loop corrupts the
   list from the far end before it eventually raises `IndexError`.
 - Dropping the `middle` group in quick sort's three-way split, which loses every duplicate
   of the pivot.
 - Claiming quick sort's **worst** case is O(n log n). Average, yes. Worst, **O(n²)**.
-- Answering "merge sort" to every *choose a sort* question. On nearly-sorted data and under
-  a no-extra-memory rule it is the wrong answer, and both appear on the mock.
+- Answering "merge sort" to every *choose a sort* question. Insertion sort can do less work
+  on nearly-sorted data, and this merge sort needs extra memory; both issues appear on the mock.
 
 ---
 
@@ -236,7 +242,7 @@ version* it means.
 
 - [ ] Write all five sorts from memory, in the lecture form — Deck 7 s9, s15, s22, s28; Deck 3 s11
 - [ ] The summary table: best / average / worst / in place / stable — Deck 7 s24
-- [ ] Which three sort in place and return the same object, and which two return a new list
+- [ ] Which three sort in place, and which two build new lists except in their base cases
 - [ ] n(n−1)/2 derived, not quoted — Deck 3 s10–s12
 - [ ] Merge sort's levels × work-per-level argument — Deck 7 s11–s16
 - [ ] Quick sort's pivot, three-way split, and the input that gives it O(n²) — Deck 7 s17–s23
@@ -252,7 +258,7 @@ version* it means.
   [solutions.md](solutions.md).
 - Write the code: `practice/p3_sorts.py` (all five as functions), then
   `practice/p4_sortable_list.py` (the same five as methods on a class), checked by
-  `python test_p3_sorts.py` and `python test_p4_sortable_list.py`. **If you only have time
-  for one practice problem in the whole package, do problem 3.**
+  `python test_p3_sorts.py` and `python test_p4_sortable_list.py`. Work on one sort at a
+  time; use the [study paths](../../study_paths.md) to choose your next task.
 - Then [Topic 5](../5-heaps/review.md), which gives you the only sort in the course that is
-  O(n log n) *and* in place.
+  O(n log n) in the worst case *and* in place.

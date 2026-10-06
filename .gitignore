@@ -9,3 +9,6 @@ exam1/coverage-map.md
 # Python
 __pycache__/
 *.pyc
+
+# Generated visual quality checks
+.qa/

@@ -2,7 +2,7 @@
 #
 # Conventions from the slides, not generic Python:
 #   - BankAccount is the lecture's encapsulation example (Crash Course 1 s23, Crash Course 2 s12).
-#   - The internal balance is _balance; it is read through get_balance(), never touched.
+#   - The internal balance is _balance; callers read it through get_balance().
 #   - deposit guards with "if amount > 0" and returns True/False rather than raising.
 #   - No type hints, no docstrings in student-facing code -- that matches the decks.
 
@@ -61,5 +61,5 @@ def add_with_plus_equal(values):
 
 
 def add_with_plus(values):
-    # values + [4] builds a new list and rebinds the local name. The caller sees nothing.
+    # values + [4] builds a new list; the assignment rebinds the local name only.
     values = values + [4]

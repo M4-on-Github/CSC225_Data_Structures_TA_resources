@@ -109,7 +109,7 @@ def main():
         directory = temp
         print("Checking the REFERENCE answers in solutions/.\n")
     else:
-        print("Checking YOUR answers. Open solutions/ only after a problem passes.\n")
+        print("Checking YOUR answers. Try first; consult one solution section if stuck.\n")
 
     total = 0
     failed = []
@@ -134,7 +134,7 @@ def main():
         print("  Run one on its own for the details, e.g. "
               "python test_%s.py" % PROBLEMS[failed[0] - 1][1])
         return 1
-    print("  All six problems pass.")
+    print("  All selected problems pass.")
     return 0
 
 

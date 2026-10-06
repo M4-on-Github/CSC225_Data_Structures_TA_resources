@@ -51,8 +51,8 @@ class TestBinarySearch(unittest.TestCase):
         self.assertEqual(binary_search([4, 8, 15, 16, 23, 42], 99), -1)
 
     def test_miss_inside_range(self):
-        # The miss that needs the loop to terminate correctly. If your while condition
-        # is "low < high" instead of "low <= high", this one hangs or lies.
+        # A miss inside the range of values. Correct bound updates must eventually
+        # exhaust the search interval and return -1.
         self.assertEqual(binary_search([4, 8, 15, 16, 23, 42], 20), -1)
 
     def test_empty_list(self):
@@ -79,7 +79,7 @@ class TestComparisonCounts(unittest.TestCase):
     # This is where Topic 2 meets Topic 3: the costs stop being words and become numbers.
 
     def test_binary_search_is_logarithmic(self):
-        # 1,000 items needs about 10 comparisons, because 2**10 is just over 1,000.
+        # Searching 1,000 items needs at most 10 probes: 2**10 is just over 1,000.
         values = list(range(1000))
         _, comparisons = binary_search_count(values, 999)
         self.assertLessEqual(comparisons, 10,

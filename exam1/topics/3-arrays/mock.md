@@ -2,11 +2,7 @@
 
 Part 1 is eight quick drills, Part 2 is four exam-style questions.
 
-**Attempt everything before you open [solutions.md](solutions.md).** The answers are in
-that file, in order, with a note on what a complete answer needs. Reading them first feels
-like studying and is
-not — the thing being examined is whether you can produce the answer, and you cannot
-practise that by recognising one.
+**Try each question before opening [solutions.md](solutions.md).** If stuck, read one relevant explanation, close it, and retry. You may type or write your answers.
 
 No time limit is printed here on purpose. Work until you are done, note how long it took,
 and compare that with however long you get in the real exam.
@@ -32,8 +28,8 @@ reason is only half an answer — the reasoning is the part worth practising.
 **3.6** "Interface versus implementation" — what is the distinction, and why does the
 course keep coming back to it?
 
-**3.7** Linear search versus binary search on 1,000,000 sorted items: worst-case
-comparisons for each, roughly.
+**3.7** Linear search versus binary search on 1,000,000 sorted items: roughly how many
+items does each inspect in the worst case? Count one inspection per loop iteration.
 
 **3.8** What must be true of the list before `binary_search` is allowed to run, and what
 happens if it isn't?
@@ -136,6 +132,10 @@ assert a.capacity() == 16
 assert a.get(0) == 0 and a.get(8) == 8
 assert a.get(9) is None            # out of range: None, not an exception
 assert a.get(-1) is None
+
+b = DynamicArray()
+b.append(7)                       # full storage: catches an unguarded negative index
+assert b.get(-1) is None
 ```
 
 `_resize` doubles the capacity: it builds a new list of `None` twice as long, copies every

@@ -1,10 +1,10 @@
 # Reference solution -- Problem 3. Topic 4 (sorting).
 #
-# All five sorts the way the lecture writes them. The conventions below are graded,
-# so they are not negotiable style choices:
-#   - every sort takes a parameter named "values" and RETURNS it
+# All five sorts the way the lecture writes them. Follow these conventions:
+#   - each of the five sorts takes a parameter named "values" and RETURNS a sorted list
 #   - selection, bubble and insertion sort IN PLACE and return the SAME list object
-#   - merge and quick BUILD AND RETURN A NEW LIST, leaving the argument alone
+#   - merge and quick leave the argument alone and BUILD AND RETURN A NEW LIST for
+#     inputs of two or more items; their base cases return the original list
 #   - bubble uses the three-line temp swap and the "swapped" early exit (sorting s9)
 #   - selection uses the tuple swap (efficiency s11)
 #   - quick takes its pivot as values[-1] and does a three-way split (sorting s22)

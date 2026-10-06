@@ -1,20 +1,20 @@
 # PROBLEM 5 -- Topic 5: heaps
 #
 # Check your work:   python test_p5_min_heap.py
-# Reference answer:  solutions/p5_min_heap.py  (open it AFTER the tests pass)
+# Reference answer:  solutions/p5_min_heap.py  (try first; consult one section if stuck)
 #
 # ---------------------------------------------------------------------------
 # WHERE THIS CAME FROM -- read this before you spend an evening on it.
 #
-# There is no heap lecture deck in this course. The entire slide record for heaps is
-# three slides at the end of the stacks/queues deck: the heap PROPERTY, and three COSTS
-# (insert, remove-min, build). Those slides point at a "heap data structure lecture"
-# that is not among the eight decks we have.
+# No dedicated heap lecture deck was available for this package. The cited slides at
+# the end of the stacks/queues deck give the heap PROPERTY and three COSTS
+# (peek, insert, remove-min). They point at a "heap data structure lecture"
+# that is not among the eight decks used to prepare these materials.
 #
 # Everything else in this problem -- the index arithmetic, sifting up and down,
 # build_heap, and both heap sorts -- was written by your TA to fill that gap, in the
-# lecture's style. It is the standard treatment and it is consistent with the three
-# slides, but it is NOT copied from anything handed out in class.
+# lecture's style. It is the standard treatment and follows the cited heap property
+# and costs; it is not copied from a dedicated heap deck.
 #
 # So: CONFIRM WITH YOUR INSTRUCTOR THAT HEAPS ARE ON THE EXAM before relying on this
 # topic. If they are, this is good preparation. If not, skip it.
@@ -59,8 +59,8 @@
 #   _sift_down(self, i) the item walks DOWN, swapping with its SMALLER child
 #
 # How insert works: append at the end, then sift up from the last index.
-# How remove_min works: remember item 0, move the LAST item into slot 0, pop the end,
-# then sift down from 0. Moving the last item is what keeps the list gap-free.
+# How remove_min works: save item 0, pop the LAST item, then, if any items remain,
+# move that last item into slot 0 and sift down. This keeps the list gap-free.
 #
 # _sift_down must compare against the smaller of the two children, and must handle a
 # node with only a left child. Getting that wrong gives a list that looks sorted-ish and
@@ -72,26 +72,26 @@
 # PART C -- build_heap and the two heap sorts
 #
 #   build_heap(values)
-#       Turn an arbitrary list into a heap IN PLACE and return it. Do not insert the
-#       items one at a time -- start at the LAST PARENT and sift down, walking backwards
-#       to index 0. The leaves need no work; they are already one-item heaps.
-#       That is why this is O(n) while n inserts cost O(n log n). The exam can ask you
-#       which is cheaper and why.
+#       Copy the values into a new MinHeap and return that heap. Leave the input alone.
+#       Do not insert items one at a time -- start at the LAST PARENT and sift down,
+#       walking backwards to index 0. The leaves need no work; they are one-item heaps.
+#       That is why this is O(n) while n inserts cost O(n log n) in the worst case.
+#       The exam can ask you which is cheaper and why.
 #
 #   heap_sort(values)
-#       Returns a NEW sorted list: push everything into a MinHeap, then pull it back out
+#       Returns a NEW sorted list: call build_heap, then pull the items back out
 #       with remove_min. Smallest out first, so the result is ascending.
 #
 #   heap_sort_in_place(values)
 #       Sorts the SAME list object and returns it, using no second heap.
-#       Here is the twist worth understanding: to sort ASCENDING in place you need a
-#       MAX heap, not a min heap. The largest item sits at index 0, you swap it to the
+#       Here is the twist worth understanding: this in-place algorithm sorts ASCENDING
+#       with a MAX-heap. The largest item sits at index 0, you swap it to the
 #       END of the list, shrink the heap by one, and sift down. Each pass parks one more
 #       item in its final place at the back. A min heap would sort descending.
 #       Write the max-heap sift as a separate helper, _sift_down_max(values, i, size).
 #
-# Heap sort is O(n log n) regardless of the input order -- there is no lucky case and no
-# unlucky one, which is the property that distinguishes it from quick sort.
+# Heap sort has an O(n log n) worst-case bound regardless of the input order.
+# Unlike quick sort, it has no O(n^2) worst case. Some inputs can still take less work.
 #
 # Conventions: self._items, size()/is_empty() as methods, peek and remove_min return
 # None rather than raising, insert returns None, no imports.
