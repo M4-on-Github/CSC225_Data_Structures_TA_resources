@@ -4,7 +4,7 @@
 # Reference answer:  solutions/p2_search.py  (try first; consult one section if stuck)
 #
 # ---------------------------------------------------------------------------
-# Four functions. The first two are the searches from the efficiency deck; the last two
+# Four functions. The first two are the searches as taught in lecture; the last two
 # are the same searches with a counter, which is how O(log n) stops being a phrase and
 # becomes a number you can look at.
 #

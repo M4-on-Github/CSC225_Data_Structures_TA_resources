@@ -9,25 +9,22 @@ Answers to [mock.md](mock.md), in order, each followed by what a complete answer
 
 **2.1** Wall-clock time depends on the machine, the language and what else is running. An
 operation count depends on the algorithm and the input, so it still means
-something on a different computer. (Deck 3 s6–s7.)
+something on a different computer.
 
 **2.2** **O(1)** indexing a list · **O(log n)** binary search · **O(n)** linear search ·
 **O(n log n)** merge sort · **O(n²)** selection sort · **O(2ⁿ)** trying every subset.
-(Deck 3 s20–s21.)
 
 **2.3** Big-O keeps only the **fastest-growing term** and **throws away constant
 factors**, because it describes how cost *scales*, not what it is at one particular n.
-(Deck 3 s18–s19.)
 
 **2.4** (i) **O(1)** · (ii) **O(n)** · (iii) **O(n)** — sequential blocks **add**, and
 O(n) + O(n) = O(2n) = O(n) · (iv) **O(n²)** — nesting **multiplies** · (v) **O(log n)**.
-(Deck 3 s19 for the simplifying rules, s25 for the two laws.)
 
 **2.5** Big-O is about **growth, not a stopwatch reading at one input size**. An O(n²)
 algorithm can easily beat an O(n log n) one on small n. The claim it makes is about what
 happens when n gets large. In this question, it is a **worst-case upper bound**, not a
 prediction of the run you just did. Big-O can also describe best- or average-case costs
-when those are the cases being analysed. (Deck 3 s17, s22 — the "constants can fool us" table.)
+when those are the cases being analysed.
 
 ---
 
@@ -81,7 +78,7 @@ a constant factor of 100 and a constant factor of ½ are both just constant fact
 **(c)** **O(1)**. The cost does not depend on n at all, so it is constant — and no, it is
 not necessarily fast. A million operations is a million operations; O(1) says it will
 **stay** a million as the input grows, not that the number is small. This is the other half
-of the "constants can fool us" point (Deck 3 s22).
+of the "constants can fool us" point
 
 **What a complete answer needs**
 
@@ -114,7 +111,6 @@ of the "constants can fool us" point (Deck 3 s22).
 ### Q4 — Where n(n−1)/2 comes from
 **(a)** The first pass compares the candidate against n−1 items, the next against n−2, and
 so on down to 1. The sum (n−1) + (n−2) + … + 1 is **n(n−1)/2**, which is O(n²).
-(Deck 3 s10–s12.)
 
 **(b)** **28.** 8 × 7 / 2 = 28. The count does not depend on the data at all, so "already
 sorted" changes nothing — that is the point of asking it this way.
@@ -133,7 +129,6 @@ lower-order term n/2 and what is left is n². Same growth class, so the same Big
 ### Q5 — Halving, and what Big-O is claiming
 **(a)** Linear search: up to **1,000,000** comparisons — **O(n)**. Binary search: about
 **20** — **O(log n)**, since 2²⁰ = 1,048,576, so twenty halvings cover a million items.
-(Deck 3 s28–s30.)
 
 **(b)** About **19 or 20** — and the measured answer from `binary_search_count` in
 `practice/p2_search.py` is exactly **19** for the specified search for `-1`. The reason is
@@ -156,7 +151,7 @@ times guaranteed by Big-O.
 What Big-O **was** claiming: how the cost **grows** as n grows, as an upper bound on the
 worst case. What it was **not** claiming: that the program would be slow at n = 20, or that
 any particular run would take any particular number of seconds. Your friend tested a claim
-Big-O never made and drew a conclusion about one it did. (Deck 3 s17, s22.)
+Big-O never made and drew a conclusion about one it did.
 
 **What a complete answer needs**
 
@@ -175,11 +170,11 @@ Big-O never made and drew a conclusion about one it did. (Deck 3 s17, s22.)
 
 ## If you got it wrong
 
-- Anything wrong in **Q3** — Deck 3 s25–s27, the two laws. This is the most mechanical
+- Anything wrong in **Q3**
   part of the topic and the cheapest to fix.
-- Anything wrong in **Q1(b)** or **Q4** — Deck 3 s10–s12. The shrinking sum reappears as
+- Anything wrong in **Q1(b)** or **Q4**
   selection sort in [Topic 4](../4-sorting/review.md) and as the copying cost of a +1-growth
   array in [Topic 3](../3-arrays/review.md), so it is worth owning.
-- Anything wrong in **Q5** — Deck 3 s17 and s22, then go and run
+- Anything wrong in **Q5**
   `practice/p2_search.py`'s counting functions. Q5(b) stops being an argument once you
   have watched the number.

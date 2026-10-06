@@ -20,7 +20,7 @@ Binary search discards a region based on sorted order. On an unsorted list it ma
 
 ### 4 Yes
 
-In place describes where sorting happens and how much extra space it uses. Returning the original list is a separate requirement of this package's in-place sorting exercises.
+In place describes where sorting happens and how much extra space it uses. Returning the original list is a separate requirement of the in-place sorting exercises here.
 
 ### 5 A
 

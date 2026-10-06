@@ -1,11 +1,5 @@
 # Topic 5 — mock test: heaps
 
-> ⚠ **Heap provenance.** The heap property and the three costs are slide-derived
-> (Deck 6 s32, s35). **The index arithmetic, the sift code, `build_heap` and both heap
-> sorts are your TA's** — no dedicated heap deck was available for this package. Practice, not a prediction.
-> Confirm with your instructor that heaps are on the exam. Full explanation in
-> [review.md](review.md).
-
 Part 1 is eleven drills; Part 2 is five exam-style questions.
 
 **Try each question before opening [solutions.md](solutions.md).** If stuck, read one relevant explanation, close it, and retry. You may type or write your answers.
@@ -186,6 +180,6 @@ This topic has two practice problems:
 - `practice/p6_triage_queue.py` — Q5's emergency room, built for real, checked by
   `python -m unittest discover -s . -p "test_p6_triage_queue.py" -v`. Do it after problem 5; it imports from it.
 
-Problem 6 is the one place in the package where you **apply** a data structure to a problem
+Problem 6 is the one place here where you **apply** a data structure to a problem
 rather than implement one, which is the likelier shape for a coding question. The tie-breaking
 part of it is the whole question — read its header carefully.

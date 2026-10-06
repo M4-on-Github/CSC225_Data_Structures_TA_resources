@@ -23,6 +23,6 @@ Choose a [study path](study_paths.md), try [guided practice](guided_practice.md)
 
 Attempt a question first. If stuck, consult one hint or solution section, close it, and retry. Passing tests is one check; being able to explain and adapt your solution is another.
 
-There are no grades or time limits in this package. Confirm exam coverage with your instructor, especially for heaps. See [sources and scope](sources.md).
+Nothing here is scored, and no time limits are printed. Confirm the exam's coverage with your instructor.
 
 If a reference answer seems wrong, show your TA the question, your reasoning and any failing test.

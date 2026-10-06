@@ -22,7 +22,7 @@ reason is only half an answer — the reasoning is the part worth practising.
 
 **3.4** So why is append still called O(1), and what is the trap in that word?
 
-**3.5** Costs, straight from the deck's own quiz: (i) `L[5]` · (ii) `L.append(x)` · (iii) `L.insert(0, x)`
+**3.5** Costs: (i) `L[5]` · (ii) `L.append(x)` · (iii) `L.insert(0, x)`
 · (iv) `L.pop()` · (v) `L.pop(0)` · (vi) `x in L`.
 
 **3.6** "Interface versus implementation" — what is the distinction, and why does the
@@ -149,5 +149,5 @@ that is not in `0` to `size − 1`.
 
 This topic's practice problem is `practice/p2_search.py`, checked by
 `python -m unittest discover -s . -p "test_p2_search.py" -v` from the `practice/` folder: linear and binary search plus
-counting versions of both. Q4(d) above is the one place in this package where you build
+counting versions of both. Q4(d) above is the one place here where you build
 the dynamic array itself rather than using one.

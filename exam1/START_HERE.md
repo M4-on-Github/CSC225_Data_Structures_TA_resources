@@ -32,8 +32,5 @@ An `OK` result means the provided tests passed. Readiness also means explaining 
 - [One guided exercise per topic](guided_practice.md)
 - [Quick reference](quick_reference.md)
 - [Mixed readiness check](mock_exam/questions.md)
-- [Sources and scope](sources.md)
 
-Heaps are optional until your instructor confirms they are included. This package is practice, not a prediction of the exam.
-
-The PDFs have been visually checked. The editable Word copies still need their page layout checked in Word before distribution. Markdown provides the same content with adjustable text display.
+Treat heaps as optional until your instructor confirms they are included.

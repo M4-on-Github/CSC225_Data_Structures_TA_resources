@@ -5,9 +5,6 @@
 #
 # Finish MinHeap in Problem 5 first. Its heap-sort extensions can wait until later.
 #
-# The heap provenance warning at the top of p5_min_heap.py applies to this problem too:
-# confirm with your instructor that heaps are on the exam before relying on it.
-#
 # ---------------------------------------------------------------------------
 # THE PROBLEM
 #

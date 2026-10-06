@@ -1,7 +1,7 @@
 # Topic 4 — mock test: sorting
 
 Part 1 is ten drills, Part 2 is nine exam-style questions. This is the
-longest paper in the package, with particular emphasis on writing and tracing code.
+longest paper here, with particular emphasis on writing and tracing code.
 
 **Try each question before opening [solutions.md](solutions.md).** If stuck, read one relevant explanation, close it, and retry. You may type or write your answers.
 

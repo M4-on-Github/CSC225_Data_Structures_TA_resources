@@ -72,16 +72,6 @@ people most often get wrong, which is exactly why it is tested.
 a style preference. The one exception is the two files that import from an earlier
 problem, where the import is already written for you.
 
-## A warning about problems 5 and 6
-
-**No dedicated heap lecture deck was available for this package.** The available heap
-material is three slides at the end of the stacks and queues deck -- the heap property
-and three costs -- and they point at a lecture whose deck we do not have. Everything else in
-problems 5 and 6 was written by your TA to fill that gap.
-
-So **confirm with your instructor that heaps are on the exam** before spending an evening
-here. If they are, this is good preparation. If not, do problems 1 to 4 twice instead.
-
 ## If a reference answer is wrong
 
 `python check.py --solutions` runs all 122 tests against the files in `solutions/`.

@@ -1,10 +1,5 @@
 # Topic 3 — Arrays, Python lists, and search
 
-**Source:** Array Data Structures (37 slides), plus the search slides of Algorithm
-Efficiency (Deck 3 s28–s32). **Lecture weight:** heavy.
-
----
-
 ## What this topic is
 
 This is where [Topic 2](../2-big-o/review.md)'s vocabulary first earns its keep, by
@@ -30,7 +25,6 @@ place to watch an O(log n) halving actually happen.
   not exposed by the list interface, which handles resizing for you.
 - **Static arrays** have a fixed capacity. Growing one means allocating a new, larger block
   and copying everything over by hand — *"this is the main motivation for dynamic arrays"*
-  (Deck 4 s17).
 - **Dynamic arrays** — which is what a CPython `list` is — do that for you: allocate a
   **multiplicatively** larger block, copy all n existing elements, release the old block,
   store the new element.
@@ -70,11 +64,10 @@ place to watch an O(log n) halving actually happen.
 | build a list of n items | O(n) | n appends |
 | grow a **static** array by one slot | O(n) | allocate, copy all n items, discard the old block |
 
-**The distinction the deck keeps coming back to.** `lst.pop()` is **amortized O(1)**;
+**The distinction to have ready.** `lst.pop()` is **amortized O(1)**;
 `lst.pop(0)` is **O(n)**. The usual O(1) label for an end-pop ignores occasional storage shrinking.
 `lst.append(x)` is **amortized O(1)**; `lst.insert(0, x)` is **O(n)**. One character of
 difference and a whole factor of n. This pair shows up on four separate slides
-(Deck 4 s32–s36).
 
 ## Static versus dynamic
 
@@ -89,7 +82,7 @@ Both are O(1) to index and O(n) at the front, because both are contiguous equal-
 slots — the address arithmetic and the shifting are identical either way. When there is
 spare capacity, storing an item at the end is O(1) in either structure. Dynamic arrays
 handle growth automatically and reserve extra space; that growth policy is what supports
-the amortized argument. (Deck 4 s18, s23–s24.)
+the amortized argument.
 
 ---
 
@@ -99,7 +92,7 @@ In the doubling model, capacity grows as 1, 2, 4, 8, 16, … So the items copied
 1 + 2 + 4 + … + 2ᵏ, which is less than 2ᵏ⁺¹ and so **at most 2n**. n appends therefore cost
 O(n) **in total**, starting from an empty array, which is O(1) per append on average.
 The argument works for other fixed growth factors greater than 1 too; Python lists need
-not double their capacity. (Deck 4 s25.)
+not double their capacity.
 
 Now the contrast that makes it land. Suppose the array grew by **one slot** instead of
 doubling. Then *every* append finds the array full and copies, so the total is
@@ -130,7 +123,7 @@ def binary_search(values, element):
     return -1
 ```
 
-This is the version given in full on Deck 3 s30. Two details decide whether it works:
+Two details decide whether this works:
 
 1. the loop condition is `while low <= high`, **not** `low < high` — with `<` the
    one-element range never gets checked, so some hits are reported as misses;
@@ -145,23 +138,23 @@ assumes order.
 
 ---
 
-## How the slides put it
+## Say it this way
 
-| | |
-|---|---|
-| "A sequence interface describes what we want to do. A data structure describes how we implement those operations." | Deck 4 s8 |
-| "Different implementations can support the same interface with very different costs." | Deck 4 s8 |
-| "Spread the total cost of a sequence of operations across that sequence." | Deck 4 s25 |
-| "Amortized does not mean every single append is cheap." | Deck 4 s26 |
-| "Each resize buys many cheap appends." | Deck 4 s24 |
-| "Despite the name, a Python list is implemented like a dynamic array, not a linked list." | Deck 4 s30 |
+Six sentences worth having word for word:
+
+- A sequence interface describes what we want to do. A data structure describes how we
+  implement those operations.
+- Different implementations can support the same interface with very different costs.
+- Amortized spreads the total cost of a sequence of operations across that sequence.
+- Amortized does not mean every single append is cheap.
+- Each resize buys many cheap appends.
+- Despite the name, a Python list is implemented like a dynamic array, not a linked list.
 
 ---
 
 ## Where people go wrong
 
-- Saying append is O(1) full stop. It is O(1) **amortized**; the word is doing work and the deck
-  quizzes it directly.
+- Saying append is O(1) full stop. It is O(1) **amortized**, and the word is doing work.
 - Confusing size with capacity, and then being unable to explain when a resize happens.
 - Thinking `insert(0, x)` is cheap because the list "knows where the front is". Knowing
   where it is costs nothing; **making room** costs n shifts.
@@ -177,14 +170,14 @@ assumes order.
 
 ## Checklist
 
-- [ ] Contiguous equal-size slots; the address formula — Deck 4 s7–s11
-- [ ] Size versus capacity — Deck 4 s20
-- [ ] Static versus dynamic arrays; the resize-and-copy — Deck 4 s16–s24
-- [ ] Amortized O(1) append, and its caveat — Deck 4 s25–s26
-- [ ] The cost of each list operation — Deck 4 s32, s35–s36
-- [ ] References in the slots, and why mixed types are legal — Deck 4 s30
-- [ ] Interface versus implementation — Deck 4 s8
-- [ ] Linear O(n) versus binary O(log n) search, and binary search's precondition — Deck 3 s28–s32
+- [ ] Contiguous equal-size slots; the address formula
+- [ ] Size versus capacity
+- [ ] Static versus dynamic arrays; the resize-and-copy
+- [ ] Amortized O(1) append, and its caveat
+- [ ] The cost of each list operation
+- [ ] References in the slots, and why mixed types are legal
+- [ ] Interface versus implementation
+- [ ] Linear O(n) versus binary O(log n) search, and binary search's precondition
 
 ---
 

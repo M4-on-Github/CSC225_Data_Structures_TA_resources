@@ -1,9 +1,5 @@
 # Topic 2 — Big-O and counting operations
 
-**Source:** Algorithm Efficiency Introduction (39 slides). **Lecture weight:** heavy.
-
----
-
 ## What this topic is
 
 A vocabulary with exactly **six words** in it, plus **two rules** for combining them, plus
@@ -59,7 +55,7 @@ structures that do the same job. Without it, "a list is slow at the front" is an
 
 **The two laws, in one line each.** Sequential code **adds**: O(n) then O(n) is O(n).
 Nested code **multiplies**: a loop of n inside a loop of n is O(n²). Then drop constants
-and lower-order terms. (Deck 3 s18–s19, s25–s27.)
+and lower-order terms.
 
 ---
 
@@ -93,7 +89,7 @@ The first pass compares the candidate against n−1 items, the next against n−
 down to 1. The total is (n−1) + (n−2) + … + 1 = **n(n−1)/2**, which is O(n²).
 
 It does not depend on the data **at all**, which is why a sorted input costs exactly as
-much as a reversed one. (Deck 3 s10–s12.)
+much as a reversed one.
 
 ### Why binary search is O(log n)
 
@@ -102,20 +98,19 @@ Starting from n items, the number of halvings needed is about log₂ n. Here, a 
 means one middle-item check, as in the practice counter. On a million items that is about
 **20** comparisons, against a million for linear search — and on a billion it is about 30,
 because each extra comparison doubles the number of items you can handle.
-(Deck 3 s28–s32.)
 
 ---
 
-## How the slides put it
+## Say it this way
 
-| | |
-|---|---|
-| "Count operations as a function of input size n, where n is the length of the list." | Deck 3 s9 |
-| "Big-O compares shapes, not exact stopwatch times." | Deck 3 s16 |
-| "Big-O gives an upper bound on how fast the work grows." | Deck 3 s17 |
-| "For this class, we usually begin with worst-case Big-O." | Deck 3 s14 |
+Four sentences worth having word for word:
 
-The "constants can fool us" table on s22 illustrates the same point: a quadratic
+- Count operations as a function of input size n, where n is the length of the list.
+- Big-O compares shapes, not exact stopwatch times.
+- Big-O gives an upper bound on how fast the work grows.
+- In this course we usually begin with the worst case.
+
+"Constants can fool us" makes the same point: a quadratic
 algorithm with a small constant can beat a linear algorithm with a large constant on
 small inputs, but the linear algorithm eventually wins as n grows.
 
@@ -139,13 +134,13 @@ small inputs, but the linear algorithm eventually wins as n grows.
 
 ## Checklist
 
-- [ ] Counting operations; why not a stopwatch — Deck 3 s6–s9
-- [ ] The six growth classes, in order — Deck 3 s20–s21
-- [ ] Dropping constants and lower-order terms — Deck 3 s18–s19
-- [ ] Add law (sequential) versus multiply law (nested) — Deck 3 s25–s27
-- [ ] n(n−1)/2 and where it comes from — Deck 3 s12
-- [ ] Why halving gives O(log n) — Deck 3 s28–s32
-- [ ] Best, average and worst case as three distinct questions — Deck 3 s14
+- [ ] Counting operations; why not a stopwatch
+- [ ] The six growth classes, in order
+- [ ] Dropping constants and lower-order terms
+- [ ] Add law (sequential) versus multiply law (nested)
+- [ ] n(n−1)/2 and where it comes from
+- [ ] Why halving gives O(log n)
+- [ ] Best, average and worst case as three distinct questions
 
 ---
 

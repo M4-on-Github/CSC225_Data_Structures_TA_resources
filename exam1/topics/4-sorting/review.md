@@ -1,29 +1,23 @@
 # Topic 4 — Sorting: all five algorithms
 
-**Source:** Merge / Bubble / Pivot Sorting (34 frames), plus selection sort from Algorithm
-Efficiency (Deck 3 s10–s12). This is the largest topic in this practice package.
-
----
-
 ## What this topic is
 
 Five algorithms that do the same job at wildly different costs, which makes this a natural
-place to practise writing sorting methods from scratch. The homework on Deck 7 s33 assigns exactly four of
-them — selection, bubble, merge and quick — while **insertion sort is taught in full but
-left off that list**, under the heading "Insertion Sort: Why Mention It?". Read that how
-you like; the sane response is to be able to write **all five**.
+place to practise writing sorting methods from scratch. Four of them — selection, bubble,
+merge and quick — are the ones set as homework; insertion sort is taught in full but is
+not on that list. Be able to write **all five** anyway.
 
-The one hard rule for this topic, from Deck 7 s8: **no `sort()`, no `sorted()`, no extra
-packages.** You are being asked to write the sort, not to call one.
+The one hard rule for this topic: **no `sort()`, no `sorted()`, no extra packages.** You
+are being asked to write the sort, not to call one.
 
 ---
 
 ## The ideas, in the order they depend on each other
 
 - **Selection sort:** find the minimum of the unsorted region, swap it into place. Taught
-  back in **Deck 3 (s10–s12)**, not in the sorting deck — the sorting deck only lists it
-  again in the summary table. Always **n(n−1)/2** comparisons, so **O(n²) even on
-  already-sorted input**.
+  Taught alongside Big-O rather than with the other four sorts, and it reappears only in
+  the summary table. Always **n(n−1)/2** comparisons, so **O(n²) even on already-sorted
+  input**.
 - **Bubble sort:** repeatedly swap adjacent out-of-order pairs. The `swapped` flag gives an
   early exit, which makes the **best case O(n)**. The inner range is
   `range(n - 1 - pass_num)` because each pass parks one more value at the end.
@@ -50,7 +44,7 @@ packages.** You are being asked to write the sort, not to call one.
 
 ---
 
-## The summary table (compare Deck 7 s24)
+## The summary table
 
 Use the costs for the exact implementations below; quick sort's stability and all-equal
 best case depend on its three-way split.
@@ -203,16 +197,18 @@ version* it means.
 
 ---
 
-## How the slides put it
+## Say it this way
 
-| | |
-|---|---|
-| "How does it work? How fast does it grow as n gets large?" | Deck 7, the two questions asked of every algorithm |
-| "Large values gradually bubble to the right." | Deck 7 s4 |
-| "After one full pass, the largest unsorted value is in its correct final position." | Deck 7 s6 |
-| "Break the list into tiny pieces, then carefully stitch sorted pieces back together." | Deck 7 s11 |
-| "The pivot is not necessarily the middle value. It is just the value we choose to split around." | Deck 7 s17 |
-| "Quadratic growth is a lot faster-growing than linear or n log n growth." | Deck 7 s24 |
+Six lines worth having word for word:
+
+- How does it work? How fast does it grow as n gets large? — the two questions asked of
+  every algorithm here.
+- Large values gradually bubble to the right.
+- After one full pass, the largest unsorted value is in its correct final position.
+- Break the list into tiny pieces, then carefully stitch sorted pieces back together.
+- The pivot is not necessarily the middle value. It is just the value we choose to split
+  around.
+- Quadratic growth is a lot faster-growing than linear or n log n growth.
 
 ---
 
@@ -240,14 +236,14 @@ version* it means.
 
 ## Checklist
 
-- [ ] Write all five sorts from memory, in the lecture form — Deck 7 s9, s15, s22, s28; Deck 3 s11
-- [ ] The summary table: best / average / worst / in place / stable — Deck 7 s24
+- [ ] Write all five sorts from memory, in the lecture form
+- [ ] The summary table: best / average / worst / in place / stable
 - [ ] Which three sort in place, and which two build new lists except in their base cases
-- [ ] n(n−1)/2 derived, not quoted — Deck 3 s10–s12
-- [ ] Merge sort's levels × work-per-level argument — Deck 7 s11–s16
-- [ ] Quick sort's pivot, three-way split, and the input that gives it O(n²) — Deck 7 s17–s23
-- [ ] Bubble's `swapped` flag, and what it does and does not buy — Deck 7 s7, s10
-- [ ] Stability, and the `<=` in the merge that causes it — Deck 7 s15
+- [ ] n(n−1)/2 derived, not quoted
+- [ ] Merge sort's levels × work-per-level argument
+- [ ] Quick sort's pivot, three-way split, and the input that gives it O(n²)
+- [ ] Bubble's `swapped` flag, and what it does and does not buy
+- [ ] Stability, and the `<=` in the merge that causes it
 - [ ] Trace each sort by hand on a five- or six-item list, writing every pass
 
 ---

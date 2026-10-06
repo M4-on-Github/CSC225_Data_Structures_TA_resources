@@ -10,37 +10,37 @@ versions in Q7.
 ## Part 1 — Drills
 
 **4.1** (n−1) + (n−2) + … + 1 = **n(n−1)/2** = n²/2 − n/2. Drop the constant factor and
-the lower-order term: **O(n²)**. This is the exact shape of selection sort. (Deck 3 s12.)
+the lower-order term: **O(n²)**. This is the exact shape of selection sort.
 
 **4.2** `[1, 4, 2, 5, 8]`, **3 swaps** (5↔1, 5↔4, 5↔2). One pass guarantees only that the
 **largest remaining value has reached its final slot** — which is why the inner range is
-`range(n - 1 - pass_num)`. (Deck 7 s5–s6, code on s9.)
+`range(n - 1 - pass_num)`.
 
 **4.3** If a whole pass makes no swap, the list is already sorted and the function breaks
 out early. It turns bubble sort's **best case into O(n)**. The average and worst cases
-remain O(n²). (Deck 7 s7, s10.)
+remain O(n²).
 
 **4.4** Pass 1 scans the whole list for the **minimum** (1) and swaps it into position 0 →
 `[1, 2, 9, 5]`. The full sort always makes **n(n−1)/2** comparisons — 6 here —
 **regardless of the input**, including already-sorted input. Note selection sort is taught
-in **Deck 3** (s10–s12), not the sorting deck; it only reappears in the summary table.
+alongside Big-O rather than with the other four sorts; it only reappears in the summary
+table.
 
 **4.5** Split: `[8,3,5,1]` → `[8,3]`, `[5,1]` → `[8]`, `[3]`, `[5]`, `[1]`. Merge: `[3,8]`
 and `[1,5]` → `[1,3,5,8]`. The **merge** is where all the work is: compare the two front
-elements, take the smaller, repeat. (Deck 7 s11–s13, code on s15.)
+elements, take the smaller, repeat.
 
 **4.6** `log n` is the **number of levels**: halving down to single elements takes log₂ n
 splits. `n` is the **work per level**: merging all the pieces at one level touches every
-element once. Levels × work per level = n log n. (Deck 7 s16 — the slides name the two repeated
-actions, splitting and merging.)
+element once. Levels × work per level = n log n — the two repeated actions being
+splitting and merging.
 
 **4.7** The lecture version picks **`values[-1]` = 6**. left (< 6) = `[2, 1, 5, 4]`, middle (== 6) =
 `[6]`, right (> 6) = `[7, 9]`. Then quick-sort left and right and concatenate.
-(Deck 7 s18–s20, code on s22.)
 
 **4.8** An **already-sorted (or reverse-sorted)** list with distinct values. Taking the last element as pivot
 then puts everything on one side, so the partition peels off one element at a time: n
-levels instead of log n. The slides call these **bad pivots**. (Deck 7 s23.)
+levels instead of log n. These are **bad pivots**.
 
 **4.9**
 
@@ -52,13 +52,13 @@ levels instead of log n. The slides call these **bad pivots**. (Deck 7 s23.)
 | Merge | O(n log n) | O(n log n) | O(n log n) |
 | Quick | **O(n)** with all-equal values; O(n log n) with distinct values | O(n log n) | **O(n²)** |
 
-(Compare Deck 7 s24. The all-equal best case follows from this version's three-way split.)
+(The all-equal best case follows from this version's three-way split.)
 
 **4.10** **Merge and quick return new lists** for inputs of length at least two; their
 empty-list and singleton base cases return the original list. **Selection, bubble and
 insertion sort in place** and return the same object. If you write `merge_sort(nums)` and
 then print `nums` expecting an unsorted list to have changed, you threw the sorted result
-away. (Deck 7 s15 and s22 — compare the two functions line by line.)
+away. Compare the two functions line by line.
 
 ---
 
@@ -67,7 +67,7 @@ away. (Deck 7 s15 and s22 — compare the two functions line by line.)
 ### Q1 — Sorting vocabulary
 **(a)** **In place** — it rearranges the caller's list using O(1) extra space; returning
 that same object is a separate convention of these implementations. **Stable** — items
-that compare equal keep their original relative order. (Deck 7 s15, s24.)
+that compare equal keep their original relative order.
 
 **(b)** **Bubble sort** or **insertion sort**. Both are stable and both are O(n²) in the
 worst case. The three-way **quick sort shown here** also qualifies: its partitions
@@ -85,7 +85,7 @@ O(n²) but is **not** stable; merge sort is stable but **is** O(n log n).
 **(a)** The **`swapped` flag**: bubble sort notices when a whole pass makes no swaps and
 **exits early**, so a sorted list costs one pass, O(n). Selection sort has no such check —
 it must scan the entire unsorted region to be sure it has found the minimum, every pass,
-whatever the data. (Deck 7 s4–s10; Deck 3 s10–s12.)
+whatever the data.
 
 **(b)** The **comparison** count is identical — **45** both times, which is 10 × 9 / 2 —
 because the inner loop never stops early; it has to see every remaining item before it can
@@ -107,19 +107,18 @@ count dominates the total cost. (Those are the numbers
 `left = [1, 2, 3, 4]`, `middle = [5]`, `right = []`. One side gets **everything** and the
 other gets **nothing**, so the recursion shrinks by **one element per level** instead of
 halving: n levels, O(n) partitioning work at each, **O(n²)**. Reverse-sorted input does the
-same thing the other way round. (Deck 7 s22–s23.)
+same thing the other way round.
 
 **(b)** The **`log n`** is the **number of levels**: `mid = len(values) // 2` halves the
 list, and you can only halve n down to 1 about log₂ n times. The **`n`** is the **merging
 work on one level**: merging all the pieces at a level takes O(n) work. log n levels ×
 O(n) per level = **O(n log n)**, and nothing about the data changes either factor.
-(Deck 7 s11–s16.)
 
 **(c)** **Bubble sort** does less work in these implementations. The `swapped` flag makes the first pass
 finish with no swaps, so it **breaks out after one pass** — about 10,000 comparisons,
 **O(n)**. Merge sort has no such check: it splits and merges all the way down regardless,
 on the order of 10,000 × log₂ 10,000 operations. Some nearly-sorted inputs also let bubble
-sort finish in a few passes. (Deck 7 s9–s10.)
+sort finish in a few passes.
 
 **What a complete answer needs**
 
@@ -155,7 +154,7 @@ Up: `[3]`+`[5]` → `[3,5]`; `[8]`+`[3,5]` → `[3,5,8]`; `[7]`+`[2]` → `[2,7]
 `[1]`+`[2,7]` → `[1,2,7]`; finally `[3,5,8]`+`[1,2,7]` → **`[1,2,3,5,7,8]`**.
 
 Note `mid = len(values) // 2`, so the six-element list splits 3/3 and the three-element
-lists split 1/2 — **not** 2/1. (Deck 7 s11–s16.)
+lists split 1/2 — **not** 2/1.
 
 **What a complete answer needs**
 
@@ -182,7 +181,6 @@ lists split 1/2 — **not** 2/1. (Deck 7 s11–s16.)
 **10 comparisons** — 4 + 3 + 2 + 1 + 0, which is 5 × 4 / 2. Passes 3 and 5 change nothing
 because the minimum of the remaining region is **already in place**, so the element is
 swapped with itself. Selection sort has no way to notice that and skip the pass.
-(Deck 3 s10–s12.)
 
 **(b)** Pivot = **3**. `left = [2]` · `middle = [3]` · `right = [6, 8, 4, 10]`. It then
 calls `quick_sort([2])` and `quick_sort([6, 8, 4, 10])`, and returns their results with
@@ -190,7 +188,6 @@ calls `quick_sort([2])` and `quick_sort([6, 8, 4, 10])`, and returns their resul
 
 Note how badly that first split went: 1 item on the left and 4 on the right. The pivot was
 the **second smallest** item in the list, and `values[-1]` has no way of knowing that.
-(Deck 7 s22.)
 
 **(c)**
 
@@ -201,7 +198,7 @@ the **second smallest** item in the list, and `values[-1]` has no way of knowing
 | 3 | `[1, 2, 4, 5]` |
 
 Three iterations, not four: the outer loop starts at **1**, because the one-element region
-to the left of index 1 is already sorted by definition. (Deck 7 s26–s29.)
+to the left of index 1 is already sorted by definition.
 
 **What a complete answer needs**
 
@@ -230,7 +227,6 @@ to the left of index 1 is already sorted by definition. (Deck 7 s26–s29.)
 
 This is the distinction that turns a correct algorithm into a wrong answer —
 `merge_sort(data)` on its own, with the return value thrown away, leaves `data` unchanged.
-(Deck 7 s15, s22.)
 
 **What a complete answer needs**
 
@@ -300,7 +296,7 @@ needs a swap but becomes sorted well before the final pass.
 ```
 
 Take each element from index 1 onward, slide everything larger one slot to the right, and
-drop it into the gap. The region to the left of `i` is always sorted. (Deck 7 s26–s29.)
+drop it into the gap. The region to the left of `i` is always sorted.
 
 **(b)** **Best case O(n)** — an **already-sorted** list: the `while` condition fails
 immediately on every pass, so each element after the first is compared once. **Worst case O(n²)** — a
@@ -336,7 +332,7 @@ that test **fails on the first check**, so they cost one comparison each and nev
 Only the 12 appended records actually slide, and each slides only as far as it has to.
 Total work is about n plus the number of out-of-order pairs, so this is O(n) when the
 number of appended records stays fixed at 12, even though insertion sort is O(n²) in the
-general worst case. (Deck 7 s26–s29.)
+general worst case.
 
 Bubble sort is less suitable here, because a record appended at the **end** that
 belongs at the **front** moves only one slot per pass, so bubble sort needs many passes
@@ -378,7 +374,7 @@ manages. It is not stable, and that is the one thing you do give up.
 - Anything wrong in **Q4 or Q5** — you cannot write a sort you cannot trace. Redo the trace
   on paper, then check it with `bubble_sort_passes` and `selection_sort_count` in
   `practice/solutions/p3_sorts.py`, which exist for exactly this.
-- Anything wrong in **Q6** — Deck 7 s15 against s22, side by side. In place versus new list
+- Anything wrong in **Q6**
   is the cheapest thing in the topic to get right and the most commonly thrown away.
 - Anything wrong in **Q8** — go and write all five sorts: `practice/p3_sorts.py`, then
   `practice/p4_sortable_list.py`. The tests check the return-object convention with

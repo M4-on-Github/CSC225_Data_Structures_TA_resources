@@ -4,7 +4,7 @@
 #   - BankAccount is the lecture's encapsulation example (Crash Course 1 s23, Crash Course 2 s12).
 #   - The internal balance is _balance; callers read it through get_balance().
 #   - deposit guards with "if amount > 0" and returns True/False rather than raising.
-#   - No type hints, no docstrings in student-facing code -- that matches the decks.
+#   - No type hints, no docstrings -- that matches the course style.
 
 
 class BankAccount:

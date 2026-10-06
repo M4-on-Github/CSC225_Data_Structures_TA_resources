@@ -1,29 +1,9 @@
 # Topic 5 — Heaps
 
-> ## ⚠ Read this before you read the topic
->
-> **No dedicated heap lecture deck was available for this package.** Deck 6 s32 says *"recall the central
-> idea from our heap data structure lecture"* and states the heap **property** and three
-> **costs** — peek O(1), insert O(log n), remove O(log n) — and s35 adds *"a heap list is
-> not fully sorted. It only maintains the heap property."* **Those are the heap property
-> and costs cited by this package.**
->
-> Everything else on these three pages — the index arithmetic, the sift-up and sift-down
-> code, `build_heap`, both heap sorts — is **your TA's**, written to the course conventions.
-> It is correct and it is executed by the practice tests. It is **not** a prediction of
-> what will be asked. **Confirm with your instructor that heaps are on the exam** before putting
-> serious hours into this topic.
->
-> Study it if it is on: a heap makes "give me the smallest, repeatedly" fast, and heap sort
-> guarantees O(n log n) time in the worst case.
-
-**Source:** Deck 6 s32 and s35 for the property and costs, s34 for `heapq`, plus authored
-material. **Lecture coverage:** brief mentions — but the only topic in the package with a coding problem *and* an applied design
-problem.
-
----
-
 ## What this topic is
+
+A heap makes "give me the smallest, repeatedly" fast, and heap sort is the one sort that
+is O(n log n) in the worst case **and** in place.
 
 A heap can be stored as a **tree with no separate
 node objects**: no `Node` class, no `left` and `right` attributes, nothing but a plain Python list
@@ -36,11 +16,10 @@ you drew it. Practise the index arithmetic before tracing the two sift operation
 
 - **The heap property defines the ordering.** In a **min**-heap, every node's value is **less
   than or equal to each of its children's values**. This also orders ancestors before
-  descendants, but says nothing about the order between separate branches. (Deck 6 s32.)
+  descendants, but says nothing about the order between separate branches.
 - **The property is local, so the list is not sorted.** `[1, 3, 2, 9, 7, 8, 5]` is a valid
   min-heap: check every parent against its children and it holds; read it left to right and
   it is plainly not in order. The **only** position you can read off directly is index 0.
-  (Deck 6 s35.)
 - **The tree is the arithmetic.** For the item at index `i`:
   `parent_index(i)` = `(i - 1) // 2`, `left_index(i)` = `2i + 1`,
   `right_index(i)` = `2i + 2`. Memorise these three. `parent_index(0)` comes out **−1**,
@@ -98,14 +77,11 @@ and `4` in the list and nothing is wrong — none of them is its child.
 
 ## The costs
 
-> *Heap provenance:* the three costs below marked (s32) are slide-derived. The rest follow
-> from the authored implementation.
-
 | Operation | Cost | Why |
 |---|---|---|
-| `peek()` | **O(1)** (s32) | the minimum is at index 0, always |
-| `insert(e)` | **O(log n)** (s32) | append at the end, then sift up at most the height of the tree |
-| `remove_min()` | **O(log n)** (s32) | last item into index 0, then sift down one level at a time |
+| `peek()` | **O(1)** | the minimum is at index 0, always |
+| `insert(e)` | **O(log n)** | append at the end, then sift up at most the height of the tree |
+| `remove_min()` | **O(log n)** | last item into index 0, then sift down one level at a time |
 | `size()` / `is_empty()` | O(1) | it is the length of the list |
 | is the value 42 in here? | **O(n)** | a scan may need to examine every item, like an unsorted list |
 | `build_heap(values)` | **O(n)** | sift down from the last parent; about half the heap are leaves and never move |
@@ -120,7 +96,7 @@ is the answer of someone who thinks a heap is a search tree.
 
 ## The code
 
-Authored for this package, in the course conventions. The full reference is
+Written in the course conventions. The full reference is
 `practice/solutions/p5_min_heap.py`; this is the part worth being able to reproduce.
 
 ```python
@@ -230,21 +206,19 @@ belongs at the end is the **largest**, and the only value a heap hands you cheap
 one at the root — so the root has to be the largest. Swap it to the end, shrink the heap by
 one, sift down, repeat. A min-heap would build the list backwards.
 
-That makes it the sort in this package that is **O(n log n) in the worst case *and* in place**. What you
-give up is stability.
+That makes it the only sort here that is **O(n log n) in the worst case *and* in place**.
+What you give up is stability.
 
 ---
 
-## How the slides put it
+## Say it this way
 
-| | |
-|---|---|
-| "A heap is a binary tree where each parent is smaller than (or equal to) its children." | Deck 6 s32 |
-| "A heap list is not fully sorted. It only maintains the heap property." | Deck 6 s35 |
-| "Insert O(log n), remove-min O(log n), peek O(1)." | Deck 6 s32 |
-| "Python's heapq gives you this for free — but you should know what it is doing." | Deck 6 s34 |
+Four lines worth having word for word:
 
-Those are the heap-related statements cited here. The implementations and worked traces are authored.
+- A heap is a binary tree where each parent is smaller than (or equal to) its children.
+- A heap list is not fully sorted. It only maintains the heap property.
+- Insert O(log n), remove-min O(log n), peek O(1).
+- Python's `heapq` gives you this for free — but you should know what it is doing.
 
 ---
 
@@ -252,7 +226,7 @@ Those are the heap-related statements cited here. The implementations and worked
 
 - Saying a heap is sorted, or that the property orders separate branches. It compares
   **parents with children**, which also orders ancestors before descendants; it says
-  nothing about left versus right. Slide s35 highlights this distinction.
+  nothing about left versus right.
 - Sifting down by swapping with the **larger** child. It must be the smaller one, or the
   heap is broken and the next `remove_min` returns a wrong value.
 - In `remove_min`, promoting a child into the root instead of moving the **last** item
@@ -271,17 +245,14 @@ Those are the heap-related statements cited here. The implementations and worked
 
 ## Checklist
 
-- [ ] State the min-heap property exactly, and what it does **not** say — Deck 6 s32
-- [ ] "A heap list is not fully sorted" — Deck 6 s35
-- [ ] The three index formulas, and `parent_index(0)` = −1 — authored **+**
-- [ ] Complete tree: what it means and why the list has no gaps — authored **+**
-- [ ] Trace six inserts and two `remove_min`s by hand, writing the list each time — **+**
-- [ ] `build_heap`, its sift order, and why it is O(n) while n inserts is O(n log n) — **+**
-- [ ] The full cost table, including search at O(n) — costs s32, the rest **+**
-- [ ] Heap sort's O(n log n) worst-case argument, and why this in-place version uses a max-heap — **+**
-
-**+** flags an item that is **authored by your TA**, not drawn from a lecture deck. Those
-items are correct and tested; they are not evidence about the exam.
+- [ ] State the min-heap property exactly, and what it does **not** say
+- [ ] "A heap list is not fully sorted"
+- [ ] The three index formulas, and `parent_index(0)` = −1
+- [ ] Complete tree: what it means and why the list has no gaps
+- [ ] Trace six inserts and two `remove_min`s by hand, writing the list each time
+- [ ] `build_heap`, its sift order, and why it is O(n) while n inserts is O(n log n)
+- [ ] The full cost table, including search at O(n)
+- [ ] Heap sort's O(n log n) worst-case argument, and why this in-place version uses a max-heap
 
 ---
 
@@ -292,6 +263,5 @@ items are correct and tested; they are not evidence about the exam.
 - Write the code: `practice/p5_min_heap.py` (the class, `build_heap`, both heap sorts) and
   then `practice/p6_triage_queue.py` (applying it to a real problem), checked by
   `python -m unittest discover -s . -p "test_p5_min_heap.py" -v` and `python -m unittest discover -s . -p "test_p6_triage_queue.py" -v`.
-- That is the end of the package. If you have time left over, go back to
-  `practice/p3_sorts.py` — on the evidence of the slides, sorting is the likelier coding
-  question.
+- That is the last topic. If you have time left over, go back to `practice/p3_sorts.py`:
+  sorting is the likelier coding question.
