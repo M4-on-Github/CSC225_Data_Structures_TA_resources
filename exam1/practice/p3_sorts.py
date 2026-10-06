@@ -1,6 +1,6 @@
 # PROBLEM 3 -- Topic 4: sorting
 #
-# Check your work:   python test_p3_sorts.py
+# Check your work:   python -m unittest discover -s . -p "test_p3_sorts.py" -v
 # Reference answer:  solutions/p3_sorts.py  (try first; consult one section if stuck)
 #
 # ---------------------------------------------------------------------------

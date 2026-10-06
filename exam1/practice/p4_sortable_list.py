@@ -1,6 +1,6 @@
 # PROBLEM 4 -- Topic 4: sorting, in class form
 #
-# Check your work:   python test_p4_sortable_list.py
+# Check your work:   python -m unittest discover -s . -p "test_p4_sortable_list.py" -v
 # Reference answer:  solutions/p4_sortable_list.py  (try first; consult one section if stuck)
 #
 # Do Problem 3 first. This problem assumes p3_sorts.py works, because it imports from it.

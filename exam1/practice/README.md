@@ -8,10 +8,10 @@ got it right -- no answer key to read off, and nobody has to be in the room.
 1. Open a problem file, e.g. `p1_bank_account.py`. The comment header at the top is the
    whole problem statement. The function and method bodies say `pass  # TODO`.
 2. Replace each `pass  # TODO` with your code.
-3. Run its test file from this folder:
+3. Run its tests from this folder, `exam1`, the repository root, or the clone's parent folder:
 
    ```
-   python test_p1_bank_account.py
+   python -m unittest discover -s . -p "test_p1_bank_account.py" -v
    ```
 
    Failures are expected while the file still contains TODOs. `OK` means the provided
@@ -22,7 +22,16 @@ got it right -- no answer key to read off, and nobody has to be in the room.
 Start with the [foundation check](../diagnostic/questions.md) if you are unsure what to
 practise. Use the [coding checkpoints](../study_paths.md#coding-checkpoints) for smaller steps.
 
-To see where you stand across all six:
+The command searches subfolders. Keep the quotes around the pattern. `Ran 0 tests`
+means nothing was checked; use the [setup and troubleshooting guide](../../README.md#run-your-tests).
+
+To run all six from any of those folders:
+
+```sh
+python -m unittest discover -s . -p "test_p*.py" -v
+```
+
+For a shorter summary, these helper commands run **from this practice folder**:
 
 ```
 python check.py          # one line per problem

@@ -5,9 +5,9 @@
 #     python check.py --solutions  check the reference answers in solutions/
 #     python check.py -v 3         show the full unittest output for problem 3
 #
-# You do not need this script. Running "python test_p3_sorts.py" directly does the same
-# thing for one problem and prints more detail. This is just the whole-folder view, for
-# when you want to know what is left.
+# You can also use unittest discovery from the repository root or its parent:
+#     python -m unittest discover -s . -p "test_p3_sorts.py" -v
+# This helper is the compact whole-folder view, for when you want to know what is left.
 #
 # --solutions runs the tests against solutions/ in a scratch copy, so a broken file of
 # your own cannot affect the result. If that mode ever reports a failure, the reference
@@ -132,7 +132,8 @@ def main():
     if failed:
         print("  Still to do: " + ", ".join("problem %d" % n for n in failed))
         print("  Run one on its own for the details, e.g. "
-              "python test_%s.py" % PROBLEMS[failed[0] - 1][1])
+              'python -m unittest discover -s . -p "test_%s.py" -v'
+              % PROBLEMS[failed[0] - 1][1])
         return 1
     print("  All selected problems pass.")
     return 0

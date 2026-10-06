@@ -215,8 +215,8 @@ you? Name the algorithm from [Topic 5](../5-heaps/review.md) that removes the tr
 This topic has two practice problems, and they are the centre of the package:
 
 - `practice/p3_sorts.py` — all five sorts as module-level functions, checked by
-  `python test_p3_sorts.py`. **If you only do one practice problem, do this one.**
+  `python -m unittest discover -s . -p "test_p3_sorts.py" -v`. **If you only do one practice problem, do this one.**
 - `practice/p4_sortable_list.py` — the same five as **methods on a class**, checked by
-  `python test_p4_sortable_list.py`. Do it after problem 3; it imports from it.
+  `python -m unittest discover -s . -p "test_p4_sortable_list.py" -v`. Do it after problem 3; it imports from it.
 
 Q8 above is the paper version of problem 4: one method, by hand, under exam conditions.

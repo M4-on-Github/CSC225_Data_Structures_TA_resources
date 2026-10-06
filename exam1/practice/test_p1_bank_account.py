@@ -1,6 +1,6 @@
-# Tests for Problem 1. Run from this folder:
+# Tests for Problem 1. Run from this folder, the repository root, or its parent:
 #
-#     python test_p1_bank_account.py
+#     python -m unittest discover -s . -p "test_p1_bank_account.py" -v
 #
 # Read the failures. A unittest failure identifies the assertion that failed and usually
 # shows the actual and expected values. Check the named test to see its input.

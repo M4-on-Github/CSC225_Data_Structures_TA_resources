@@ -291,7 +291,7 @@ items are correct and tested; they are not evidence about the exam.
   [solutions.md](solutions.md).
 - Write the code: `practice/p5_min_heap.py` (the class, `build_heap`, both heap sorts) and
   then `practice/p6_triage_queue.py` (applying it to a real problem), checked by
-  `python test_p5_min_heap.py` and `python test_p6_triage_queue.py`.
+  `python -m unittest discover -s . -p "test_p5_min_heap.py" -v` and `python -m unittest discover -s . -p "test_p6_triage_queue.py" -v`.
 - That is the end of the package. If you have time left over, go back to
   `practice/p3_sorts.py` — on the evidence of the slides, sorting is the likelier coding
   question.

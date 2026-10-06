@@ -1,6 +1,6 @@
-# Tests for Problem 4. Run from this folder:
+# Tests for Problem 4. Run from this folder, the repository root, or its parent:
 #
-#     python test_p4_sortable_list.py
+#     python -m unittest discover -s . -p "test_p4_sortable_list.py" -v
 #
 # Problem 3 covered the algorithms. This problem puts the same algorithms into
 # methods on a class, operating on self.values.

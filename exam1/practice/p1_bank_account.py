@@ -1,6 +1,6 @@
 # PROBLEM 1 -- Topic 1: classes and argument passing
 #
-# Check your work:   python test_p1_bank_account.py
+# Check your work:   python -m unittest discover -s . -p "test_p1_bank_account.py" -v
 # Reference answer:  solutions/p1_bank_account.py  (try first; consult one section if stuck)
 #
 # ---------------------------------------------------------------------------

@@ -1,6 +1,6 @@
-# Tests for Problem 5. Run from this folder:
+# Tests for Problem 5. Run from this folder, the repository root, or its parent:
 #
-#     python test_p5_min_heap.py
+#     python -m unittest discover -s . -p "test_p5_min_heap.py" -v
 #
 # Every expected list in here was produced by running the reference implementation, not
 # typed from memory. If one of these disagrees with what you worked out on paper, the

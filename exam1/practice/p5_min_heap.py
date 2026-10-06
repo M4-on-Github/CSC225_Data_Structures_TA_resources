@@ -1,6 +1,6 @@
 # PROBLEM 5 -- Topic 5: heaps
 #
-# Check your work:   python test_p5_min_heap.py
+# Check your work:   python -m unittest discover -s . -p "test_p5_min_heap.py" -v
 # Reference answer:  solutions/p5_min_heap.py  (try first; consult one section if stuck)
 #
 # ---------------------------------------------------------------------------

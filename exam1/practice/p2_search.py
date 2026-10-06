@@ -1,6 +1,6 @@
 # PROBLEM 2 -- Topic 3 (arrays) and Topic 2 (Big-O)
 #
-# Check your work:   python test_p2_search.py
+# Check your work:   python -m unittest discover -s . -p "test_p2_search.py" -v
 # Reference answer:  solutions/p2_search.py  (try first; consult one section if stuck)
 #
 # ---------------------------------------------------------------------------

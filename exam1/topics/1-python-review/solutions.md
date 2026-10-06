@@ -164,5 +164,5 @@ live bug in it, and that is exactly the shape of the argument-passing questions 
 - Anything wrong in **Q1 or Q3** — Deck 2 s7–s12 for the mechanics, s11 for the
   underscore.
 - Then write it: `practice/p1_bank_account.py`, checked by
-  `python test_p1_bank_account.py`. The `transfer` method there is Q3's delegation idea
+  `python -m unittest discover -s . -p "test_p1_bank_account.py" -v`. The `transfer` method there is Q3's delegation idea
   with money at stake.

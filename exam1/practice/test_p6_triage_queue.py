@@ -1,6 +1,6 @@
-# Tests for Problem 6. Run from this folder:
+# Tests for Problem 6. Run from this folder, the repository root, or its parent:
 #
-#     python test_p6_triage_queue.py
+#     python -m unittest discover -s . -p "test_p6_triage_queue.py" -v
 #
 # This problem is about USING a heap, so most of these tests check an order of names
 # rather than a list of numbers. Every expected order below came from running the

@@ -12,14 +12,17 @@ Try one step. Read a [hint](hints.md) or the relevant part of a solution. Close 
 
 ## Before you code
 
-Use Python 3. Open a terminal in this folder, then run:
+Follow the [clone and setup instructions](../README.md#download-and-open). From the
+repository folder, this folder, the practice folder, or the clone's parent folder, run:
 
 ```sh
-cd practice
-python test_p1_bank_account.py
+python -m unittest discover -s . -p "test_p1_bank_account.py" -v
 ```
 
 Failures are expected before you fill in the starter code. If `python` is not found on Windows, try `py` instead. If neither works, ask your TA for the course's Python setup instructions.
+
+The command searches subfolders. If it reports `Ran 0 tests`, check that you are in one
+of the folders above and that the test filename matches.
 
 An `OK` result means the provided tests passed. Readiness also means explaining your code and solving a fresh example without notes.
 

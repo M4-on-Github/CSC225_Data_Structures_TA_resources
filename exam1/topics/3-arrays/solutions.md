@@ -227,4 +227,4 @@ part (a).
 - Anything wrong in **Q3** — Deck 4 s32 and s35–s36 are the deck's own quiz **with** its own
   answer key. Learn that page as facts plus one reason each.
 - Anything wrong in **Q2(b)** — Deck 4 s7 and s11. The slot size is the whole answer.
-- Then write it: `practice/p2_search.py`, checked by `python test_p2_search.py`.
+- Then write it: `practice/p2_search.py`, checked by `python -m unittest discover -s . -p "test_p2_search.py" -v`.

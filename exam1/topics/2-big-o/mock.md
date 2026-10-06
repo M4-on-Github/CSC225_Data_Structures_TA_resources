@@ -140,6 +140,6 @@ Big-O was and was not claiming in the first place.
 ## Part 3 — Write the code
 
 This topic's practice problem is `practice/p2_search.py`, checked by
-`python test_p2_search.py` from the `practice/` folder. It shares a file with Topic 3
+`python -m unittest discover -s . -p "test_p2_search.py" -v` from the `practice/` folder. It shares a file with Topic 3
 because the two searches are the cheapest place to watch O(n) and O(log n) side by side —
 the two counting functions in it make Q5 something you can measure rather than recite.

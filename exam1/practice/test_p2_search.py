@@ -1,6 +1,6 @@
-# Tests for Problem 2. Run from this folder:
+# Tests for Problem 2. Run from this folder, the repository root, or its parent:
 #
-#     python test_p2_search.py
+#     python -m unittest discover -s . -p "test_p2_search.py" -v
 
 import unittest
 

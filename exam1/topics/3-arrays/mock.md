@@ -148,6 +148,6 @@ that is not in `0` to `size − 1`.
 ## Part 3 — Write the code
 
 This topic's practice problem is `practice/p2_search.py`, checked by
-`python test_p2_search.py` from the `practice/` folder: linear and binary search plus
+`python -m unittest discover -s . -p "test_p2_search.py" -v` from the `practice/` folder: linear and binary search plus
 counting versions of both. Q4(d) above is the one place in this package where you build
 the dynamic array itself rather than using one.

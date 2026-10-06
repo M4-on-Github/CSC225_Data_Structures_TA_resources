@@ -25,7 +25,8 @@ For sorting, learn selection, bubble and insertion first. Before merge and quick
 
 ## Coding checkpoints
 
-Work from the practice folder. Keep the starter filenames so the tests can find them.
+Keep the starter filenames so the tests can find them. The discovery commands below
+work from the repository root, its parent folder, `exam1`, or `exam1/practice`.
 
 - Problem 1: constructor and balance methods, then transfer and argument passing.
 - Problem 2: linear search, binary search, then counting versions.
@@ -34,16 +35,16 @@ Work from the practice folder. Keep the starter filenames so the tests can find 
 - Problem 5: run the test groups below as you build each part.
 
 ```sh
-python -m unittest test_p5_min_heap.TestIndexArithmetic
-python -m unittest test_p5_min_heap.TestEmptyHeap test_p5_min_heap.TestInsert
-python -m unittest test_p5_min_heap.TestRemoveMin
+python -m unittest discover -s . -p "test_p5_min_heap.py" -k TestIndexArithmetic -v
+python -m unittest discover -s . -p "test_p5_min_heap.py" -k TestEmptyHeap -k TestInsert -v
+python -m unittest discover -s . -p "test_p5_min_heap.py" -k TestRemoveMin -v
 ```
 
 Once these pass, you can try problem 6. Then return to the heap construction and sorting extensions:
 
 ```sh
-python -m unittest test_p5_min_heap.TestBuildHeap
-python -m unittest test_p5_min_heap.TestHeapSort
+python -m unittest discover -s . -p "test_p5_min_heap.py" -k TestBuildHeap -v
+python -m unittest discover -s . -p "test_p5_min_heap.py" -k TestHeapSort -v
 ```
 
 ## Ready to practise independently

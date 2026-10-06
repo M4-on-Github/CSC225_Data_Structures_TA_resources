@@ -258,7 +258,7 @@ version* it means.
   [solutions.md](solutions.md).
 - Write the code: `practice/p3_sorts.py` (all five as functions), then
   `practice/p4_sortable_list.py` (the same five as methods on a class), checked by
-  `python test_p3_sorts.py` and `python test_p4_sortable_list.py`. Work on one sort at a
+  `python -m unittest discover -s . -p "test_p3_sorts.py" -v` and `python -m unittest discover -s . -p "test_p4_sortable_list.py" -v`. Work on one sort at a
   time; use the [study paths](../../study_paths.md) to choose your next task.
 - Then [Topic 5](../5-heaps/review.md), which gives you the only sort in the course that is
   O(n log n) in the worst case *and* in place.

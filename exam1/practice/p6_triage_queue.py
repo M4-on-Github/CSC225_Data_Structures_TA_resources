@@ -1,6 +1,6 @@
 # PROBLEM 6 -- Topic 5: applying a heap to a problem
 #
-# Check your work:   python test_p6_triage_queue.py
+# Check your work:   python -m unittest discover -s . -p "test_p6_triage_queue.py" -v
 # Reference answer:  solutions/p6_triage_queue.py  (try first; consult one section if stuck)
 #
 # Finish MinHeap in Problem 5 first. Its heap-sort extensions can wait until later.

@@ -343,7 +343,7 @@ value is a special case: it is the smaller of the root's children, so it can be 
   `practice/solutions/p5_min_heap.py`. Paper first, code second; the point is to find out
   where your version diverges.
 - Anything wrong in **Q4** — write the whole class: `practice/p5_min_heap.py`, checked by
-  `python test_p5_min_heap.py`. The tests check the heap property after **every** operation,
+  `python -m unittest discover -s . -p "test_p5_min_heap.py" -v`. The tests check the heap property after **every** operation,
   which catches the larger-child bug described above.
 - Anything wrong in **Q5** — `practice/p6_triage_queue.py` is that question, built for real.
 - And remember what this topic is: the costs and the property are slide-derived, the rest

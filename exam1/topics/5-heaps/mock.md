@@ -181,10 +181,10 @@ what does that cost?
 This topic has two practice problems:
 
 - `practice/p5_min_heap.py` — the full `MinHeap`, the three index functions, `build_heap`,
-  `heap_sort` and `heap_sort_in_place`, checked by `python test_p5_min_heap.py`. Q4 above is
+  `heap_sort` and `heap_sort_in_place`, checked by `python -m unittest discover -s . -p "test_p5_min_heap.py" -v`. Q4 above is
   the paper version of its first third.
 - `practice/p6_triage_queue.py` — Q5's emergency room, built for real, checked by
-  `python test_p6_triage_queue.py`. Do it after problem 5; it imports from it.
+  `python -m unittest discover -s . -p "test_p6_triage_queue.py" -v`. Do it after problem 5; it imports from it.
 
 Problem 6 is the one place in the package where you **apply** a data structure to a problem
 rather than implement one, which is the likelier shape for a coding question. The tie-breaking

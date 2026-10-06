@@ -140,6 +140,6 @@ what is the bug if it does the obvious thing instead?
 ## Part 3 — Write the code
 
 This topic's practice problem is `practice/p1_bank_account.py` — the guarded class and
-the four argument-passing functions, checked by `python test_p1_bank_account.py` from the
+the four argument-passing functions, checked by `python -m unittest discover -s . -p "test_p1_bank_account.py" -v` from the
 `practice/` folder. Q3 above is the written version of the same skill; the practice
 problem is the one a computer checks for you.

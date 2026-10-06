@@ -157,5 +157,5 @@ Tick these off from memory, not by rereading.
 - Work [mock.md](mock.md) with this page closed, then check yourself against
   [solutions.md](solutions.md).
 - Write the code: `practice/p1_bank_account.py`, checked by
-  `python test_p1_bank_account.py`. It is this topic's two halves as one file — the
+  `python -m unittest discover -s . -p "test_p1_bank_account.py" -v`. It is this topic's two halves as one file — the
   guarded class and the four argument-passing functions.

@@ -192,7 +192,7 @@ assumes order.
 
 - Work [mock.md](mock.md) with this page closed, then check yourself against
   [solutions.md](solutions.md).
-- Write the code: `practice/p2_search.py`, checked by `python test_p2_search.py`. Both
+- Write the code: `practice/p2_search.py`, checked by `python -m unittest discover -s . -p "test_p2_search.py" -v`. Both
   searches, plus counting versions.
 - Then [Topic 4](../4-sorting/review.md), which is this cost vocabulary applied to five
   algorithms over the same list.

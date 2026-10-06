@@ -1,6 +1,6 @@
-# Tests for Problem 3. Run from this folder:
+# Tests for Problem 3. Run from this folder, the repository root, or its parent:
 #
-#     python test_p3_sorts.py
+#     python -m unittest discover -s . -p "test_p3_sorts.py" -v
 #
 # These tests check three separate things:
 #   1. does it sort
