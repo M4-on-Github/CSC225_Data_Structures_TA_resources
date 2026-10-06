@@ -1,4 +1,4 @@
-# CSC130 Data Structures — Exam 1 study package
+# Data Structures — Exam 1 study package
 
 Five topics. For each one: a **review sheet** that teaches it, a **mock test** that examines
 it, and a **solutions file** you check yourself against. Plus six **practice coding
@@ -22,10 +22,10 @@ an answer, and you cannot practise that by recognising one.
 | 5 | Heaps | [review](topics/5-heaps/review.md) | [mock](topics/5-heaps/mock.md) | [solutions](topics/5-heaps/solutions.md) | 11 drills, 5 questions |
 
 **Nothing here is scored.** There are no marks on any question, because the real paper's
-marking is Dr. Smith's to decide and inventing a number would only tell you something
+marking is your instructor's to decide and inventing a number would only tell you something
 false. The mocks exist to show you whether you understand the topic. No mock prints a time
 limit either: work until you are done, note how long it took, and compare that with
-however long he gives you.
+however long you get.
 
 Work them in order. Topic 1 is the vocabulary everything else is written in, Topic 2 is the
 cost language, and Topics 3–5 apply both. Topic 4 is the biggest and the likeliest to carry
@@ -61,7 +61,7 @@ problem 5. **If you only have time for one problem in the whole package, do prob
 
 ## How to use a topic
 
-1. Read `review.md`. It teaches the topic, quotes Dr. Smith where the slides say something
+1. Read `review.md`. It teaches the topic, quotes the slides where they say something
    exactly, and ends with a checklist and a "where people go wrong" list.
 2. Close it and work `mock.md` on paper. Write out the traces; do not do them in your head.
 3. Check yourself against `solutions.md`. Each answer is followed by **what a complete
@@ -83,11 +83,11 @@ back to one of the eight lecture decks, cited by deck and slide number so you ca
 check it. Nothing here is invented to look hard.
 
 **With one flagged exception: heaps.** There is no heap lecture deck in this course.
-Dr. Smith gives the heap *property* and three *costs* on Deck 6 s32 and s35 and refers to a
+The slides give the heap *property* and three *costs* on Deck 6 s32 and s35 and refer to a
 "heap data structure lecture" whose slides are not among the eight. Topic 5 teaches heaps
 in full anyway — the index arithmetic, both sifts, `build_heap`, both heap sorts — and
-**every page of it says plainly which parts are his and which are your TA's.**
-**Confirm with Dr. Smith that heaps are on the exam** before spending serious time there.
+**every page of it says plainly which parts come from the slides and which are your TA's.**
+**Confirm with your instructor that heaps are on the exam** before spending serious time there.
 
 ## What is not in here
 

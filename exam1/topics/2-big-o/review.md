@@ -82,7 +82,7 @@ indentation.
 
 ---
 
-## The two derivations he actually does
+## The two derivations the slides actually do
 
 ### n(n−1)/2 — selection sort's comparison count
 
@@ -102,7 +102,7 @@ because each extra comparison doubles the number of items you can handle.
 
 ---
 
-## How he says it
+## How the slides put it
 
 | | |
 |---|---|
@@ -112,7 +112,7 @@ because each extra comparison doubles the number of items you can handle.
 | "For this class, we usually begin with worst-case Big-O." | Deck 3 s14 |
 | "A linear algorithm with a big constant can beat quadratic at first, but not forever." | Deck 3 s22 |
 
-That last one is his "constants can fool us" table on s22, and it is the sentence that
+That last one is the "constants can fool us" table on s22, and it is the sentence that
 answers almost every objection to Big-O.
 
 ---

@@ -6,7 +6,7 @@
 # Do Problem 5 first. This one imports MinHeap from it.
 #
 # The heap provenance warning at the top of p5_min_heap.py applies to this problem too:
-# confirm with Dr. Smith that heaps are on the exam before relying on it.
+# confirm with your instructor that heaps are on the exam before relying on it.
 #
 # ---------------------------------------------------------------------------
 # THE PROBLEM
@@ -16,9 +16,9 @@
 # and when two patients are equally urgent the one who arrived FIRST goes first.
 # Patients keep arriving while others are being treated.
 #
-# This is the shape of question Dr. Smith described: "code one of the data structures
-# and use it to solve a problem." The data structure is the heap; the problem is the
-# waiting room.
+# This is the likeliest shape for an applied question: code one of the data structures and
+# use it to solve a problem. The data structure is the heap; the problem is the waiting
+# room.
 #
 # WHY A HEAP. Think about the two obvious alternatives before you write anything:
 #   - a plain list, searched for the minimum each time: the search is O(n) per patient

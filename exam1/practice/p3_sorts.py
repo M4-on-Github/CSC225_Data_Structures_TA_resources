@@ -9,7 +9,7 @@
 #
 # THE RULES, all of which the tests check:
 #   - every sort takes a parameter named "values" and RETURNS it
-#   - no sort(), no sorted(), no imports -- that is his rule, not a stylistic one
+#   - no sort(), no sorted(), no imports -- that is the course rule, not a stylistic one
 #
 # THE RETURN CONVENTIONS, which differ per sort and ARE graded:
 #   - selection, bubble, insertion   sort IN PLACE and return THE SAME LIST OBJECT
@@ -39,7 +39,7 @@
 #       makes merge sort stable. The tests check stability directly.
 #
 #   quick_sort(values)
-#       Take the pivot as values[-1] (the LAST item -- that is his choice, and the
+#       Take the pivot as values[-1] (the LAST item -- that is the lecture's choice, and
 #       worst-case question on the exam depends on it). Split into three lists: items
 #       less than the pivot, items equal to it, items greater. Recurse on the outer two
 #       and concatenate. The three-way split is what stops duplicates from recursing

@@ -17,16 +17,16 @@ is why the resize is invisible too. (Deck 4 s20.)
 
 **3.3** Allocate a **new, larger** block (the growth is multiplicative, not +1), **copy all
 n existing elements** across, release the old block, then store the new element. That one
-append is **O(n)**. (Deck 4 s22–s24; his four-step resize is s23.)
+append is **O(n)**. (Deck 4 s22–s24; the four-step resize is s23.)
 
 **3.4** The expensive resizes are rare and get rarer as the array grows, so the cost spread
-over a long run of appends is constant — **O(1) amortized**. The trap, in his words:
+over a long run of appends is constant — **O(1) amortized**. The trap, in the deck's words:
 *"amortized does not mean every single append is cheap."* One particular append can still
 be O(n). (Deck 4 s25–s26.)
 
 **3.5** (i) **O(1)** · (ii) **O(1) amortized** · (iii) **O(n)** — everything shifts up ·
 (iv) **O(1)** · (v) **O(n)** — everything shifts down · (vi) **O(n)** — a linear scan.
-(Deck 4 s35–s36, his answer key.)
+(Deck 4 s35–s36, the deck's own answer key.)
 
 **3.6** The **interface** is what the structure promises you can do (`append`, `pop`,
 `len`). The **implementation** is how it keeps that promise (a dynamic array that quietly
@@ -52,7 +52,7 @@ constant. (Deck 4 s25–s26.)
 n existing elements**, then adds the new one — that append is **O(n)**. (Deck 4 s23.)
 
 **(c)** Amortized spreads the cost of a **sequence of operations** across that sequence.
-Average case averages over **random inputs**. His words: *"amortized does not mean every
+Average case averages over **random inputs**. The slides: *"amortized does not mean every
 single append is cheap."* (Deck 4 s26.)
 
 **What a complete answer needs**
@@ -66,7 +66,7 @@ single append is cheap."* (Deck 4 s26.)
 ### Q2 — Arrays, addresses and references
 **(a)** The interface promises the **operations**: `len()`, iterate, get at `i`, set at
 `i`, insert, delete. The implementation chooses **how** — contiguous memory, spare
-capacity, a growth factor — and therefore chooses **what each operation costs**. His words:
+capacity, a growth factor — and therefore chooses **what each operation costs**. The slides:
 *"different implementations can support the same interface with very different costs."*
 (Deck 4 s8.)
 
@@ -100,7 +100,7 @@ is exactly why the types may differ. (Deck 4 s30.)
 | Python list | `x in lst` | **O(n)** — linear search |
 | Static array | grow it by one slot | **O(n)** — allocate, copy all n, discard the old |
 
-(Deck 4 s32, s35–s36: his own quiz, his own reasons. The static-array row is s17:
+(Deck 4 s32, s35–s36: the deck's own quiz, with its own reasons. The static-array row is s17:
 *"this is the main motivation for dynamic arrays."*)
 
 The pattern worth seeing: a Python list is **fast at the end and slow at the front**.
@@ -134,14 +134,14 @@ found the array exactly full. The other five drop the value into a spare slot an
 genuinely **O(1)**. (Deck 4 s20–s23.)
 
 **(b)** **15** copies in total: 1 + 2 + 4 + 8. With n = 9, **2n = 18**, and 15 < 18. That
-is his bound: the copies form the doubling sum 1 + 2 + … + 2ᵏ, which is less than 2ᵏ⁺¹ and
+is the bound given: the copies form the doubling sum 1 + 2 + … + 2ᵏ, which is less than 2ᵏ⁺¹ and
 so at most **2n**. So nine appends cost O(n) in total, which is what **amortized O(1) per
 append** means. (Deck 4 s25.)
 
 **(c)** Because adding one slot means **every** append is full, so every append copies:
 0 + 1 + 2 + … + (n−1) = n(n−1)/2 copies, **O(n²)** to build the list. Doubling makes each
 resize buy **twice as many** cheap appends as the last one, so the expensive appends get
-rarer exactly as fast as they get dearer. His words: *"each resize buys many cheap
+rarer exactly as fast as they get dearer. The slides: *"each resize buys many cheap
 appends."* (Deck 4 s24.)
 
 **(d)**
@@ -222,8 +222,8 @@ part (a).
 ## If you got it wrong
 
 - Anything wrong in **Q1 or Q4(b)(c)** — Deck 4 s25–s26, the amortized argument. It is the
-  subtlest reasoning in the first half of the course, and he quizzes the word directly.
-- Anything wrong in **Q3** — Deck 4 s32 and s35–s36 are his own quiz **with** his own
+  subtlest reasoning in the first half of the course, and the deck quizzes the word directly.
+- Anything wrong in **Q3** — Deck 4 s32 and s35–s36 are the deck's own quiz **with** its own
   answer key. Learn that page as facts plus one reason each.
 - Anything wrong in **Q2(b)** — Deck 4 s7 and s11. The slot size is the whole answer.
 - Then write it: `practice/p2_search.py`, checked by `python test_p2_search.py`.

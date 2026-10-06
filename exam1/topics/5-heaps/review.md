@@ -9,9 +9,9 @@
 > slide-derived heap record for this course.**
 >
 > Everything else on these three pages — the index arithmetic, the sift-up and sift-down
-> code, `build_heap`, both heap sorts — is **your TA's**, written to match his conventions.
+> code, `build_heap`, both heap sorts — is **your TA's**, written to the course conventions.
 > It is correct and it is executed by the practice tests. It is **not** a prediction of
-> what he will ask. **Confirm with Dr. Smith that heaps are on the exam** before putting
+> what will be asked. **Confirm with your instructor that heaps are on the exam** before putting
 > serious hours into this topic.
 >
 > Study it anyway if it is on: a heap is the cheapest structure that makes "give me the
@@ -97,7 +97,7 @@ and `4` in the list and nothing is wrong — none of them is its child.
 
 ## The costs
 
-> *Heap provenance:* the three costs below marked (s32) are Dr. Smith's. The rest follow
+> *Heap provenance:* the three costs below marked (s32) are slide-derived. The rest follow
 > from the authored implementation.
 
 | Operation | Cost | Why |
@@ -117,7 +117,7 @@ is the answer of someone who thinks a heap is a search tree.
 
 ## The code
 
-Authored for this package, in his conventions. The full reference is
+Authored for this package, in the course conventions. The full reference is
 `practice/solutions/p5_min_heap.py`; this is the part worth being able to reproduce.
 
 ```python
@@ -146,7 +146,7 @@ class MinHeap:
 
     def peek(self):
         if self.is_empty():
-            return None          # his convention: None, not an exception
+            return None          # course convention: None, not an exception
         return self._items[0]
 
     def insert(self, element):
@@ -218,7 +218,7 @@ is why recursion gets no section of its own.
 Every input costs the same, because the work is fixed by the **shape** of the heap and not
 by the order of the values: n removals, each climbing at most the height of a complete
 tree. Quick sort averages the same but degrades to **O(n²)** on a bad pivot, which for
-Dr. Smith's last-element pivot means already-sorted input ([Topic 4](../4-sorting/review.md)).
+the last-element pivot means already-sorted input ([Topic 4](../4-sorting/review.md)).
 
 And there is an in-place version. `heap_sort_in_place` sorts ascending using a **max**-heap,
 and the switch is forced, not a choice: sorting in place means the sorted values accumulate
@@ -232,7 +232,7 @@ give up is stability.
 
 ---
 
-## How he says it
+## How the slides put it
 
 | | |
 |---|---|
@@ -241,7 +241,7 @@ give up is stability.
 | "Insert O(log n), remove-min O(log n), peek O(1)." | Deck 6 s32 |
 | "Python's heapq gives you this for free — but you should know what it is doing." | Deck 6 s34 |
 
-Those four lines are the whole of his heap record. Everything else here is authored.
+Those four lines are the whole of the heap record in this course. Everything else here is authored.
 
 ---
 
@@ -249,7 +249,7 @@ Those four lines are the whole of his heap record. Everything else here is autho
 
 - Saying a heap is sorted, or that the property reaches further than it does. It is **parent
   to child only** — nothing about left versus right, nothing about two nodes that are not
-  parent and child. His s35 exists because this is the mistake.
+  parent and child. Slide s35 exists because this is the mistake.
 - Sifting down by swapping with the **larger** child. It must be the smaller one, or the
   heap is broken and the next `remove_min` returns a wrong value.
 - In `remove_min`, promoting a child into the root instead of moving the **last** item

@@ -20,14 +20,14 @@ Python does not enforce it. The point is that the balance should only change thr
 protect. (Deck 2 s11.)
 
 **1.4** `[1, 2, 3, 4]`. `append` **mutates** the list the caller still points at, so the
-change is visible outside the function. (Deck 2 s31, his side-by-side pair.)
+change is visible outside the function. (Deck 2 s31, the side-by-side pair.)
 
 **1.5** `[1, 2, 3]`. The assignment **rebinds the local name** `items` to a brand-new
 list. The caller's `nums` was never touched. (Deck 2 s31, the other half of the same pair.)
 
 **1.6** `+=` on a list is **in-place mutation**, so the caller sees `[1, 2, 3, 4]`.
 `values = values + [4]` **builds a new list and rebinds the local name**, so the caller
-still sees `[1, 2, 3]`. His diagnostic question is exactly this: *"Did the code change the
+still sees `[1, 2, 3]`. The diagnostic question is exactly this: *"Did the code change the
 object, or did it move the local name?"* (Deck 2 s31–s32.)
 
 **1.7** `x` is still **5**. Integers are **immutable**: there is no operation that changes

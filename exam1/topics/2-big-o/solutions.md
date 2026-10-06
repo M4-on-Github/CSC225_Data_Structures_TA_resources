@@ -26,7 +26,7 @@ O(n) + O(n) = O(2n) = O(n) · (iv) **O(n²)** — nesting **multiplies** · (v) 
 **2.5** Big-O is about **growth, not a stopwatch reading at one input size**. An O(n²)
 algorithm can easily beat an O(n log n) one on small n. The claim it makes is about what
 happens when n gets large — and it is a **worst-case upper bound**, not a prediction of the
-run you just did. (Deck 3 s17, s22 — his "constants can fool us" table.)
+run you just did. (Deck 3 s17, s22 — the "constants can fool us" table.)
 
 ---
 
@@ -80,7 +80,7 @@ a constant factor of 100 and a constant factor of ½ are both just constant fact
 **(c)** **O(1)**. The cost does not depend on n at all, so it is constant — and no, it is
 not necessarily fast. A million operations is a million operations; O(1) says it will
 **stay** a million as the input grows, not that the number is small. This is the other half
-of his "constants can fool us" point (Deck 3 s22).
+of the "constants can fool us" point (Deck 3 s22).
 
 **What a complete answer needs**
 

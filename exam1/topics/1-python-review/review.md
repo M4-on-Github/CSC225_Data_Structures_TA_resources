@@ -15,7 +15,7 @@ unrelated and which are in fact the same idea: **building objects**, and **what 
 when you pass an object to a function**. Thirty-one of Deck 2's sixty-one slides are
 these two halves.
 
-This is a review topic, not a full CSC130 refresher. Loops, strings, files and
+This is a review topic, not a full Python refresher. Loops, strings, files and
 dictionaries are assumed. Classes and argument passing are the parts that get examined.
 
 ---
@@ -44,7 +44,7 @@ dictionaries are assumed. Classes and argument passing are the parts that get ex
 
 ---
 
-## The pattern he writes
+## The pattern the slides write
 
 Drawing on Deck 2 s7–s12 and the encapsulation pattern on s11 (Deck 1 s23 shows the same
 idea):
@@ -74,7 +74,7 @@ Three things to notice, because all three are easy to get wrong:
 3. `deposit` is written with two parameters and called with one argument:
    `account.deposit(50)` becomes `deposit(account, 50)`.
 
-## The pattern he contrasts
+## The pattern the slides contrast
 
 The four one-line functions from Deck 2 s31–s32. These are the entire
 mutate-versus-rebind family, and one of them is on the mock paper for this topic:
@@ -97,13 +97,13 @@ def plus(items):
 mutates in place (it is `extend`); the second builds a new list and rebinds the local
 name. One character of difference, opposite outcomes.
 
-His diagnostic question, and the one to ask before you trace anything:
+The diagnostic question from the slides, and the one to ask before you trace anything:
 
 > *"Did the code change the object, or did it move the local name?"*
 
 ---
 
-## How he says it
+## How the slides put it
 
 | | |
 |---|---|
@@ -129,7 +129,7 @@ that object sees the change.
 - Letting a guard "fail" silently: check the condition, then `return` **before** the
   assignment, not after it.
 - Answering a mutate-versus-rebind question by running the code in your head without
-  deciding which of the two it is. Ask his question first, then trace.
+  deciding which of the two it is. Ask that question first, then trace.
 - Assuming a child class automatically runs the parent's `__init__`. It does not, unless
   you call `super().__init__(...)`.
 - Thinking `+=` and `x = x + ...` are the same thing. On a list they are not.

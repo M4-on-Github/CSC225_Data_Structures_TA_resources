@@ -38,7 +38,7 @@ place to watch an O(log n) halving actually happen.
   cost averaged over a long run of appends is constant: **O(1) amortized**.
 - **Amortized is not "always cheap", and it is not average case.** Amortized spreads the
   cost of a **sequence of operations** across that sequence. Average case averages over
-  random **inputs**. His words: *"amortized does not mean every single append is cheap."*
+  random **inputs**. The slides: *"amortized does not mean every single append is cheap."*
 - **Shifting is what makes the front expensive.** `insert(0, x)` moves every element up a
   slot; `pop(0)` moves every element down. Both **O(n)**. The end of a list is cheap, the
   front of a list is not.
@@ -70,7 +70,7 @@ place to watch an O(log n) halving actually happen.
 | build a list of n items | O(n) | n appends |
 | grow a **static** array by one slot | O(n) | allocate, copy all n items, discard the old block |
 
-**His favourite distinction.** `lst.pop()` is **O(1)**; `lst.pop(0)` is **O(n)**.
+**The distinction the deck keeps coming back to.** `lst.pop()` is **O(1)**; `lst.pop(0)` is **O(n)**.
 `lst.append(x)` is **amortized O(1)**; `lst.insert(0, x)` is **O(n)**. One character of
 difference and a whole factor of n. This pair shows up on four separate slides
 (Deck 4 s32–s36).
@@ -126,7 +126,7 @@ def binary_search(values, element):
     return -1
 ```
 
-This is the version he gives in full on Deck 3 s30. Two details decide whether it works:
+This is the version given in full on Deck 3 s30. Two details decide whether it works:
 
 1. the loop condition is `while low <= high`, **not** `low < high` — with `<` the
    one-element range never gets checked, so some hits are reported as misses;
@@ -141,7 +141,7 @@ assumes order.
 
 ---
 
-## How he says it
+## How the slides put it
 
 | | |
 |---|---|
@@ -156,7 +156,7 @@ assumes order.
 
 ## Where people go wrong
 
-- Saying append is O(1) full stop. It is O(1) **amortized**; the word is doing work and he
+- Saying append is O(1) full stop. It is O(1) **amortized**; the word is doing work and the deck
   quizzes it directly.
 - Confusing size with capacity, and then being unable to explain when a resize happens.
 - Thinking `insert(0, x)` is cheap because the list "knows where the front is". Knowing

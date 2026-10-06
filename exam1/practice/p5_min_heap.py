@@ -14,10 +14,10 @@
 # Everything else in this problem -- the index arithmetic, sifting up and down,
 # build_heap, and both heap sorts -- was written by your TA to fill that gap, in the
 # lecture's style. It is the standard treatment and it is consistent with the three
-# slides, but it is NOT copied from anything Dr. Smith handed out.
+# slides, but it is NOT copied from anything handed out in class.
 #
-# So: CONFIRM WITH DR. SMITH THAT HEAPS ARE ON THE EXAM before relying on this topic.
-# If he says yes, this is good preparation. If he says no, skip it.
+# So: CONFIRM WITH YOUR INSTRUCTOR THAT HEAPS ARE ON THE EXAM before relying on this
+# topic. If they are, this is good preparation. If not, skip it.
 # ---------------------------------------------------------------------------
 #
 # PART A -- the index arithmetic

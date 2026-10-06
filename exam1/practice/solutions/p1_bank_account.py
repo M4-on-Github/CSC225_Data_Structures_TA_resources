@@ -1,7 +1,7 @@
 # Reference solution -- Problem 1. Topic 1 (Python review: classes, argument passing).
 #
 # Conventions from the slides, not generic Python:
-#   - BankAccount is Dr. Smith's encapsulation example (Crash Course 1 s23, Crash Course 2 s12).
+#   - BankAccount is the lecture's encapsulation example (Crash Course 1 s23, Crash Course 2 s12).
 #   - The internal balance is _balance; it is read through get_balance(), never touched.
 #   - deposit guards with "if amount > 0" and returns True/False rather than raising.
 #   - No type hints, no docstrings in student-facing code -- that matches the decks.

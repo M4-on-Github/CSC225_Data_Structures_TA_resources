@@ -1,8 +1,8 @@
 # Topic 5 — solutions: heaps
 
-> ⚠ **Heap provenance.** The heap property and the three costs are Dr. Smith's
+> ⚠ **Heap provenance.** The heap property and the three costs are slide-derived
 > (Deck 6 s32, s35). **Everything else below — the index arithmetic, the sift code,
-> `build_heap`, both heap sorts and every trace — is your TA's**, written to match his
+> `build_heap`, both heap sorts and every trace — is your TA's**, written to the course
 > conventions. There is no heap deck in this course. Practice, not a prediction. Full
 > explanation in [review.md](review.md).
 
@@ -18,11 +18,11 @@ Answers to [mock.md](mock.md), in order, each followed by what a complete answer
 children**. That is all. It says **nothing** about left versus right, and nothing about the
 order of two nodes that are not parent and child. A sorted structure pins down the order of
 every pair; a heap pins down only parent-to-child. That is exactly why a heap is cheap to
-maintain and why it cannot answer "what is the 3rd smallest" in one step. (Deck 6 s32 is his
+maintain and why it cannot answer "what is the 3rd smallest" in one step. (Deck 6 s32 is the slide-derived
 statement of the property; the comparison is your TA's.)
 
 **5.2** Because the property is **local**. `[1, 3, 2, 9, 7, 8, 5]` is a perfectly valid
-min-heap — every parent is ≤ its children — and it is not in sorted order. His words on
+min-heap — every parent is ≤ its children — and it is not in sorted order. The slides on
 s35: *"a heap list is not fully sorted. It only maintains the heap property."* Index 0 is
 the only position you can read off directly. (Deck 6 s35.)
 
@@ -66,7 +66,7 @@ Deck 6 s32; the rest follow from them.)
 **5.10** Every input costs the same because the work is fixed by the **shape** of the heap,
 not by the order of the values: n removals, each climbing at most the height of a complete
 tree. Quick sort averages the same but degrades to **O(n²)** on a bad pivot, which for
-Dr. Smith's last-element pivot means already-sorted input. So when you cannot afford a worst
+the last-element pivot means already-sorted input. So when you cannot afford a worst
 case — and especially when you also cannot afford merge sort's second list, since
 `heap_sort_in_place` needs none — heap sort is the safe pick. (Authored; the quick sort half
 is Deck 7 s23.)
@@ -185,7 +185,7 @@ order is **2, 1, 0** — backwards to the root. Final list: **`[1, 3, 2, 9, 7, 8
 
 **No, it is not sorted**, and it never will be. The heap property only constrains each node
 against **its own children**, so `9` sits happily at index 3 in front of `7`, `8` and `5` —
-none of them is its child. His own words: *"a heap list is not fully sorted. It only
+none of them is its child. The slides again: *"a heap list is not fully sorted. It only
 maintains the heap property."* (Deck 6 s35.)
 
 **What a complete answer needs**
@@ -344,6 +344,7 @@ patient in O(1), which in a min-heap is somewhere among the leaves.
   `python test_p5_min_heap.py`. The tests check the heap property after **every** operation,
   which catches the larger-child bug described above.
 - Anything wrong in **Q5** — `practice/p6_triage_queue.py` is that question, built for real.
-- And remember what this topic is: the costs and the property are his, the rest is your TA's.
+- And remember what this topic is: the costs and the property are slide-derived, the rest
+  is your TA's.
   If your revision time is short, [Topic 4](../4-sorting/review.md) has the better claim on
   it.

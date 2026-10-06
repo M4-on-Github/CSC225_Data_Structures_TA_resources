@@ -1,6 +1,6 @@
 # Reference solution -- Problem 2. Topic 3 (arrays) and Topic 2 (Big-O).
 #
-# Both searches are Dr. Smith's, from the efficiency deck s28-s30. binary_search is
+# Both searches are the lecture's own, from the efficiency deck s28-s30. binary_search is
 # given in full on s30 but was never set as a lab, which is why it is here.
 #
 # Conventions: the parameter is "values", a miss returns -1, no imports.

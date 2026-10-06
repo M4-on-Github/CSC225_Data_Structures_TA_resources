@@ -57,7 +57,7 @@ class TestEmptyHeap(unittest.TestCase):
         self.assertEqual(h.size(), 0)
 
     def test_peek_on_empty_returns_none(self):
-        # His pop-on-empty convention: return None, do not raise.
+        # The pop-on-empty convention: return None, do not raise.
         self.assertIsNone(MinHeap().peek())
 
     def test_remove_min_on_empty_returns_none(self):

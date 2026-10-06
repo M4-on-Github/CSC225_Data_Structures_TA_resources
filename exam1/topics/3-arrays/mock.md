@@ -9,7 +9,7 @@ not — the thing being examined is whether you can produce the answer, and you 
 practise that by recognising one.
 
 No time limit is printed here on purpose. Work until you are done, note how long it took,
-and compare that with however long Dr. Smith gives you.
+and compare that with however long you get in the real exam.
 
 **Throughout:** give the Big-O **and one line of justification**. A bare `O(...)` with no
 reason is only half an answer — the reasoning is the part worth practising.
@@ -26,7 +26,7 @@ reason is only half an answer — the reasoning is the part worth practising.
 
 **3.4** So why is append still called O(1), and what is the trap in that word?
 
-**3.5** Costs, from his own quiz: (i) `L[5]` · (ii) `L.append(x)` · (iii) `L.insert(0, x)`
+**3.5** Costs, straight from the deck's own quiz: (i) `L[5]` · (ii) `L.append(x)` · (iii) `L.insert(0, x)`
 · (iv) `L.pop()` · (v) `L.pop(0)` · (vi) `x in L`.
 
 **3.6** "Interface versus implementation" — what is the distinction, and why does the

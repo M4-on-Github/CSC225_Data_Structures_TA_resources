@@ -85,7 +85,7 @@ def run_one(directory, module, verbose):
 def solutions_copy():
     # The tests import "p3_sorts", which resolves to whichever copy sits next to them.
     # So put the tests next to the reference files instead of next to the starters.
-    temp = tempfile.mkdtemp(prefix="csc130_solutions_")
+    temp = tempfile.mkdtemp(prefix="ds_solutions_")
     for name in os.listdir(os.path.join(HERE, "solutions")):
         if name.endswith(".py"):
             shutil.copy(os.path.join(HERE, "solutions", name), temp)

@@ -1,9 +1,9 @@
 # Topic 5 — mock test: heaps
 
-> ⚠ **Heap provenance.** The heap property and the three costs are Dr. Smith's
+> ⚠ **Heap provenance.** The heap property and the three costs are slide-derived
 > (Deck 6 s32, s35). **The index arithmetic, the sift code, `build_heap` and both heap
 > sorts are your TA's** — there is no heap deck in this course. Practice, not a prediction.
-> Confirm with Dr. Smith that heaps are on the exam. Full explanation in
+> Confirm with your instructor that heaps are on the exam. Full explanation in
 > [review.md](review.md).
 
 Part 1 is eleven drills, Part 2 is five exam-style questions.
@@ -15,7 +15,7 @@ not — the thing being examined is whether you can produce the answer, and you 
 practise that by recognising one.
 
 No time limit is printed here on purpose. Work until you are done, note how long it took,
-and compare that with however long Dr. Smith gives you.
+and compare that with however long you get in the real exam.
 
 **Throughout:** write every heap as a **list**, index 0 first, exactly as the
 implementation stores it. **No imports, no `heapq`, no `sort()`, no `sorted()`.**
@@ -191,5 +191,5 @@ This topic has two practice problems:
   `python test_p6_triage_queue.py`. Do it after problem 5; it imports from it.
 
 Problem 6 is the one place in the package where you **apply** a data structure to a problem
-rather than implement one, which is the shape Dr. Smith's note describes. The tie-breaking
+rather than implement one, which is the likelier shape for a coding question. The tie-breaking
 part of it is the whole question — read its header carefully.

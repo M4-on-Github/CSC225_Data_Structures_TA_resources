@@ -1,4 +1,4 @@
-# CSC130 Exam 1 -- practice coding problems
+# Exam 1 -- practice coding problems
 
 Six problems. You write the code, then you run a test file and it tells you whether you
 got it right -- no answer key to read off, and nobody has to be in the room.
@@ -45,8 +45,8 @@ Nothing here needs installing. Python 3 and these files are the whole toolchain.
 from problem 5, so do 3 before 4 and 5 before 6. Otherwise the six are independent.
 
 **If you only have time for one, do problem 3.** Sorting is the heaviest topic on the
-exam. If you have time for two, add problem 4 -- Dr. Smith's own note says a coding
-question would most likely involve a class.
+exam. If you have time for two, add problem 4 -- a coding question is most likely to be
+set as a class.
 
 ## Two things the tests check that you might not expect
 
@@ -67,9 +67,8 @@ three slides at the end of the stacks and queues deck -- the heap property and t
 costs -- and they point at a lecture whose deck we do not have. Everything else in
 problems 5 and 6 was written by your TA to fill that gap.
 
-So **confirm with Dr. Smith that heaps are on the exam** before spending an evening
-here. If he says yes, this is good preparation. If he says no, do problems 1 to 4 twice
-instead.
+So **confirm with your instructor that heaps are on the exam** before spending an evening
+here. If they are, this is good preparation. If not, do problems 1 to 4 twice instead.
 
 ## If a reference answer is wrong
 

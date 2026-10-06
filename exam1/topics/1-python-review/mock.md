@@ -9,7 +9,7 @@ not — the thing being examined is whether you can produce the answer, and you 
 practise that by recognising one. Work in pencil, close this file, check yourself honestly.
 
 No time limit is printed here on purpose. Work until you are done, note how long it took,
-and compare that with however long Dr. Smith gives you.
+and compare that with however long you get in the real exam.
 
 ---
 
@@ -52,7 +52,7 @@ caller sees, and why.
 **1.7** `x = 5; y = x; y = 6` — what is `x`? Why is this not the same situation as the
 list case?
 
-**1.8** His Exit Ticket, word for word: **what is the difference between rebinding a
+**1.8** The lecture exit ticket, word for word: **what is the difference between rebinding a
 variable and mutating an object?**
 
 ---

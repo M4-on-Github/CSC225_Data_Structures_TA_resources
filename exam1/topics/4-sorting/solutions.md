@@ -31,16 +31,16 @@ elements, take the smaller, repeat. (Deck 7 s11–s13, code on s15.)
 
 **4.6** `log n` is the **number of levels**: halving down to single elements takes log₂ n
 splits. `n` is the **work per level**: merging all the pieces at one level touches every
-element once. Levels × work per level = n log n. (Deck 7 s16 — he names the two repeated
+element once. Levels × work per level = n log n. (Deck 7 s16 — the slides name the two repeated
 actions, splitting and merging.)
 
-**4.7** His code picks **`values[-1]` = 6**. left (< 6) = `[2, 1, 5, 4]`, middle (== 6) =
+**4.7** The lecture version picks **`values[-1]` = 6**. left (< 6) = `[2, 1, 5, 4]`, middle (== 6) =
 `[6]`, right (> 6) = `[7, 9]`. Then quick-sort left and right and concatenate.
 (Deck 7 s18–s20, code on s22.)
 
 **4.8** An **already-sorted (or reverse-sorted)** list. Taking the last element as pivot
 then puts everything on one side, so the partition peels off one element at a time: n
-levels instead of log n. He calls these **bad pivots**. (Deck 7 s23.)
+levels instead of log n. The slides call these **bad pivots**. (Deck 7 s23.)
 
 **4.9**
 
@@ -52,12 +52,12 @@ levels instead of log n. He calls these **bad pivots**. (Deck 7 s23.)
 | Merge | O(n log n) | O(n log n) | O(n log n) |
 | Quick | O(n log n) | O(n log n) | **O(n²)** |
 
-(Deck 7 s24, his five-row table.)
+(Deck 7 s24, the five-row table.)
 
 **4.10** **Merge and quick return new lists. Selection, bubble and insertion sort in
 place** and return the same object. If you write `merge_sort(nums)` and then print `nums`
 expecting it to be sorted, nothing happened — you threw the result away. (Deck 7 s15 and
-s22 — compare his two functions line by line.)
+s22 — compare the two functions line by line.)
 
 ---
 

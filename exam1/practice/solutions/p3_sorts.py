@@ -9,7 +9,7 @@
 #   - selection uses the tuple swap (efficiency s11)
 #   - quick takes its pivot as values[-1] and does a three-way split (sorting s22)
 #   - merge compares with "<=", which is what makes it stable (sorting s15)
-#   - no sort(), no sorted(), no imports anywhere -- his rule, sorting s8
+#   - no sort(), no sorted(), no imports anywhere -- the course rule, sorting s8
 
 
 def selection_sort(values):

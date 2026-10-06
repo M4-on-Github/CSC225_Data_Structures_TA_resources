@@ -7,13 +7,13 @@
 #
 # Everything below the cost statements is standard material written for this package by
 # your TA. It is correct and it is tested. It is not a prediction of what will be asked.
-# Confirm with Dr. Smith that heaps are on the exam before relying on this topic.
+# Confirm with your instructor that heaps are on the exam before relying on this topic.
 #
 # Conventions kept from the decks even though the content is new:
-#   - the backing store is self._items, a plain list, like his Stack and Queue
+#   - the backing store is self._items, a plain list, as the decks name theirs
 #   - size() and is_empty() are methods, not properties
 #   - peek() and remove_min() return None on an empty heap rather than raising,
-#     matching his pop-on-empty convention
+#     matching the pop-on-empty convention
 #   - no imports, no heapq, no sort() / sorted() anywhere
 #   - insert() returns None: duplicates are allowed in a heap, so unlike a BST there
 #     is no False-on-duplicate rule

@@ -1,8 +1,8 @@
 # Reference solution -- Problem 4. Topic 4 (sorting), in class form.
 #
-# Dr. Smith's note: "I will most likely have them use a class (since they struggled with
-# that in 130)." Problem 3 is the algorithms; this is the same material in the form he
-# said he would ask for.
+# A coding question on this material is most likely to be set as a class, since that is
+# the part of the prerequisite course people struggle with most. Problem 3 is the
+# algorithms; this is the same material in that shape.
 #
 # The asymmetry below IS the lesson, not an inconsistency:
 #   - selection / bubble / insertion are written out as real methods. They sort

@@ -2,8 +2,8 @@
 #
 #     python test_p4_sortable_list.py
 #
-# Problem 3 was the algorithms. This is the same algorithms in the form Dr. Smith said
-# he would most likely ask for: methods on a class, operating on self.values.
+# Problem 3 was the algorithms. This is the same algorithms in the likelier exam form:
+# methods on a class, operating on self.values.
 
 import unittest
 

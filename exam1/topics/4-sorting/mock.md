@@ -11,7 +11,7 @@ not — the thing being examined is whether you can produce the answer, and you 
 practise that by recognising one.
 
 No time limit is printed here on purpose. Work until you are done, note how long it took,
-and compare that with however long Dr. Smith gives you.
+and compare that with however long you get in the real exam.
 
 **Throughout:** use the **lecture versions** of the sorts. Quick sort takes its pivot as
 `values[-1]` and splits three ways; bubble sort has the `swapped` early exit; insertion
@@ -37,13 +37,13 @@ does the whole sort make?
 
 **4.6** Why is merge sort O(n log n) — what do the `n` and the `log n` each count?
 
-**4.7** Quick sort partitions `[7, 2, 9, 1, 5, 4, 6]` with the pivot his code picks. Name
+**4.7** Quick sort partitions `[7, 2, 9, 1, 5, 4, 6]` with the pivot the lecture version picks. Name
 the pivot and write the three groups.
 
 **4.8** Quick sort is O(n log n) on average but O(n²) in the worst case. What input causes
-the worst case for *his* pivot choice, and why?
+the worst case for *that* pivot choice, and why?
 
-**4.9** Fill in his summary table from memory — best / average / worst for all five sorts.
+**4.9** Fill in the summary table from memory — best / average / worst for all five sorts.
 
 | Sort | Best | Average | Worst |
 |---|---|---|---|

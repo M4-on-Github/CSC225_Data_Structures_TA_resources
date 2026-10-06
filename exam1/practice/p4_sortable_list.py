@@ -6,9 +6,9 @@
 # Do Problem 3 first. This problem assumes p3_sorts.py works, because it imports from it.
 #
 # ---------------------------------------------------------------------------
-# WHY THIS PROBLEM EXISTS. Dr. Smith's note about the exam: "I will most likely have
-# them use a class (since they struggled with that in 130)." Problem 3 is the
-# algorithms. This is the same algorithms in the shape he said he would ask for.
+# WHY THIS PROBLEM EXISTS. A coding question on this material is most likely to be set as
+# a class, since that is the part of the prerequisite course people struggle with most.
+# Problem 3 is the algorithms. This is the same algorithms in that shape.
 #
 # Write a SortableList class holding a list of numbers in self.values.
 #

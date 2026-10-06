@@ -9,13 +9,13 @@ paper.
 ## What this topic is
 
 Five algorithms that do the same job at wildly different costs, which makes it the natural
-place for a coding question. Dr. Smith's own note says a coding portion *"may have them
-code another sorting method"*, and his homework on Deck 7 s33 assigns exactly four of
+place for a coding question — the likeliest one being to write another sorting method
+from scratch. The homework on Deck 7 s33 assigns exactly four of
 them — selection, bubble, merge and quick — while **insertion sort is taught in full but
 left off that list**, under the heading "Insertion Sort: Why Mention It?". Read that how
 you like; the sane response is to be able to write **all five**.
 
-His one hard rule for this topic, from Deck 7 s8: **no `sort()`, no `sorted()`, no extra
+The one hard rule for this topic, from Deck 7 s8: **no `sort()`, no `sorted()`, no extra
 packages.** You are being asked to write the sort, not to call one.
 
 ---
@@ -34,7 +34,7 @@ packages.** You are being asked to write the sort, not to call one.
 - **Merge sort:** split to single elements, then merge pairs back. **O(n log n) in all
   three cases** — log n levels, O(n) work per level. It is **stable** because the merge
   compares with `<=`.
-- **Quick sort:** pick a pivot, partition, recurse. His code takes **`values[-1]`** and does
+- **Quick sort:** pick a pivot, partition, recurse. The lecture version takes **`values[-1]`** and does
   a three-way split into `left` / `middle` / `right`. O(n log n) average, but **O(n²) when
   the pivot keeps landing at an extreme** — which, for a last-element pivot, means sorted
   input.
@@ -48,7 +48,7 @@ packages.** You are being asked to write the sort, not to call one.
 
 ---
 
-## His summary table (Deck 7 s24)
+## The summary table (Deck 7 s24)
 
 The single most memorisable page in the deck.
 
@@ -103,7 +103,7 @@ def bubble_sort(values):
         swapped = False                      # reset once PER PASS
         for i in range(n - 1 - pass_num):    # the parked tail is skipped
             if values[i] > values[i + 1]:
-                temp = values[i]             # his three-line swap
+                temp = values[i]             # the three-line swap
                 values[i] = values[i + 1]
                 values[i + 1] = temp
                 swapped = True
@@ -153,7 +153,7 @@ def quick_sort(values):
     if len(values) <= 1:
         return values
 
-    pivot = values[-1]                       # his pivot choice
+    pivot = values[-1]                       # the pivot choice to keep
     left = []
     middle = []
     right = []
@@ -189,7 +189,7 @@ per level = n log n, and nothing about the data changes either factor.
 pivot 5, `left = [1, 2, 3, 4]`, `middle = [5]`, `right = []`. One side gets everything and
 the other gets nothing, so the recursion shrinks by **one element per level** instead of
 halving — n levels, O(n) work each, **O(n²)**. Already-sorted input is the worst case for
-*his* pivot choice, which is the opposite of what students expect.
+*that* pivot choice, which is the opposite of what people expect.
 
 **Bubble sort's best case.** One pass over a sorted list makes no swap, `swapped` stays
 `False`, and the `break` fires: n−1 comparisons, **O(n)**. Take the flag out and the same
@@ -198,11 +198,11 @@ version* it means.
 
 ---
 
-## How he says it
+## How the slides put it
 
 | | |
 |---|---|
-| "How does it work? How fast does it grow as n gets large?" | Deck 7, his two questions for every algorithm |
+| "How does it work? How fast does it grow as n gets large?" | Deck 7, the two questions asked of every algorithm |
 | "Large values gradually bubble to the right." | Deck 7 s4 |
 | "After one full pass, the largest unsorted value is in its correct final position." | Deck 7 s6 |
 | "Break the list into tiny pieces, then carefully stitch sorted pieces back together." | Deck 7 s11 |
@@ -234,7 +234,7 @@ version* it means.
 
 ## Checklist
 
-- [ ] Write all five sorts from memory, in his form — Deck 7 s9, s15, s22, s28; Deck 3 s11
+- [ ] Write all five sorts from memory, in the lecture form — Deck 7 s9, s15, s22, s28; Deck 3 s11
 - [ ] The summary table: best / average / worst / in place / stable — Deck 7 s24
 - [ ] Which three sort in place and return the same object, and which two return a new list
 - [ ] n(n−1)/2 derived, not quoted — Deck 3 s10–s12
