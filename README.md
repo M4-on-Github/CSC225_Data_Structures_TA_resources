@@ -2,6 +2,16 @@
 
 Study material for CSC225 Exam 1.
 
+## Quick links
+
+- [Download and open](#download-and-open)
+- [Read Markdown in VS Code](#read-the-study-pages-in-vs-code)
+- [Run your tests](#run-your-tests)
+- [Foundation check and answers](#exam-1)
+- [Study and review](#study-and-review)
+- [Coding practice](#coding-practice)
+- [About these materials](#about-these-materials)
+
 ## Download and open
 
 You need **Git** to clone the repository and **Python 3.7 or newer** to run the practice
@@ -25,6 +35,8 @@ below. If Git or Python is missing, follow your course's setup instructions or a
 You can also use **Code → Download ZIP** on GitHub; extract it and open the extracted
 repository folder before running commands.
 
+[↑ Back to quick links](#quick-links)
+
 ## Read the study pages in VS Code
 
 **No Markdown extension is needed.** VS Code includes a Markdown preview.
@@ -41,6 +53,8 @@ the preview displays the formatted version.
 
 See [VS Code's Markdown guide](https://code.visualstudio.com/docs/languages/markdown)
 for more help. Use **Terminal → New Terminal** to run the test commands below.
+
+[↑ Back to quick links](#quick-links)
 
 ## Run your tests
 
@@ -74,6 +88,8 @@ python -m unittest discover -s CSC225_Data_Structures_TA_resources -p "test_p*.p
 For the optional one-line-per-problem summary, run `python exam1/practice/check.py`
 from the repository root. That helper resolves its test files relative to itself.
 
+[↑ Back to quick links](#quick-links)
+
 ## Exam 1
 
 **Foundation check:** [Print PDF](exam1/diagnostic/questions.pdf) · [Read in VS Code](exam1/diagnostic/questions.md) · [Editable Word draft](exam1/diagnostic/questions.docx)
@@ -82,6 +98,8 @@ from the repository root. That helper resolves its test files relative to itself
 
 Try the four-page check first, then use the answer guide to choose a [study path](exam1/study_paths.md).
 It covers worst-case efficiency, sorting pseudocode, and an optional paper heap exercise.
+
+[↑ Back to quick links](#quick-links)
 
 ### Study and review
 
@@ -100,6 +118,8 @@ Start with the foundation check, then study the topic you need. The longer mocks
 | Sorting | [Review](exam1/topics/4-sorting/review.md) | [Questions](exam1/topics/4-sorting/mock.md) | [Solutions](exam1/topics/4-sorting/solutions.md) |
 | Heaps | [Review](exam1/topics/5-heaps/review.md) | [Questions](exam1/topics/5-heaps/mock.md) | [Solutions](exam1/topics/5-heaps/solutions.md) |
 
+[↑ Back to quick links](#quick-links)
+
 ### Coding practice
 
 [Practice instructions](exam1/practice/README.md) · [Test commands](#run-your-tests) · [Summary checker](exam1/practice/check.py)
@@ -116,6 +136,10 @@ Do problem 3 before 4, and finish problem 5's MinHeap before 6.
 | 5 | [Min-heap](exam1/practice/p5_min_heap.py) | [Tests](exam1/practice/test_p5_min_heap.py) | [Answer](exam1/practice/solutions/p5_min_heap.py) |
 | 6 | [Triage queue](exam1/practice/p6_triage_queue.py) | [Tests](exam1/practice/test_p6_triage_queue.py) | [Answer](exam1/practice/solutions/p6_triage_queue.py) |
 
+[↑ Back to quick links](#quick-links)
+
 ## About these materials
 
 These are ungraded practice materials, not exam questions. Confirm exam coverage with your instructor, especially for heaps.
+
+[↑ Back to quick links](#quick-links)
