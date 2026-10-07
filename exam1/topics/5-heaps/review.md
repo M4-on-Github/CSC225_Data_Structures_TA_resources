@@ -32,6 +32,9 @@ repeatedly swap it with its **smaller** child until the heap property holds. Dra
 tree or write the list after each swap. Sift-up after insertion compares the new item
 with its parent and stops when no swap is needed.
 
+**Heapify** means building a heap from an existing list: copy it, then sift **down** at
+each parent from the last parent back to the root. Leaves need no repair.
+
 Repeated removals from a min-heap produce a new ascending list. An in-place ascending
 heap sort uses a **max-heap**: move its largest root to the end, shrink the heap, and
 sift down. Its worst-case time is O(n log n) and its auxiliary space is O(1).
@@ -39,6 +42,7 @@ sift down. Its worst-case time is O(n log n) and its auxiliary space is O(1).
 ## Check yourself
 
 - Can you draw `[2, 5, 3, 9, 7, 8, 4]` as a tree and remove its minimum?
+- Can you write sift-up, sift-down, and bottom-up heapify in Python after tracing them?
 - Why does the heap property give no fast search for an arbitrary value?
 - Why does an in-place ascending heap sort use a max-heap?
 

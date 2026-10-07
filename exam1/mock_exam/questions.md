@@ -21,9 +21,21 @@ print(b)
 
 An algorithm runs two consecutive loops. The first makes n constant-time checks; the second makes n times n constant-time checks. Give the total count and its tightest Big-O class.
 
-## 3 Choose a search
+## 3 Analyze the loops
 
-You need one search in an unsorted list. Would binary search directly on that list be reliable? Choose a suitable search and give its worst-case cost. Then state what binary search requires.
+What is the **tightest worst-case Big-O** in terms of `n = len(values)`? Explain
+how many times the inner loop can run for each `i`, and give an input that reaches
+the worst case.
+
+```python
+def nearby_duplicate(values):
+    n = len(values)
+    for i in range(n):
+        for j in range(i + 1, min(i + 4, n)):
+            if values[i] == values[j]:
+                return True
+    return False
+```
 
 ## 4 Choose and explain a sort
 

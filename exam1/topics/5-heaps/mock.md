@@ -82,7 +82,7 @@ the same job in **O(n)**. What does it do differently?
 Write the heap as a **list**, index 0 first, exactly as the implementation stores it.
 
 **(a)** Insert `5, 3, 8, 1, 9, 2` into an empty min-heap, one at a time. Write the list
-after each insert.
+after each insert. Draw the final tree on paper and label each node with its index.
 
 | Insert | The list after it |
 |---|---|
@@ -94,10 +94,12 @@ after each insert.
 | 2 | |
 
 **(b)** Now call `remove_min()` **twice** on the list you ended with. Write the list
-after each call, and say which value came out.
+after each call, and say which value came out. For the first removal, show the last
+item moving to the root and every sift-down swap on your drawing or as intermediate lists.
 
 **(c)** `build_heap([9, 7, 5, 3, 1, 8, 2])`. Give the index of the **last parent**, the
-order in which indices are sifted, and the final list. Is that final list sorted?
+order in which indices are sifted, and the list **after each parent is sifted**.
+Is the final list sorted?
 
 ### Q4 — Write the class
 Complete the three missing methods on `MinHeap`. `__init__`, `size`, `is_empty` and
@@ -163,6 +165,26 @@ urgency order. Can it read that straight off the heap's list? If not, what must 
 what does that cost?
 
 **(c)** Name one thing the sorted list gives you that the heap does not.
+
+### Q6 — From heap steps to Python
+
+Use these paper steps to write `remove_min`, `_sift_down`, and `build_heap` in
+[`p5_min_heap.py`](../../practice/p5_min_heap.py). Handle empty heaps and a node with
+only a left child. `build_heap` must leave its input list unchanged.
+
+```text
+REMOVE_MIN: If empty, return None. Save root; pop the last item. If items
+            remain, put that item at root and SIFT_DOWN(0). Return saved root.
+SIFT_DOWN(i): Compare item i with each child that exists. If i is smallest,
+              stop. Otherwise swap with the smaller child and continue there.
+BUILD_HEAP(values): Copy values into a heap. From its last parent down to
+                    the root, SIFT_DOWN each position. Return the heap.
+```
+
+One faulty sift-down always swaps with the **left** child. After replacing a removed
+root, the list is `[9, 4, 2, 7, 6]`. Show the faulty first swap, explain why it breaks
+the heap property, and show the correct first swap. Then run the `TestRemoveMin` and
+`TestBuildHeap` groups in the [coding checkpoints](../../study_paths.md#coding-checkpoints).
 
 ---
 

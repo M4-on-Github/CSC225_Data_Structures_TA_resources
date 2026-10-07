@@ -279,6 +279,74 @@ Five things in the code, and every one of them is a place people slip:
 
 **(b)** Selection, bubble and insertion sort are the in-place choices among these five, each with O(n²) worst-case cost. The taught merge and quick sorts build new lists. The in-place **heap sort** from [Topic 5](../5-heaps/review.md) uses O(1) auxiliary space and O(n log n) worst-case time, but it is not stable.
 
+### Q10 — From name to pseudocode to Python
+
+**(a)** One valid version of each. Wording may differ; check the bounds, comparisons,
+base cases, and return behavior.
+
+```text
+SELECTION(A):
+    FOR i from 0 to second-last index:
+        smallest = i
+        FOR j from i + 1 to last index:
+            IF A[j] < A[smallest]: smallest = j
+        SWAP A[i] and A[smallest]
+    RETURN A
+
+BUBBLE(A):
+    FOR each pass from 0 to second-last index:
+        swapped = false
+        FOR j from 0 to n - 2 - pass:
+            IF A[j] > A[j + 1]: SWAP them; swapped = true
+        IF not swapped: STOP
+    RETURN A
+
+INSERTION(A):
+    FOR i from 1 to last index:
+        current = A[i]; j = i - 1
+        WHILE j >= 0 AND A[j] > current:
+            MOVE A[j] to A[j + 1]; DECREASE j
+        PUT current at A[j + 1]
+    RETURN A
+
+MERGE(A):
+    IF size <= 1: RETURN A
+    SPLIT A in half; recursively sort each half with MERGE
+    WHILE both sorted halves have items: TAKE the smaller front item
+        into a new list (take from left on a tie)
+    APPEND all leftovers to the new list
+    RETURN the new list
+
+QUICK(A):
+    IF size <= 1: RETURN A
+    CHOOSE the last item as pivot
+    SCAN A into smaller, equal, larger lists
+    RETURN QUICK(smaller) + equal + QUICK(larger)
+```
+
+**(b)** **Insertion sort.** After `i = 1, 2, 3`, the lists are
+`[2, 4, 3, 1]`, `[2, 3, 4, 1]`, and `[1, 2, 3, 4]`. A direct Python translation is:
+
+```python
+def insertion_sort(values):
+    for i in range(1, len(values)):
+        current = values[i]
+        j = i - 1
+        while j >= 0 and values[j] > current:
+            values[j + 1] = values[j]
+            j -= 1
+        values[j + 1] = current
+    return values
+```
+
+**(c)** 1 **Bubble**, 2 **selection**: both change and return the input list.
+3 **Merge**, 4 **quick**: both return a new list for length greater than one.
+The three partitions and last-item pivot distinguish this quick sort.
+
+**(d)** `smallest` must start at **`i`**, the first position still unsorted. With
+`smallest = 0`, `[1, 3, 2]` stays the same after pass 0, but pass 1 swaps positions
+1 and 0 and gives `[3, 1, 2]`. The minimum at position 0 was already finished.
+
 ---
 
 ## Next

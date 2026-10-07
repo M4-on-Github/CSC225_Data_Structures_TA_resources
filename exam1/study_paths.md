@@ -18,8 +18,8 @@ Follow the rows in order. Each topic folder has review.md, mock.md and solutions
 | Python | [Review](topics/1-python-review/review.md), then guided exercise 1 | [Mock Q2 and Q3](topics/1-python-review/mock.md#q2--code-reading) | Problem 1 |
 | Complexity | [Review](topics/2-big-o/review.md), then guided exercise 2 | [Mock Q1 and Q3](topics/2-big-o/mock.md#q1--counting-operations) | Wait until you have read search in Topic 3 |
 | Arrays and search | [Review](topics/3-arrays/review.md), then guided exercise 3 | [Mock Q1 and Q4](topics/3-arrays/mock.md#q1--amortized-append) | Problem 2 |
-| Sorting | [Review](topics/4-sorting/review.md), then guided exercise 4 | [Mock Q1, Q2 and Q4](topics/4-sorting/mock.md#q1--sorting-vocabulary) | Problem 3, then 4 |
-| Heaps if included | [Review](topics/5-heaps/review.md), then guided exercise 5 | [Mock Q1 and Q3](topics/5-heaps/mock.md#q1--min-heaps) | Problem 5 in stages; problem 6 after MinHeap works |
+| Sorting | [Review](topics/4-sorting/review.md), then guided exercise 4 | [Trace Q4](topics/4-sorting/mock.md#q4--sorting-by-hand), then [pseudocode Q10](topics/4-sorting/mock.md#q10--from-name-to-pseudocode-to-python) | Problem 3, then 4 |
+| Heaps if included | [Review](topics/5-heaps/review.md), then guided exercise 5 | [Draw and trace Q3](topics/5-heaps/mock.md#q3--a-min-heap-by-hand), then [code Q6](topics/5-heaps/mock.md#q6--from-heap-steps-to-python) | Problem 5 in stages; problem 6 after MinHeap works |
 
 For sorting, learn selection, bubble and insertion first. Before merge and quick, trace a list splitting into smaller lists until each has at most one item. Then follow how the returned results combine. Use the [guided merge trace](guided_practice.md#4-sorting) before writing recursive code.
 

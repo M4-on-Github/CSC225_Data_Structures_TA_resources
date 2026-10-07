@@ -189,6 +189,51 @@ assert SortableList([2, 2, 1]).insertion_sort() == [1, 2, 2]
 a second copy of it in memory. Of the five sorts, which can you use and what does it cost
 you? Name the algorithm from [Topic 5](../5-heaps/review.md) that removes the trade-off.
 
+### Q10 — From name to pseudocode to Python
+
+**(a)** Without notes, write pseudocode for **selection, bubble, insertion, merge, and
+quick sort**. Do one at a time. Include each loop or recursive base case, the key
+comparison, and whether the result changes the input list or returns a new one.
+
+**(b)** Name the sort described below. Trace `[4, 2, 3, 1]` after each outer iteration.
+Then turn this pseudocode into a Python function that changes and returns the same list.
+
+```text
+FOR i from 1 to the last index
+    SAVE A[i] as current
+    SET j to i - 1
+    WHILE j is valid AND A[j] > current
+        MOVE A[j] one position right
+        DECREASE j by 1
+    PUT current in the open position
+RETURN A
+```
+
+**(c)** Name each sort from its pseudocode. Which change the input list, and which
+return a new one for length greater than one?
+
+```text
+1. Repeat passes over neighboring pairs; swap when left > right.
+   Stop after a pass with no swaps.
+2. For each position i, find the smallest item in i..end and swap it into i.
+3. If size <= 1, return the list. Split in half, recursively sort both halves,
+   then combine them by repeatedly taking the smaller front item.
+4. If size <= 1, return the list. Choose the last item as pivot; scan into
+   smaller, equal, and larger lists; return SORT(smaller) + equal + SORT(larger).
+```
+
+**(d)** This selection-sort pseudocode has one wrong line. Identify it, fix it, and
+trace `[1, 3, 2]` to show why the original fails.
+
+```text
+FOR i from 0 to the next-to-last index
+    SET smallest to 0
+    FOR j from i + 1 to the last index
+        IF A[j] < A[smallest], SET smallest to j
+    SWAP A[i] with A[smallest]
+RETURN A
+```
+
 ---
 
 ## Part 3 — Write the code

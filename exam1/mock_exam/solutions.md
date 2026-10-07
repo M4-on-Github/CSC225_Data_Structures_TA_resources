@@ -8,9 +8,13 @@ Outputs: [2, 6], then [2]. Appending mutates a. Rebinding the function's local n
 
 n + n squared checks, so O(n squared). Consecutive blocks add; the larger term dominates. Review [complexity](../topics/2-big-o/review.md).
 
-## 3 Choose a search
+## 3 Analyze the loops
 
-Use linear search: O(n) worst case. Binary search needs sorted input and may miss existing values without it. For one search, sorting first is unnecessary. Review [arrays and search](../topics/3-arrays/review.md).
+**O(n) worst case.** Each `i` compares with at most the next **three** items. A
+list of distinct values makes the function check every available pair and return
+`False`: `3n − 6` comparisons when `n ≥ 3`. The early `return True` can shorten
+a run, but two nested loops alone do not make this O(n²). Review
+[complexity](../topics/2-big-o/review.md) if the inner loop bound was unclear.
 
 ## 4 Choose and explain a sort
 

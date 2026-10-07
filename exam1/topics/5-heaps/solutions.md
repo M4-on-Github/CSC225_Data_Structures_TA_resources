@@ -158,6 +158,16 @@ has it backwards — it makes the many nodes at the bottom do the long walk.
 | 9 | `[1, 3, 8, 5, 9]` |
 | 2 | **`[1, 3, 2, 5, 9, 8]`** |
 
+Final tree (`value(index)`):
+
+```text
+        1(0)
+       /    \
+    3(1)   2(2)
+    /  \    /
+ 5(3) 9(4) 8(5)
+```
+
 The inserts of **1** and **2** are worth tracing closely. Inserting `1` appends it at index 3, whose parent
 is index 1 — it swaps past `5`, then past `3`, and lands at the root. Inserting `9` appends
 at index 4, whose parent is index 1 holding `3`; `9 > 3`, so it **stops immediately** and
@@ -174,7 +184,13 @@ and index 2 has no children, so it stops. Swapping with the *larger* child break
 on the next line.
 
 **(c)** The last item is at index 6, so the **last parent** is `(6 − 1) // 2 = 2`. The sift
-order is **2, 1, 0** — backwards to the root. Final list: **`[1, 3, 2, 9, 7, 8, 5]`**.
+order is **2, 1, 0** — backwards to the root:
+
+| Sifted index | List afterward |
+|---|---|
+| 2 | `[9, 7, 2, 3, 1, 8, 5]` |
+| 1 | `[9, 1, 2, 3, 7, 8, 5]` |
+| 0 | **`[1, 3, 2, 9, 7, 8, 5]`** |
 
 **No, it is not sorted.** The heap property compares each node
 against **its own children**, so `9` sits happily at index 3 in front of `7`, `8` and `5` —
@@ -322,6 +338,49 @@ value is a special case: it is the smaller of the root's children, so it can be 
   the difference between printing a report and causing an outage.
 - (c) Any one correct capability. The k-th item and binary search are the two strongest
   answers.
+
+### Q6 — From heap steps to Python
+
+One translation, using the index functions from `p5_min_heap.py`:
+
+```python
+    def remove_min(self):
+        if self.is_empty():
+            return None
+        smallest = self._items[0]
+        last = self._items.pop()
+        if not self.is_empty():
+            self._items[0] = last
+            self._sift_down(0)
+        return smallest
+
+    def _sift_down(self, i):
+        n = len(self._items)
+        while True:
+            smallest = i
+            left = left_index(i)
+            right = right_index(i)
+            if left < n and self._items[left] < self._items[smallest]:
+                smallest = left
+            if right < n and self._items[right] < self._items[smallest]:
+                smallest = right
+            if smallest == i:
+                break
+            self._items[i], self._items[smallest] = self._items[smallest], self._items[i]
+            i = smallest
+
+
+def build_heap(values):
+    heap = MinHeap()
+    heap._items = list(values)
+    for i in range(parent_index(len(heap._items) - 1), -1, -1):
+        heap._sift_down(i)
+    return heap
+```
+
+The incorrect left swap makes `[4, 9, 2, 7, 6]`: root `4` is larger than
+its right child `2`. The correct first swap gives `[2, 4, 9, 7, 6]`.
+Comparing only children that exist also handles a lone left child.
 
 ---
 
