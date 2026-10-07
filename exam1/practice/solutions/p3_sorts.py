@@ -33,8 +33,7 @@ def bubble_sort(values):
                 values[i] = values[i + 1]
                 values[i + 1] = temp
                 swapped = True
-        # The early exit. On an already-sorted list this breaks after one pass, which
-        # is the only reason bubble sort has an O(n) best case.
+        # Stop after a pass with no swaps.
         if not swapped:
             break
     return values

@@ -1,6 +1,6 @@
 # Topic 5 — mock test: heaps
 
-Confirm heap coverage with your instructor. See [review](review.md) for the heap conventions.
+See [review](review.md) for the heap conventions.
 
 Try the drills and questions before opening [solutions](solutions.md). Work at your own pace.
 
@@ -23,26 +23,16 @@ actually exist.
 **5.4** Same heap of 10 items: which indices are leaves, and how do you work that out
 without drawing the tree?
 
-**5.5** Insert 5, 3, 8, 1, 9, 2 into an empty min-heap, in that order. Write the final list.
-Then insert 4 and say how many swaps it costs.
-
-**5.6** From `[1, 3, 2, 5, 9, 8]`, call `remove_min()` twice. Write the list after each
-call, and state the two steps `remove_min` takes before it sifts.
-
-**5.7** `build_heap([9, 7, 5, 3, 1, 8, 2])` — write the resulting list. Then explain why
-building a heap this way is **O(n)** in general, while inserting n values one at a time is
-O(n log n) in the worst case.
-
-**5.8** `build_heap([1, 2, 3, 4, 5]).to_list()` gives `[1, 2, 3, 4, 5]`, unchanged. Is that a bug?
+**5.5** `build_heap([1, 2, 3, 4, 5]).to_list()` gives `[1, 2, 3, 4, 5]`, unchanged. Is that a bug?
 What does it tell you about the relationship between sorted lists and heaps?
 
-**5.9** Costs for a min-heap of n items: (i) `peek` · (ii) `insert` · (iii) `remove_min` ·
+**5.6** Costs for a min-heap of n items: (i) `peek` · (ii) `insert` · (iii) `remove_min` ·
 (iv) finding out whether the value 42 is in the heap · (v) `build_heap` · (vi) `heap_sort`.
 
-**5.10** Heap sort is O(n log n) in the worst case. Say why, and name one
+**5.7** Heap sort is O(n log n) in the worst case. Say why, and name one
 situation where that makes it the right choice over quick sort.
 
-**5.11** `heap_sort_in_place` sorts ascending using a **max**-heap, not a min-heap. Why does
+**5.8** `heap_sort_in_place` sorts ascending using a **max**-heap, not a min-heap. Why does
 moving each root to the end of the shrinking heap require that choice?
 
 ---
@@ -190,14 +180,6 @@ the heap property, and show the correct first swap. Then run the `TestRemoveMin`
 
 ## Part 3 — Write the code
 
-This topic has two practice problems:
-
-- `practice/p5_min_heap.py` — the full `MinHeap`, the three index functions, `build_heap`,
-  `heap_sort` and `heap_sort_in_place`, checked by `python -m unittest discover -s . -p "test_p5_min_heap.py" -v`. Q4 above is
-  the paper version of its first third.
-- `practice/p6_triage_queue.py` — Q5's emergency room, built for real, checked by
-  `python -m unittest discover -s . -p "test_p6_triage_queue.py" -v`. Do it after problem 5; it imports from it.
-
-Problem 6 is the one place in the package where you **apply** a data structure to a problem
-rather than implement one, which is the likelier shape for a coding question. The tie-breaking
-part of it is the whole question — read its header carefully.
+Code the heap in [Problem 5](../../practice/p5_min_heap.py), then apply it in
+[Problem 6](../../practice/p6_triage_queue.py). See the
+[test instructions](../../../README.md#run-your-tests).

@@ -16,9 +16,9 @@ Answer: 12 prints; n squared for nested loops; 2n for consecutive loops.
 
 ## Arrays and search
 
-Hint: resize only when all slots are occupied. In binary search, discard the middle value too when it is too small.
+Hint: resize only when all slots are occupied. Inserting at the front shifts every old item one slot right.
 
-Answer: second append gives size 2, capacity 2, one old item copied. Third gives size 3, capacity 4, two copied. The search updates low to 3; the next middle index is 3, holding 7.
+Answer: second append gives size 2, capacity 2, one old item copied. Third gives size 3, capacity 4, two copied. Front insertion gives `[0, 1, 3, 5]`; three items shift, or O(n) for n items.
 
 ## Sorting
 

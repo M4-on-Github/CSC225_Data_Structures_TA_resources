@@ -11,24 +11,21 @@ Try the drills and questions before opening [solutions](solutions.md). Work at y
 **4.1** Derive it: an outer loop runs `i` from 0 to n−1, and the inner loop runs from `i+1`
 to n−1. How many inner iterations in total, and what Big-O is that?
 
-**4.2** One pass of bubble sort on `[5, 1, 4, 2, 8]`. Write the list after the pass and say
-how many swaps happened.
+**4.2** What does the `swapped` flag do after a pass with no swaps?
 
-**4.3** What does the `swapped` flag do after a pass with no swaps?
-
-**4.4** Selection sort on `[5, 2, 9, 1]`: what does one pass do, and how many comparisons
+**4.3** Selection sort on `[5, 2, 9, 1]`: what does one pass do, and how many comparisons
 does the whole sort make?
 
-**4.5** Merge sort on `[8, 3, 5, 1]`. Show the split-down and the merge-up.
+**4.4** Merge sort on `[8, 3, 5, 1]`. Show the split-down and the merge-up.
 
-**4.6** Why is merge sort O(n log n) — what do the `n` and the `log n` each count?
+**4.5** Why is merge sort O(n log n) — what do the `n` and the `log n` each count?
 
-**4.7** Quick sort partitions `[7, 2, 9, 1, 5, 4, 6]` with the pivot the lecture version picks. Name
+**4.6** Quick sort partitions `[7, 2, 9, 1, 5, 4, 6]` with the pivot the lecture version picks. Name
 the pivot and write the three groups.
 
-**4.8** What input gives this quick sort its O(n²) worst case, and why?
+**4.7** What input gives this quick sort its O(n²) worst case, and why?
 
-**4.9** Fill in the tightest worst-case cost for each sort. Give one reason per row.
+**4.8** Fill in the tightest worst-case cost for each sort. Give one reason per row.
 
 | Sort | Worst case | Why |
 |---|---|---|
@@ -38,7 +35,7 @@ the pivot and write the three groups.
 | Merge | | |
 | Quick | | |
 
-**4.10** Which of the five build a new list, and which sort in place? Note any base-case
+**4.9** Which of the five build a new list, and which sort in place? Note any base-case
 exceptions, and explain why the return convention matters.
 
 ---
@@ -136,8 +133,8 @@ def insertion_sort(values):
     return values
 ```
 
-**(b)** This bubble sort sorts correctly on every input. Something is still wrong with
-it. What, and what does it cost? Give an input that shows it.
+**(b)** This bubble sort sorts correctly on every input. Its early exit is still
+broken. Find the wrong line and give an input that makes it run extra passes.
 
 ```python
 def bubble_sort(values):
@@ -238,11 +235,6 @@ RETURN A
 
 ## Part 3 — Write the code
 
-This topic has two practice problems, and they are the centre of the package:
-
-- `practice/p3_sorts.py` — all five sorts as module-level functions, checked by
-  `python -m unittest discover -s . -p "test_p3_sorts.py" -v`. **If you only do one practice problem, do this one.**
-- `practice/p4_sortable_list.py` — the same five as **methods on a class**, checked by
-  `python -m unittest discover -s . -p "test_p4_sortable_list.py" -v`. Do it after problem 3; it imports from it.
-
-Q8 above is the paper version of problem 4: one method, by hand, under exam conditions.
+Code the five functions in [Problem 3](../../practice/p3_sorts.py), then the class
+methods in [Problem 4](../../practice/p4_sortable_list.py). See the
+[test instructions](../../../README.md#run-your-tests).

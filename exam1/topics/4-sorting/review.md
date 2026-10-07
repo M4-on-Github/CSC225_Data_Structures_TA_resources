@@ -39,5 +39,4 @@ then show how they combine.
 
 Try the [mock](mock.md) and [solutions](solutions.md). Code [sorting
 functions](../../practice/p3_sorts.py), then the [sortable
-list](../../practice/p4_sortable_list.py). Source: Deck 7 and selection sort in Deck 3
-slides 10–12.
+list](../../practice/p4_sortable_list.py).

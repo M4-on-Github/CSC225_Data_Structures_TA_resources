@@ -23,7 +23,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 
 PROBLEMS = [
     (1, "p1_bank_account", "Topic 1  classes and argument passing"),
-    (2, "p2_search", "Topic 3  linear and binary search"),
+    (2, "p2_search", "Topic 3  linear search and counts"),
     (3, "p3_sorts", "Topic 4  the five sorts"),
     (4, "p4_sortable_list", "Topic 4  the sorts as a class"),
     (5, "p5_min_heap", "Topic 5  MinHeap, build_heap, heap sort"),

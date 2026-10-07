@@ -11,7 +11,7 @@ instead of measuring seconds. For this review and the foundation check, give the
 | One index lookup | O(1) | One operation |
 | Repeated halving | O(log n) | The remaining range halves each step |
 | One loop over `n` items | O(n) | Visits each item once |
-| `n` searches, each halving a range | O(n log n) | `n` times `log n` |
+| `n` repetitions of a halving loop | O(n log n) | `n` times `log n` |
 | Two fully nested loops over `n` items | O(n²) | `n` times `n` |
 | Doubling branches at each of `n` levels | O(2ⁿ) | Work doubles each level |
 
@@ -20,8 +20,8 @@ Sequential loops **add** their costs: O(n) + O(n) = O(n). Fully nested loops
 smaller terms: 3n² + 7n + 2 is O(n²).
 
 If the inner loop gets shorter each time, count `(n−1) + (n−2) + ... + 1 = n(n−1)/2`.
-This is still O(n²); selection sort makes exactly this many comparisons. Binary search
-discards about half the remaining sorted range each step, so it needs O(log n) checks.
+This is still O(n²); selection sort makes exactly this many comparisons. Repeatedly
+dividing a positive number by two takes O(log n) steps.
 
 ## Check yourself
 
@@ -29,6 +29,5 @@ discards about half the remaining sorted range each step, so it needs O(log n) c
 - Can you derive `n(n−1)/2` instead of recalling it?
 - Can you explain why halving gives a logarithm?
 
-Try the [mock](mock.md) and [solutions](solutions.md). Next, use these costs in [arrays
-and search](../3-arrays/review.md). Source: Algorithm Efficiency Introduction, Deck 3
-slides 9–32.
+Try the [mock](mock.md) and [solutions](solutions.md). Next, use these costs in
+[arrays and lists](../3-arrays/review.md).

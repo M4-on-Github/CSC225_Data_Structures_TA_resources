@@ -37,5 +37,4 @@ only the name changed. An integer cannot be changed in place; a list can.
 - Can you explain why `balance = balance + amount` does not update `self._balance`?
 
 Try the [mock](mock.md), then check [solutions](solutions.md). Code [problem
-1](../../practice/p1_bank_account.py) after you can explain the traces. Source: Crash
-Course 1 and 2, especially Deck 2 slides 7–12 and 23–34.
+1](../../practice/p1_bank_account.py) after you can explain the traces.

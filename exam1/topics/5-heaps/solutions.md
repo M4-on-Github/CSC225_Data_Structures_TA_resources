@@ -13,61 +13,41 @@ every pair; a heap does not. That is exactly why a heap is cheap to
 maintain and why index `k - 1` need not hold the k-th smallest value.
 
 **5.2** Because the property is **local**. `[1, 3, 2, 9, 7, 8, 5]` is a perfectly valid
-min-heap — every parent is ≤ its children — and it is not in sorted order. The slides on
-s35 say: *"a heap list is not fully sorted. It only maintains the heap property."* Index 0 is
-the only position you can read off directly.
+min-heap — every parent is ≤ its children — and it is not in sorted order.
+Index 0 is the only position you can read off directly.
 
 **5.3** `parent_index(i)` = **`(i - 1) // 2`** · `left_index(i)` = **`2i + 1`** ·
 `right_index(i)` = **`2i + 2`**. For index 4: parent **1**, left child **9**, right child
 **10**. Ten items occupy indices 0–9, so the **right child does not exist** — index 4 has
 one child. Check child indices against `size` before using them, and never ask for the
-root's parent. Missing those checks is a common bug. (Index arithmetic authored for this package.)
+root's parent. Missing those checks is a common bug.
 
 **5.4** The last item sits at index 9, so the **last parent** is `parent_index(9)` = **4**.
 Everything after it — indices **5, 6, 7, 8, 9** — is a leaf. Roughly half of any heap is
-leaves, which is the whole reason `build_heap` is cheap. (Authored.)
+leaves, which is the whole reason `build_heap` is cheap.
 
-**5.5** **`[1, 3, 2, 5, 9, 8]`**. Inserting 4 appends it at index 6, whose parent is index
-`(6-1)//2` = 2 holding **2**; 4 is not smaller than 2, so it stops — **zero swaps** —
-giving `[1, 3, 2, 5, 9, 8, 4]`. Insert is O(log n) in the **worst** case, not every case.
-(Authored; the property is Deck 6 s32.)
-
-**5.6** After the first: **`[2, 3, 8, 5, 9]`** (returned 1). After the second:
-**`[3, 5, 8, 9]`** (returned 2). The two steps: **save the root**, then **move the last item
-into index 0** — that keeps the tree complete, which is the one shape rule a heap cannot
-break. Only then does `_sift_down(0)` run. (Authored.)
-
-**5.7** **`[1, 3, 2, 9, 7, 8, 5]`**. `build_heap` sifts **down** from the last parent back
-to index 0. Sifting down is cheap for the many nodes near the bottom — about half the heap
-are leaves and move not at all — and only the handful of nodes near the root can travel
-log n levels, so the total is **O(n)**. Inserting instead sifts **up** from the bottom,
-where each new item can climb the height of the growing heap, for O(n log n) total work
-in the worst case. Same values, different direction, different cost. (Authored; the result is the classic heap result.)
-
-**5.8** Not a bug. **Every ascending list is already a valid min-heap** —
+**5.5** Not a bug. **Every ascending list is already a valid min-heap** —
 `values[i] <= values[2*i+1]` and `values[i] <= values[2*i+2]` whenever those children
 exist. So ascending ⇒ min-heap, but **min-heap ⇏ ascending**. The implication runs one
-way only, and the mock test asks it in the direction that is false. (Authored.)
+way only, and the mock test asks it in the direction that is false.
 
-**5.9** (i) **O(1)** — it is index 0 · (ii) **O(log n)** · (iii) **O(log n)** · (iv)
+**5.6** (i) **O(1)** — it is index 0 · (ii) **O(log n)** · (iii) **O(log n)** · (iv)
 **O(n)** — an arbitrary search may scan the whole list · (v) **O(n)** · (vi)
-**O(n log n)** — one build, then n removals of O(log n) each. (The three heap costs are
-Deck 6 s32; the rest follow from them.)
+**O(n log n)** — one build, then n removals of O(log n) each.
 
-**5.10** The **height** of the heap bounds the work: n removals, each sifting down at most
+**5.7** The **height** of the heap bounds the work: n removals, each sifting down at most
 the height of a complete tree, give an **O(n log n)** worst-case bound. Actual work can
 vary; all-equal values take O(n) in this implementation because sifts stop immediately.
-Quick sort averages O(n log n) but degrades to **O(n²)** with consistently bad pivots,
+Quick sort has an **O(n²)** worst case with consistently bad pivots,
 which for the last-element pivot means already-sorted input with distinct values. So when you cannot afford a
 quadratic worst case — and especially when you also cannot afford merge sort's second list, since
-`heap_sort_in_place` needs none — heap sort is the safe pick. (Authored; the quick sort half
-is Deck 7 s23.)
+`heap_sort_in_place` needs none — heap sort is the safe pick.
 
-**5.11** In this in-place algorithm, the sorted values accumulate inside the same list,
+**5.8** In this in-place algorithm, the sorted values accumulate inside the same list,
 at **the end**. The value that belongs at the end is the
 **largest**, and the only value a heap hands you cheaply is the one at the root — so the
 root has to be the largest. Swap it to the end, shrink the heap by one, sift down, repeat. A
-min-heap would build the list backwards. (Authored.)
+min-heap would build the list backwards.
 
 ---
 
@@ -90,16 +70,6 @@ at all n slots — **O(n)**. That is the trade the heap makes: it pays O(log n) 
 insert and every removal to keep index 0 true, and it buys **only** that. Asking a heap
 whether 42 is somewhere inside it is still an O(n) scan.
 
-**What a complete answer needs**
-
-- (a) Parent ≤ **both** children. "Smallest at the top" is the *consequence*, not the
-  property. Any answer that compares left with right is wrong — the property says nothing
-  about siblings.
-- (b) No-gaps / left-to-right **and** the arithmetic. The index formulas need not be exact
-  here; this is the concept question and Q3 is the one that tests the arithmetic.
-- (c) Index 0 with **O(1)**, and the **O(n)** scan of the unsorted list. Adding that the
-  heap still needs O(n) time in the worst case for an arbitrary search answers Q2(a)'s last cell
-  early.
 
 ### Q2 — Heap costs
 **(a)**
@@ -113,13 +83,10 @@ whether 42 is somewhere inside it is still an O(n) scan.
 | `heap_sort(values)` on n items | **O(n log n)** |
 | decide whether 42 is in the heap | **O(n)** |
 
-(The first three are Deck 6 s32. These are worst-case bounds, treating list appends as
-amortised O(1).)
+These are worst-case bounds, treating list appends as amortized O(1).
 
-The last one is the one to think about: a heap has **no ordering suitable for binary
-search**. If a node is bigger than 42, its whole subtree can be skipped, but in the
-worst case you still check **O(n)** items. A heap is a poor structure for *"is this in
-there?"* despite its O(1) `peek`.
+The last one needs care: separate branches are not ordered against each other,
+so finding an arbitrary value can require **O(n)** checks despite O(1) `peek`.
 
 **(b)** From the tree's **height**. A heap is a **complete** binary tree, so its height is
 ⌊log₂ n⌋ — doubling the number of items adds **one** level. `insert` appends at the end and
@@ -132,19 +99,6 @@ of sifting n new elements up from the bottom. The difference is where the nodes 
 sift down one level, and only the root can travel the full height. That sum comes to **O(n)**. Sifting *up*
 has it backwards — it makes the many nodes at the bottom do the long walk.
 
-**What a complete answer needs**
-
-- (a) All six cells.
-- The search cell is the one that separates understanding from memorising. **O(log n)**
-  there is the answer of someone who thinks a heap is a search tree, and it is the single
-  most common heap mistake. The heap property does not guarantee a fast search for an
-  arbitrary value.
-- O(n log n) for `build_heap` is a valid but loose upper bound — it is the worst-case cost
-  of n inserts; the tighter bound of O(n) is what (c) explains.
-- (b) Height **and** complete-tree. "Because it halves" works if the halving is clearly
-  the tree, not the list.
-- (c) Sifting **down** from the last parent. The leaf-counting argument is the explanation
-  rather than the answer — getting it means you understood more than the question asked.
 
 ### Q3 — A min-heap by hand
 **(a)**
@@ -194,24 +148,8 @@ order is **2, 1, 0** — backwards to the root:
 
 **No, it is not sorted.** The heap property compares each node
 against **its own children**, so `9` sits happily at index 3 in front of `7`, `8` and `5` —
-none of them is its child. The slides again: *"a heap list is not fully sorted. It only
-maintains the heap property."*
+none of them is its child.
 
-**What a complete answer needs**
-
-- (a) All six rows.
-- Rows 1–3 are free. Row 4 (`[1, 3, 8, 5]`) is the first that needs a two-level sift up.
-  Row 5 is the trap: `9` moves **nothing**, and anyone who has memorised "inserts bubble
-  up" will move it.
-- `[1, 3, 2, 5, 9, 8]` as the last row is the most important cell in the question — it is
-  the list that (b) and the practice tests both start from.
-- (b) Both calls, each needing **both** the value returned and the list left behind.
-- In this implementation, move the **last** item to the root, then sift down with the
-  smaller child. Check each step as well as the final list: leaving a gap or shifting
-  list entries changes the parent-child relationships.
-- (c) Index **2**, the order **2, 1, 0**, the final list, and "not sorted".
-- Index 3 for the last parent (i.e. `n // 2`) is the off-by-one to expect; sifting index 3
-  does nothing, so the final list can still come out right while the reasoning is wrong.
 
 ### Q4 — Write the class
 **(a)**
@@ -263,32 +201,6 @@ rather than truncating. `-1` is not the root's parent — in Python it refers to
 item — which is precisely why `_sift_up` is guarded by `while i > 0` and never asks for the
 root's parent.
 
-**What a complete answer needs**
-
-Seven things in the code:
-
-- **Class form** — all three methods read and write `self._items`, signatures exactly as
-  given, `insert` calls `self._sift_up`, no globals and no extra parameters. A correct heap
-  written as three free functions over a list is working code that answers a different
-  question.
-- `peek` returns `None` when empty. Raising, returning `-1` or `0`, or reading
-  `self._items[0]` with no guard all break the convention.
-- `peek` returns `self._items[0]` and does **not** remove it.
-- `insert` appends **then** sifts, with the index of the **new last element**.
-  `self._sift_up(len(self._items))` is off by one; sifting before appending sifts the wrong
-  list.
-- `_sift_up` computes the parent as `(i - 1) // 2`. `i // 2` is the 1-indexed formula.
-- The loop is guarded against the root — `while i > 0`, or an equivalent
-  `if i == 0: return`.
-- It stops climbing once the parent is smaller or equal, and reassigns `i = parent` **only** when it
-  swapped. Climbing unconditionally can still come out right on this test input, which is
-  exactly why it survives a weak test.
-- A **max**-heap, correct in every other way, has the class form and the structure right
-  and only the comparison backwards — a small fix, not a rewrite.
-- (b) **O(log n)**, *and* height-of-a-complete-tree as the reason. "Because it halves the
-  list" is the wrong mechanism — nothing here halves a list.
-- (c) Either inverting `2p + 1` / `2p + 2`, or a worked numeric check on two or three
-  indices. "−1 for `i = 0`, which is why the loop guards against it" is the whole idea.
 
 ### Q5 — Applying a heap
 **(a)**
@@ -308,36 +220,17 @@ than either overall — that trade is the answer.
 **(b)** **No.** The heap property is **local** — each node is only ordered against its own
 children — so the list is in heap order, not sorted order. Only index 0 is guaranteed to be
 anything in particular. Reading it top to bottom and calling it a treatment order would put
-patients on that screen in the wrong order, which is the kind of bug that reaches the
-newspaper.
+patients on that screen in the wrong order.
 
 To get the real order it must **copy the heap and drain the copy** with repeated
 `remove_min()` — n removals at O(log n) each, so **O(n log n)**. That is heap sort, and it
 is where heap sort comes from. The copy matters: draining the live heap empties the waiting
 list.
 
-**(c)** Any of: the **k-th most urgent** patient directly by index, in O(1) for arbitrary k;
-the **whole order for free**, with no draining;
-**binary search**, which needs the total order a heap does not have; or the **least** urgent
-patient in O(1), which in a min-heap is somewhere among the leaves. The second-smallest
-value is a special case: it is the smaller of the root's children, so it can be found in O(1).
+**(c)** A sorted list gives the **whole urgency order** directly, with no draining.
+It also gives the k-th most urgent patient by index. A heap guarantees only its
+minimum at the root.
 
-**What a complete answer needs**
-
-- (a) All six cells, plus the choice **and** its reason.
-- Sorted-list **add O(n)** is the cell most often wrong: the usual answer is O(log n),
-  which is the cost of **finding** the slot by binary search and forgets the **shift**. The
-  search is O(log n); the insertion is still O(n).
-- Plain-list **take** must be O(n). O(1) means you forgot the scan.
-- Choosing the heap with no reason is half an answer. Choosing the **sorted list** and
-  arguing it well — arrivals batched overnight, treatment constant — is a good answer to a
-  different question than the one asked.
-- (b) **No — the property is local, the list is not sorted**, and then: drain a **copy**
-  with repeated removals, at O(n log n).
-- Forgetting the copy still earns the right Big-O and empties the live waiting list. It is
-  the difference between printing a report and causing an outage.
-- (c) Any one correct capability. The k-th item and binary search are the two strongest
-  answers.
 
 ### Q6 — From heap steps to Python
 
@@ -381,9 +274,3 @@ def build_heap(values):
 The incorrect left swap makes `[4, 9, 2, 7, 6]`: root `4` is larger than
 its right child `2`. The correct first swap gives `[2, 4, 9, 7, 6]`.
 Comparing only children that exist also handles a lone left child.
-
----
-
-## Next
-
-If a step is unclear, revisit the [short review](review.md), then try a similar question without notes. Use the [coding guide](../../practice/README.md) when you are ready to implement it.

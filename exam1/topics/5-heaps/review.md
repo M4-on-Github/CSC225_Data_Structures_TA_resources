@@ -1,7 +1,5 @@
 # Topic 5 — Heaps
 
-Confirm heap coverage with your instructor before prioritizing these exercises.
-
 A **min-heap** is a complete binary tree in which every parent is no greater than its
 children. It is **not** a sorted list. Store its levels from left to right in a list:
 

@@ -85,22 +85,22 @@ def build(stem):
     section = doc.sections[0]
     section.page_width = Inches(8.5)
     section.page_height = Inches(11)
-    section.top_margin = section.bottom_margin = Inches(0.65)
+    section.top_margin = section.bottom_margin = Inches(0.55 if stem == 'questions' else 0.65)
     section.left_margin = section.right_margin = Inches(0.75)
     normal = doc.styles['Normal']
     normal.font.name = 'Arial'
-    normal.font.size = Pt(12)
+    normal.font.size = Pt(11 if stem == 'questions' else 12)
     normal.font.color.rgb = RGBColor(0, 0, 0)
-    normal.paragraph_format.space_after = Pt(5)
+    normal.paragraph_format.space_after = Pt(3 if stem == 'questions' else 5)
     normal.paragraph_format.line_spacing = 1.0
     for name, size in [('Title', 22), ('Heading 1', 16), ('Heading 2', 12)]:
         style = doc.styles[name]
         style.font.name = 'Arial'
-        style.font.size = Pt(size)
+        style.font.size = Pt(11.5 if stem == 'questions' and name == 'Heading 2' else size)
         style.font.color.rgb = RGBColor(0, 0, 0)
         style.font.bold = True
-        style.paragraph_format.space_before = Pt(8 if name != 'Title' else 0)
-        style.paragraph_format.space_after = Pt(5)
+        style.paragraph_format.space_before = Pt((6 if stem == 'questions' else 8) if name != 'Title' else 0)
+        style.paragraph_format.space_after = Pt(3 if stem == 'questions' else 5)
         style.paragraph_format.keep_with_next = True
     lang = OxmlElement('w:lang')
     lang.set(qn('w:val'), 'en-US')
@@ -134,10 +134,10 @@ def build(stem):
             p = doc.add_paragraph()
             p.paragraph_format.keep_together = True
             p.paragraph_format.keep_with_next = True
-            p.paragraph_format.space_after = Pt(5)
+            p.paragraph_format.space_after = Pt(3 if stem == 'questions' else 5)
             run = p.add_run('\n'.join(code))
             run.font.name = 'Consolas'
-            run.font.size = Pt(11)
+            run.font.size = Pt(10.5 if stem == 'questions' else 11)
         elif line.startswith('# '):
             doc.add_paragraph(line[2:], 'Title')
         elif line.startswith('## '):

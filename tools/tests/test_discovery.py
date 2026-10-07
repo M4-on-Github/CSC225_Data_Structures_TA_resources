@@ -45,7 +45,7 @@ class TestStudentDiscovery(unittest.TestCase):
             with self.subTest(folder=str(folder)):
                 code, output = self.run_discovery(folder)
                 self.assertEqual(code, 0, output)
-                self.assertIn("Ran 122 tests", output)
+                self.assertIn("Ran 104 tests", output)
 
     def test_one_problem_from_each_supported_folder(self):
         for folder in self.locations:
@@ -72,14 +72,14 @@ class TestStudentDiscovery(unittest.TestCase):
     def test_explicit_clone_path_from_parent(self):
         code, output = self.run_discovery(self.parent, start=self.repo.name)
         self.assertEqual(code, 0, output)
-        self.assertIn("Ran 122 tests", output)
+        self.assertIn("Ran 104 tests", output)
 
     def test_zip_folder_name_from_parent(self):
         with tempfile.TemporaryDirectory(prefix="csc225 zip ") as folder:
             shutil.copytree(self.repo, Path(folder) / (self.repo.name + "-main"))
             code, output = self.run_discovery(folder)
             self.assertEqual(code, 0, output)
-            self.assertIn("Ran 122 tests", output)
+            self.assertIn("Ran 104 tests", output)
 
     def test_unfinished_student_code_reports_failures(self):
         target = self.practice / "p1_bank_account.py"

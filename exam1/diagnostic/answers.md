@@ -16,7 +16,7 @@ The work adds: n + n = 2n, which grows linearly. Consecutive loops do not multip
 
 ### 3 No
 
-Binary search discards a region based on sorted order. On an unsorted list it may miss a value that is present, even though some searches succeed by chance.
+Python lists support direct indexing. Reading the last item takes O(1) time regardless of how many items come before it.
 
 ### 4 Yes
 
@@ -28,11 +28,11 @@ The output is [1, 2]. The addition creates a new list and the assignment changes
 
 ### 6 C
 
-The inner work repeats n times for each of n outer iterations: n times n. B counts only one loop; A ignores repetition; D would need a shrinking search range or similar behavior.
+The inner work repeats n times for each of n outer iterations: n times n. B counts only one loop; A ignores repetition; D would need repeated halving.
 
 ### 7 B
 
-A full array must copy its n existing items into larger storage before adding the new item, so one append can take O(n). A ignores resizing; C adds an unnecessary second factor of n; D confuses resizing with halving a search range.
+A full array must copy its n existing items into larger storage before adding the new item, so one append can take O(n). A ignores resizing; C adds an unnecessary second factor of n; D confuses resizing with halving.
 
 <!-- pagebreak -->
 
@@ -80,11 +80,9 @@ Start with the earliest area below that has a marked question. One mistake is a 
 
 - Questions 1, 5, 11: [Topic 1 Python](../topics/1-python-review/review.md). Then try mock Q2 and Q3.
 - Questions 2, 6, 12: [Topic 2 complexity](../topics/2-big-o/review.md). Then try mock Q1 and Q3.
-- Questions 3, 7, 8: [Topic 3 arrays and search](../topics/3-arrays/review.md). Then try mock Q1 and Q4.
+- Questions 3, 7, 8: [Topic 3 arrays and lists](../topics/3-arrays/review.md). Then try mock Q1 and Q4.
 - Questions 4, 9, 10, 13: [Topic 4 sorting](../topics/4-sorting/review.md). Use question 13's explanations on the next page to identify the algorithm or reasoning step to review.
 - Question H1: [Topic 5 heaps](../topics/5-heaps/review.md), if included. Review array-to-tree mapping, then removal and sifting.
-
-The topic folders are inside exam1/topics. Their review.md files teach the material; mock.md contains the questions. Keep these documents with the folder so their links can work.
 
 <!-- pagebreak -->
 
@@ -122,8 +120,6 @@ Other choices are valid if the pseudocode correctly describes the algorithm and 
 - Merge or quick errors: draw two recursion levels and explain how their sizes change.
 - Correct cells but unclear reasons: connect each loop or recursive call in the pseudocode to the count. Recognizing a formula is not yet deriving it.
 
-For review, use [Topic 4](../topics/4-sorting/review.md), especially “Where the growth rates come from”. Focus on worst-case derivations for this class session.
-
 <!-- pagebreak -->
 
 ## Retry after reviewing
@@ -148,7 +144,7 @@ Start question 12 with n = 16. How many divisions occur? What changes if n doubl
 
 Answer and reason: _______________________________________
 
-### Arrays and search
+### Arrays and lists
 
 An array has size 4 and capacity 4. It doubles when full. After appending one item, what are its size and capacity, and how many old items were copied?
 
@@ -175,5 +171,3 @@ Answer and reason: _______________________________________
 - Heaps: [1, 2, 4, 5]. The new item swaps with 5, then with 2.
 
 If you can explain the retry, move to the matching coding task. If not, inspect one relevant hint or solution section, close it, and retry. Ask your TA with the exact step that confused you.
-
-Finish with the [study paths](../study_paths.md) and [mixed readiness check](../mock_exam/questions.md).

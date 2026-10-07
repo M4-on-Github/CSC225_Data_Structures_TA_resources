@@ -20,8 +20,7 @@
 #   left_index(i)     returns the index of i's left child
 #   right_index(i)    returns the index of i's right child
 #
-# Work the three formulas out from the diagram above rather than looking them up -- the
-# written exam can ask you for them with no computer in the room.
+# Work the three formulas out from the diagram above before writing code.
 #
 # One trap: parent_index(0) comes out as -1, which is a VALID Python index pointing at
 # the last item. That is exactly why _sift_up's loop condition is "while i > 0" and not
@@ -59,7 +58,7 @@
 #       Do not insert items one at a time -- start at the LAST PARENT and sift down,
 #       walking backwards to index 0. The leaves need no work; they are one-item heaps.
 #       That is why this is O(n) while n inserts cost O(n log n) in the worst case.
-#       The exam can ask you which is cheaper and why.
+#       Be able to explain which method is cheaper and why.
 #
 #   heap_sort(values)
 #       Returns a NEW sorted list: call build_heap, then pull the items back out

@@ -18,9 +18,9 @@ Answer: Yes / No / Not sure. Confidence: ______
 
 Reason in a few words: ____________________________________
 
-### 3 Binary search
+### 3 List indexing
 
-Can the binary search taught here reliably find a value in an unsorted list?
+For a nonempty Python list, must reading its last item scan all earlier items?
 
 Answer: Yes / No / Not sure. Confidence: ______
 
@@ -222,5 +222,3 @@ An input pattern that reaches its worst case: __________________
 Why the steps above give that cost: __________________________
 
 ________________________________________________________
-
-Next: check [the answer guide](answers.md) after your attempt. Review a flagged concept, then try a fresh question without notes.

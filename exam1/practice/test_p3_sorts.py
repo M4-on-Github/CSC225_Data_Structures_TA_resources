@@ -99,12 +99,12 @@ class TestLectureBehaviour(unittest.TestCase):
         self.assertEqual(quick_sort([9, 1, 9, 1, 9]), [1, 1, 9, 9, 9])
 
     def test_bubble_sort_first_pass(self):
-        # Drill 4.2 on paper. The first pass drags the largest item to the end.
+        # Mock Q4(a): the first pass moves the largest item to the end.
         passes = bubble_sort_passes([5, 1, 4, 2, 8])
         self.assertEqual(passes[0], [1, 4, 2, 5, 8])
 
     def test_bubble_sort_early_exit_on_sorted_input(self):
-        # The "swapped" flag earns bubble sort its O(n) best case: one pass, then stop.
+        # The "swapped" flag stops after a pass without swaps.
         passes = bubble_sort_passes([1, 2, 3, 4, 5])
         self.assertEqual(len(passes), 1,
                          "an already-sorted list should take exactly one pass")
@@ -126,7 +126,7 @@ class TestSelectionSortCount(unittest.TestCase):
 
     def test_sorted_and_reversed_cost_the_same_comparisons(self):
         # The result worth remembering: selection sort does not care about the input
-        # order. Its inner loop never stops early, so even the best case is quadratic.
+        # order. Its inner loop never stops early.
         _, sorted_comparisons, sorted_swaps = selection_sort_count(list(range(1, 11)))
         _, reversed_comparisons, reversed_swaps = selection_sort_count(list(range(10, 0, -1)))
         self.assertEqual(sorted_comparisons, reversed_comparisons)

@@ -118,4 +118,4 @@ Do problem 3 before 4, and finish problem 5's MinHeap before 6.
 
 ## About these materials
 
-These are ungraded practice materials, not exam questions. Confirm exam coverage with your instructor, especially for heaps. The lecture slides are not included here.
+These are ungraded practice materials, not exam questions. Confirm exam coverage with your instructor, especially for heaps.

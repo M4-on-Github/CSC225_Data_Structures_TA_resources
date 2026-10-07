@@ -35,11 +35,6 @@ a 5 into a 6, so `y = 6` can only rebind. With a list, rebinding and mutating ar
 different things you have to tell apart. *Mutability is about the object, not the variable
 name.*
 
-**1.8** **Rebinding** points a name at a different object; the old object is unchanged and
-anyone else holding it sees no change. **Mutating** changes the object itself, so every name
-pointing at it sees the change. A variable is a **name tag attached to an object** —
-rebinding moves the tag, mutating alters the thing the tag is stuck to.
-
 ---
 
 ## Part 2 — Exam-style questions
@@ -57,14 +52,6 @@ outside"**. Python does not enforce it. The point is that the balance should onl
 through `deposit` and `withdraw`, which can refuse a bad amount. `owner` has no such rule
 to protect.
 
-**What a complete answer needs**
-
-- (a) Both blanks. "Blueprint / instance" is fine.
-- (b) `self` named as **the object**, and the fact that Python supplies it for you.
-  "`self` is the class" is the standard confusion — if you wrote that, reread Deck 2 s9.
-- (c) The underscore marks an internal attribute **by convention**, so callers should use
-  the guarded methods. It does not prevent direct access; explain what the convention is
-  *for* without claiming that Python enforces it.
 
 ### Q2 — Code reading
 ```
@@ -82,13 +69,6 @@ points the local name at a brand-new list; the caller's list was never touched.
 `extend`), so the caller sees it. **`plus`** builds a new list and rebinds, so the caller
 does not. `+=` and `x = x + ...` are **not** the same operation on a list.
 
-**What a complete answer needs**
-
-- All four lines, in order.
-- Lines 1 and 2 are the baseline — most people get these.
-- Line 3 (`+=` giving `[1, 2, 3, 99]`) is the one that separates understanding from
-  guessing. Miss it and Deck 2 s32 is the first thing to go back to.
-- Line 4 builds a new list, so the caller's list stays unchanged.
 
 ### Q3 — Code writing
 **(a)** and **(b)**:
@@ -131,31 +111,3 @@ thing — `self._readings = readings` — stores the caller's own list object, s
 `history.append(100)` then shows up inside the object, and `readings_count()` returns 3
 instead of 2. That is drill 1.4 wearing a different hat: `append` mutates the object that
 both names point at.
-
-**What a complete answer needs**
-
-- (a) Five separate things, and each one is a place people slip:
-  - `__init__` stores both attributes, under internal names (`_target`, `_readings`).
-  - `get_target` returns `self._target` and nothing else.
-  - `set_target` checks **both** bounds, 10 and 30, **inclusive**. An exclusive bound
-    (`degrees > 10`) is wrong at the edge, and off by one on one side is just as wrong.
-  - `set_target` returns **before** assigning on a refusal, and returns `True` or `False`.
-    A version that assigns first and then returns `False` looks right and is not — the
-    assertion `t.get_target() == 25` after a refused change is what catches it.
-  - `warmer` goes **through** `set_target` and returns its result. Reassigning
-    `self._target` directly, or rewriting the bounds check inside `warmer`, misses the
-    point of the question even when every assertion passes.
-- (b) `return len(self._readings)`.
-- (c) `list(readings)` or any explicit copy, **and** the aliasing bug named: the object and
-  the caller share one list, so the caller's later mutation is visible inside the object.
-  "It would be wrong" with no mechanism means you spotted it without understanding it.
-
-**Where the real content is.** Parts (a) and (b) practise class mechanics; part (c) connects them to aliasing. Writing
-all five methods perfectly with `self._readings = readings` gets you working code with a
-live bug in it, and that is exactly the shape of the argument-passing questions in Part 1.
-
----
-
-## Next
-
-If a step is unclear, revisit the [short review](review.md), then try a similar question without notes. Use the [coding guide](../../practice/README.md) when you are ready to implement it.

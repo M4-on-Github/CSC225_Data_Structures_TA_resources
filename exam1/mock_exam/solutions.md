@@ -4,11 +4,7 @@
 
 Outputs: [2, 6], then [2]. Appending mutates a. Rebinding the function's local name does not replace a. The copy b is independent. Review [Python](../topics/1-python-review/review.md) if either distinction was unclear.
 
-## 2 Count the work
-
-n + n squared checks, so O(n squared). Consecutive blocks add; the larger term dominates. Review [complexity](../topics/2-big-o/review.md).
-
-## 3 Analyze the loops
+## 2 Analyze the loops
 
 **O(n) worst case.** Each `i` compares with at most the next **three** items. A
 list of distinct values makes the function check every available pair and return
@@ -16,11 +12,11 @@ list of distinct values makes the function check every available pair and return
 a run, but two nested loops alone do not make this O(n²). Review
 [complexity](../topics/2-big-o/review.md) if the inner loop bound was unclear.
 
-## 4 Choose and explain a sort
+## 3 Choose and explain a sort
 
-Insertion sort scans the sorted prefix without shifts, then shifts larger values right to place the appended value. One added item causes at most n minus 1 shifts, so total work is O(n). The taught merge sort still splits and merges throughout the list. Review [sorting](../topics/4-sorting/review.md).
+Choose merge sort. Its worst-case time is O(n log n), with O(n) extra space for merging. Insertion sort can take O(n²) time because each new item may shift across the sorted prefix. Review [sorting](../topics/4-sorting/review.md).
 
-## 5 Write a method
+## 4 Write a method
 
 ```python
 def is_sorted(self):
@@ -32,7 +28,7 @@ def is_sorted(self):
 
 The method checks adjacent pairs and stops at the first decrease. With fewer than two items, there are no pairs to reject. Worst-case time is O(n), with O(1) extra space. Try [2, 2], [3, 1], [] and [7]. Then implement [problem 4](../practice/p4_sortable_list.py) if needed.
 
-## 6 Optional heaps
+## 5 Optional heaps
 
 Return 1. Pop the last value 5 and move it to the root: [5, 3, 2, 7]. Swap with the smaller child 2 to get [2, 3, 5, 7]. Moving the last item preserves the complete tree's gap-free layout. Review [heaps](../topics/5-heaps/review.md).
 

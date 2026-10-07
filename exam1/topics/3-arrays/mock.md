@@ -22,12 +22,6 @@ Try the drills and questions before opening [solutions](solutions.md). Work at y
 **3.6** "Interface versus implementation" — what is the distinction, and why does the
 course keep coming back to it?
 
-**3.7** Linear search versus binary search on 1,000,000 sorted items: roughly how many
-items does each inspect in the worst case? Count one inspection per loop iteration.
-
-**3.8** What must be true of the list before `binary_search` is allowed to run, and what
-happens if it isn't?
-
 ---
 
 ## Part 2 — Exam-style questions
@@ -38,8 +32,6 @@ happens if it isn't?
 **(a)** What does "amortized O(1)" promise?
 
 **(b)** Describe one append that is **not** O(1), and say what it costs.
-
-**(c)** Amortized is not the same as average case. Give the difference in one sentence.
 
 ### Q2 — Arrays, addresses and references
 **(a)** A *sequence* is an **interface**; a Python `list` is an **implementation** of
@@ -141,7 +133,6 @@ that is not in `0` to `size − 1`.
 
 ## Part 3 — Write the code
 
-This topic's practice problem is `practice/p2_search.py`, checked by
-`python -m unittest discover -s . -p "test_p2_search.py" -v` from the `practice/` folder: linear and binary search plus
-counting versions of both. Q4(d) above is the one place here where you build
-the dynamic array itself rather than using one.
+Use [Problem 2](../../practice/p2_search.py) to code linear search and count its
+comparisons. Q4(d) is the separate exercise in building a dynamic array.
+See the [test instructions](../../../README.md#run-your-tests).

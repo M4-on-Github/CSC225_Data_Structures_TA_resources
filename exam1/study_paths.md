@@ -29,7 +29,7 @@ Keep the starter filenames so the tests can find them. The discovery commands be
 work from the repository root, its parent folder, `exam1`, or `exam1/practice`.
 
 - Problem 1: constructor and balance methods, then transfer and argument passing.
-- Problem 2: linear search, binary search, then counting versions.
+- Problem 2: linear search, then count its comparisons.
 - Problem 3: selection, bubble, insertion, then merge and quick; finish the counting and snapshot helpers.
 - Problem 4: constructor and checks, then sorting methods.
 - Problem 5: run the test groups below as you build each part.
@@ -49,4 +49,5 @@ python -m unittest discover -s . -p "test_p5_min_heap.py" -k TestHeapSort -v
 
 ## Ready to practise independently
 
-Try the [mixed readiness check](mock_exam/questions.md) without notes. For each missed area, review one explanation and solve a fresh variation. Continue when you can explain the result, trace it, and implement the matching task. Passing this small check does not guarantee coverage of the whole exam.
+Try the [mixed readiness check](mock_exam/questions.md) without notes. For each missed
+area, review one explanation and solve a fresh variation.

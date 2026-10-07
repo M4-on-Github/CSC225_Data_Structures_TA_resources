@@ -17,7 +17,7 @@
 #                                    for inputs of two or more items; the base case may
 #                                    return the original empty or one-item list
 #   The tests check this with assertIs / assertIsNot, so "it sorted correctly" is not
-#   enough to pass. This is the distinction students most often lose marks on.
+#   enough to pass. Check both the result and whether the input changed.
 #
 # WHAT EACH ONE DOES:
 #
@@ -28,7 +28,7 @@
 #   bubble_sort(values)
 #       Repeatedly sweep, swapping neighbours that are out of order. Use the three-line
 #       temp swap, and keep a "swapped" flag so a pass with no swaps breaks out early.
-#       That flag is the only reason bubble sort has an O(n) best case.
+#       The flag lets it stop after a pass with no swaps.
 #
 #   insertion_sort(values)
 #       Take each item in turn and shift the bigger items to its left one place right,
@@ -53,7 +53,7 @@
 #
 #       Then run it on a sorted list and on a reversed list of the same length. The
 #       comparison counts come out IDENTICAL -- that is the result worth knowing, and
-#       it is why even selection sort's best case takes O(n**2) comparisons.
+#       it shows that comparison count does not depend on input order.
 #
 #   bubble_sort_passes(values)
 #       Return a list of snapshots: a copy of the list after each completed pass. Use

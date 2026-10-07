@@ -16,16 +16,11 @@ allocate and copy a larger block yourself.
 | One scan or `x in lst` | O(n) | May inspect every item |
 | `lst.append(x)` | O(n) for one append | A full array must copy its items |
 | `lst.insert(0, x)` or `lst.pop(0)` | O(n) | Remaining items shift |
-| Binary search on sorted input | O(log n) | Discards about half each step |
 
 A sequence of `n` appends from an empty array takes O(n) total with geometric capacity
 growth, or **amortized O(1)** per append. A single append can still be O(n). In a
 doubling model, the copies across resizes total `1 + 2 + 4 + ... < 2n`. If capacity grew
 one slot at a time, copies would total `0 + 1 + ... + (n−1) = O(n²)`.
-
-Binary search requires sorted input. Check the middle item, then discard the half that
-cannot contain the target. In Python, calculate the middle index with `//` and keep
-searching while `low <= high` so a one-item range is checked.
 
 ## Check yourself
 
@@ -33,6 +28,5 @@ searching while `low <= high` so a one-item range is checked.
 - What are the size and capacity of a list with 3 items and 8 reserved slots?
 - Why can one append cost O(n) while many appends cost O(n) total?
 
-Try the [mock](mock.md) and [solutions](solutions.md). Then code [search
-practice](../../practice/p2_search.py). Source: Array Data Structures, Deck 4 slides
-8–30; binary search, Deck 3 slides 28–32.
+Try the [mock](mock.md) and [solutions](solutions.md). Then code [linear search
+practice](../../practice/p2_search.py).

@@ -43,9 +43,6 @@ is a list — which change does the caller see, and why?
 **1.7** `x = 5; y = x; y = 6` — what is `x`? Why is this not the same situation as the
 list case?
 
-**1.8** The lecture exit ticket, word for word: **what is the difference between rebinding a
-variable and mutating an object?**
-
 ---
 
 ## Part 2 — Exam-style questions
@@ -134,7 +131,5 @@ what is the bug if it does the obvious thing instead?
 
 ## Part 3 — Write the code
 
-This topic's practice problem is `practice/p1_bank_account.py` — the guarded class and
-the four argument-passing functions, checked by `python -m unittest discover -s . -p "test_p1_bank_account.py" -v` from the
-`practice/` folder. Q3 above is the written version of the same skill; the practice
-problem is the one a computer checks for you.
+Code the class and argument-passing functions in [Problem 1](../../practice/p1_bank_account.py).
+See the [test instructions](../../../README.md#run-your-tests).

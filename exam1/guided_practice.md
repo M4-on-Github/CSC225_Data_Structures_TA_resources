@@ -23,7 +23,7 @@ A doubling array starts empty with capacity 1. After the first append, size = 1 
 - After the second append: size ______, capacity ______, old items copied ______.
 - After the third append: size ______, capacity ______, old items copied ______.
 
-Binary search looks for 7 in [1, 3, 5, 7, 9]. Start low = 0, high = 4. The first middle index is 2, holding 5. New low = ______. Next middle index = ______.
+Insert `0` at the **front** of `[1, 3, 5]`. The new list is ______. How many old items shift right? ______. For n items, what is the worst-case cost? ______.
 
 ## 4 Sorting
 

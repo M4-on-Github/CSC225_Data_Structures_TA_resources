@@ -18,7 +18,7 @@ stopwatch?
 **2.3** Why is O(n²) + O(n) just O(n²)? And why is O(3n²) just O(n²)?
 
 **2.4** Give the Big-O of each: (i) `return L[0]` · (ii) one loop over `L` · (iii) two
-loops one after the other · (iv) a loop inside a loop · (v) halving the search range each
+loops one after the other · (iv) a loop inside a loop · (v) halving a number each
 step. In (ii)–(iv), each loop traverses all n items of `L`, and the innermost body takes
 constant time.
 
@@ -59,8 +59,8 @@ def halvings(n):                        # (c)
 **(a)** How many additions does `total` perform, exactly, and what is its Big-O?
 
 **(b)** For `any_duplicate`, give the **exact** number of `==` comparisons in the
-worst case as a formula in n, the Big-O that follows from it, and the **best** case with
-an input that produces it.
+worst case as a formula in n, the Big-O that follows from it, and an input that
+reaches that case.
 
 **(c)** What is `halvings`' Big-O, and what does it return for `n = 1000`?
 
@@ -81,8 +81,8 @@ O(log n).
 its input. What is its Big-O, and is it a fast algorithm?
 
 ### Q3 — The two laws
-In each snippet, `values` holds n items, with n ≥ 1; `sorted_other_list` also holds n
-items. Give the Big-O of each **and the law or rule that decides it**.
+In each snippet, `values` holds n items, with n ≥ 1. Give the Big-O of each
+**and the law or rule that decides it**.
 
 ```python
 # (a)
@@ -101,8 +101,10 @@ print(values[0])
 print(len(values))
 
 # (d)
-for value in values:
-    found = binary_search(sorted_other_list, value)
+for _ in values:
+    width = len(values)
+    while width > 1:
+        width = width // 2
 ```
 
 ### Q4 — Where n(n−1)/2 comes from
@@ -115,14 +117,12 @@ Selection sort performs exactly **n(n−1)/2** comparisons.
 **(c)** Is n(n−1)/2 the same Big-O as n²? Justify it in one sentence.
 
 ### Q5 — Halving, and what Big-O is claiming
-**(a)** Linear search and binary search on **1,000,000** sorted items: give the
-worst-case number of comparisons for each, roughly, and the Big-O of each.
-Count one comparison per item examined, as the practice counters do.
+**(a)** Compare one loop over **1,000,000** items with repeatedly halving
+`n = 1,000,000` until it reaches 1. Roughly how many iterations does each take,
+and what is each Big-O?
 
-**(b)** Using the practice implementation of `binary_search_count`, you search for `-1`
-in `list(range(1000))` and it reports 9 comparisons. Predict roughly what it reports
-when you search for `-1` in `list(range(1000000))` **before** reading on, then explain in
-one sentence why a thousand times more data costs so little more.
+**(b)** `halvings(1000)` from Q1(c) returns 9. Predict `halvings(1000000)`
+before calculating it. Why does a thousand times larger `n` add only about ten steps?
 
 **(c)** Your friend's program sorts 20 items and finishes instantly, so they conclude
 their O(n²) sort is fine and ship it. Six months later the list holds 20,000 items and the
@@ -133,7 +133,5 @@ Big-O was and was not claiming in the first place.
 
 ## Part 3 — Write the code
 
-This topic's practice problem is `practice/p2_search.py`, checked by
-`python -m unittest discover -s . -p "test_p2_search.py" -v` from the `practice/` folder. It shares a file with Topic 3
-because the two searches are the cheapest place to watch O(n) and O(log n) side by side —
-the two counting functions in it make Q5 something you can measure rather than recite.
+Use [Problem 2](../../practice/p2_search.py) to count the comparisons made by a
+linear scan. See the [test instructions](../../../README.md#run-your-tests).

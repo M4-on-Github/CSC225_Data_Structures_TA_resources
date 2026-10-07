@@ -1,6 +1,6 @@
 # Mixed readiness check
 
-Attempt without notes. There is no time limit or grade. Explain each answer; this is a small sample, not a prediction of exam coverage. Use [solutions](solutions.md) after trying.
+Attempt without notes and explain each answer. Check [solutions](solutions.md) after trying.
 
 ## 1 Shared state
 
@@ -17,11 +17,7 @@ print(a)
 print(b)
 ```
 
-## 2 Count the work
-
-An algorithm runs two consecutive loops. The first makes n constant-time checks; the second makes n times n constant-time checks. Give the total count and its tightest Big-O class.
-
-## 3 Analyze the loops
+## 2 Analyze the loops
 
 What is the **tightest worst-case Big-O** in terms of `n = len(values)`? Explain
 how many times the inner loop can run for each `i`, and give an input that reaches
@@ -37,14 +33,14 @@ def nearby_duplicate(values):
     return False
 ```
 
-## 4 Choose and explain a sort
+## 3 Choose and explain a sort
 
-A list is already sorted, then one new small value is appended. Choose between the taught insertion sort and the taught merge sort. Explain how your choice handles that last value and why its work is O(n) for this input pattern.
+You must sort an arbitrary list of n values and need a worst-case O(n log n) time guarantee. Choose between the taught insertion sort and merge sort. Give each sort's worst-case time and the extra space merge sort uses.
 
-## 5 Write a method
+## 4 Write a method
 
 Write `is_sorted(self)` for a class storing numbers in `self.values`. Return True for non-decreasing order, including empty and one-item lists. Do not change the list or call a sorting function. State the worst-case cost.
 
-## 6 Optional heaps
+## 5 Optional heaps
 
 Start with min-heap [1, 3, 2, 7, 5]. Remove the minimum using the taught algorithm. Give the returned value and resulting heap. Explain why the last item moves to the root first.

@@ -10,7 +10,7 @@ Try the [questions](mock.md) before checking these answers.
 operation count depends on the algorithm and the input, so it still means
 something on a different computer.
 
-**2.2** **O(1)** indexing a list · **O(log n)** binary search · **O(n)** linear search ·
+**2.2** **O(1)** indexing a list · **O(log n)** repeated halving · **O(n)** linear search ·
 **O(n log n)** merge sort · **O(n²)** selection sort · **O(2ⁿ)** trying every subset.
 
 
@@ -25,8 +25,7 @@ O(n) + O(n) = O(2n) = O(n) · (iv) **O(n²)** — nesting **multiplies** · (v) 
 **2.5** Big-O is about **growth, not a stopwatch reading at one input size**. An O(n²)
 algorithm can easily beat an O(n log n) one on small n. The claim it makes is about what
 happens when n gets large. In this question, it is a **worst-case upper bound**, not a
-prediction of the run you just did. Big-O can also describe best- or average-case costs
-when those are the cases being analysed.
+prediction of the run you just did.
 
 ---
 
@@ -42,25 +41,10 @@ loop starts at `i + 1`, so it runs n−1 times, then n−2, down to 0:
 
 For n = 6 with no duplicates the count is exactly 15, which is 6 × 5 / 2.
 
-Best case **O(1)**, from an input whose **first two items are equal** — for example
-`[7, 7, 1, 2, 3, 4]`. It returns on the very first comparison, so the count is 1 whatever
-n is, for n ≥ 2. This is an algorithm whose best and worst cases are in different growth
-classes entirely, which is why the question has to say which one it wants.
-
 **(c)** **O(log n)** — the loop divides `n` by two each pass, so the number of passes is
 the number of halvings. For `n = 1000` it returns **9**: 1000 → 500 → 250 → 125 → 62 → 31
 → 15 → 7 → 3 → 1, which is nine divisions. (That is ⌊log₂ 1000⌋.)
 
-**What a complete answer needs**
-
-- (a) **n** *and* **O(n)**. "O(n)" on its own skips the counting, which is the thing being
-  practised. "n + 2" is not the addition count: the initialisation and the return are not
-  additions.
-- (b) Three things: the shrinking sum **and** n(n−1)/2; **O(n²)**; and the **O(1)** best
-  case **with an input that shows it**. If the only equal pair is the final two items,
-  the function still makes all n(n−1)/2 comparisons, so that is a worst case.
-- (c) **O(log n)** *and* **9**. 10 is the common slip — count the divisions, not the
-  numbers in the chain.
 
 ### Q2 — Simplifying
 **(a)**
@@ -82,13 +66,6 @@ not necessarily fast. A million operations is a million operations; O(1) says it
 **stay** a million as the input grows, not that the number is small. This is the other half
 of the "constants can fool us" point.
 
-**What a complete answer needs**
-
-- (a) All four rows. `O(3n²)` is equivalent to `O(n²)`, but it is not simplified — dropping
-  the constant is the thing the question is testing.
-- (b) The exact order; a single transposition means the ranking is not yet automatic.
-- (c) **O(1)**, and then the harder half: O(1) is about **growth**, not about size.
-  "Yes, O(1) is the fastest class" is the trained reflex, and it is the trap here.
 
 ### Q3 — The two laws
 - **(a) O(n)** — the **add law**: two blocks one after the other add, and O(n) + O(n) =
@@ -97,18 +74,9 @@ of the "constants can fool us" point.
   loop's n iterations, so the body runs n × n times.
 - **(c) O(1)** — neither line depends on n. Indexing is address arithmetic and `len` reads
   a stored size; no loop, no growth.
-- **(d) O(n log n)** — the multiply law again, with unequal factors: n iterations of the
-  outer loop, each doing an O(log n) binary search, so n × log n.
+- **(d) O(n log n)** — the multiply law again: n outer iterations, each halving
+  `width` O(log n) times.
 
-**What a complete answer needs**
-
-- Each snippet needs the Big-O **and** the law that decides it. The Big-O alone is the
-  answer; the law is the reason, and the reason is the part worth practising.
-- (a) being answered O(n²) is the single most common error in this question. Two loops
-  **side by side** are O(n); two loops **nested** are O(n²), and on the page the difference
-  is one level of indentation.
-- (d) answered as O(n) means you read the binary search as a constant-time operation — it
-  is the `while` loop inside the `for` that makes it O(n log n).
 
 ### Q4 — Where n(n−1)/2 comes from
 **(a)** The first pass compares the candidate against n−1 items, the next against n−2, and
@@ -121,29 +89,15 @@ sorted" changes nothing — that is the point of asking it this way.
 **(c)** **Yes.** n(n−1)/2 expands to n²/2 − n/2; drop the constant factor ½ and the
 lower-order term n/2 and what is left is n². Same growth class, so the same Big-O.
 
-**What a complete answer needs**
-
-- (a) The shrinking sum written out **and** the closed form. The closed form quoted alone
-  is a memorised fact, not a derivation.
-- (b) **28**. "0" or "7" is the answer of someone who thinks sorted input helps.
-- (c) **Yes**, with the dropped constant **and** the dropped lower-order term shown.
-  "Yes, they are both quadratic" with no working skips the whole question.
 
 ### Q5 — Halving, and what Big-O is claiming
-**(a)** Linear search: up to **1,000,000** comparisons — **O(n)**. Binary search: about
-**20** — **O(log n)**, since 2²⁰ = 1,048,576, so twenty halvings cover a million items.
+**(a)** A full scan takes **1,000,000** iterations — **O(n)**. Repeated halving
+takes **19** divisions — **O(log n)** — to bring 1,000,000 down to 1.
 
 
-**(b)** About **19 or 20** — and the measured answer from `binary_search_count` in
-`practice/p2_search.py` is exactly **19** for the specified search for `-1`. The reason is
-that binary search's cost grows with the number of **halvings**, not with the number of
-items: 1,000 needs about 10
-halvings and 1,000,000 needs about 20. Each extra comparison **doubles** the size of list
-you can handle, so multiplying the data by a thousand adds roughly ten comparisons, not a
-thousand.
-
-That sentence is the whole value of O(log n), and it is why 9 → 19 is a better thing to
-have seen than any amount of asserting that logarithms grow slowly.
+**(b)** **19**. Dividing 1,000,000 by two until it reaches 1 takes ten more
+steps than dividing 1,000. Each additional halving lets the starting size be
+about twice as large, so a thousandfold increase adds about ten steps.
 
 **(c)** The small test hid the growth rate. At n = 20, n² is only 400, so a quadratic
 algorithm can finish quickly. Going from 20 to 20,000 multiplies n by 1,000 and therefore
@@ -156,22 +110,3 @@ What Big-O **was** claiming: how the cost **grows** as n grows, as an upper boun
 worst case. What it was **not** claiming: that the program would be slow at n = 20, or that
 any particular run would take any particular number of seconds. Your friend tested a claim
 Big-O never made and drew a conclusion about one it did.
-
-**What a complete answer needs**
-
-- (a) Both halves: 1,000,000 / O(n), and "about 20" / O(log n). "20 because 2²⁰ is about a
-  million" is the justification worth having; a bare 20 with no reason is a remembered
-  number.
-- (b) A prediction in the high teens or twenty, **and** the doubling argument — each
-  comparison doubles the list size you can cover. A prediction of 9,000 or of 9,000,000
-  means the halving has not landed yet.
-- (c) The growth argument with actual numbers (n × 1,000 gives the n² term × 1,000,000), **and**
-  the separation between what Big-O claims (growth, worst case, large n) and what it does
-  not (seconds, small n). "O(n²) is slow" does not answer the question, which is *why the
-  small test was misleading*.
-
----
-
-## Next
-
-If a step is unclear, revisit the [short review](review.md), then try a similar question without notes. Use the [coding guide](../../practice/README.md) when you are ready to implement it.
