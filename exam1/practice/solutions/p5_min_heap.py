@@ -1,16 +1,7 @@
 # Reference solution -- Problem 5. Topic 5 (heaps).
 #
-# PROVENANCE WARNING. No dedicated heap deck was available for this package. Deck 6 s32 says
-# "Recall the central idea from our heap data structure lecture" and states three costs
-# -- peek O(1), insert O(log n), remove O(log n) -- and s35 says a heap list is not
-# fully sorted. Those are the heap property and costs cited by this package.
-#
-# Everything below the cost statements is standard material written for this package by
-# your TA. It is correct and it is tested. It is not a prediction of what will be asked.
-# Confirm with your instructor that heaps are on the exam before relying on this topic.
-#
-# Conventions kept from the decks even though the content is new:
-#   - the backing store is self._items, a plain list, as the decks name theirs
+# Conventions used throughout:
+#   - the backing store is self._items, a plain list, as the course names it
 #   - size() and is_empty() are methods, not properties
 #   - peek() and remove_min() return None on an empty heap rather than raising,
 #     matching the pop-on-empty convention

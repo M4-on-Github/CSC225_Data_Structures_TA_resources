@@ -100,7 +100,7 @@ def quick_sort(values):
 
 
 def selection_sort_count(values):
-    # Efficiency deck s36: the same sort, reporting its own work.
+    # The same sort, reporting its own work.
     #
     # Run it on a sorted list and on a reversed list of the same length. The comparison
     # count is IDENTICAL -- n(n-1)/2 either way, because the inner loop never stops

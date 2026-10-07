@@ -1,10 +1,11 @@
 # Sources and scope
 
-The existing topic reviews cite the course lecture decks by name, deck number and slide. The professor's slides are not distributed here. Use your course copies to check those citations.
+The topic reviews draw on the course lecture decks. The diagnostic, mocks, coding tasks,
+and solutions are TA practice materials, not exam questions or a prediction of coverage.
+The heap exercises extend the limited heap material available in the decks; confirm heap
+coverage with the instructor.
 
-The diagnostic, guided exercises and mixed readiness check are TA practice material. Their questions assess the concepts in this package; they do not establish the exam's scope or predict its questions.
-
-No dedicated heap deck was available for this package. The heap implementation and extended exercises supplement the cited heap property and costs. Confirm heap coverage with your instructor before including that study path.
+## Rebuilding the diagnostic
 
 The diagnostic Markdown files are the source of truth. To rebuild from this folder:
 

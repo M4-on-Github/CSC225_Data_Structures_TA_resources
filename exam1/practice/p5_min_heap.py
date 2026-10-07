@@ -3,23 +3,6 @@
 # Check your work:   python -m unittest discover -s . -p "test_p5_min_heap.py" -v
 # Reference answer:  solutions/p5_min_heap.py  (try first; consult one section if stuck)
 #
-# ---------------------------------------------------------------------------
-# WHERE THIS CAME FROM -- read this before you spend an evening on it.
-#
-# No dedicated heap lecture deck was available for this package. The cited slides at
-# the end of the stacks/queues deck give the heap PROPERTY and three COSTS
-# (peek, insert, remove-min). They point at a "heap data structure lecture"
-# that is not among the eight decks used to prepare these materials.
-#
-# Everything else in this problem -- the index arithmetic, sifting up and down,
-# build_heap, and both heap sorts -- was written by your TA to fill that gap, in the
-# lecture's style. It is the standard treatment and follows the cited heap property
-# and costs; it is not copied from a dedicated heap deck.
-#
-# So: CONFIRM WITH YOUR INSTRUCTOR THAT HEAPS ARE ON THE EXAM before relying on this
-# topic. If they are, this is good preparation. If not, skip it.
-# ---------------------------------------------------------------------------
-#
 # PART A -- the index arithmetic
 #
 # A heap is stored in a plain list. The tree structure is arithmetic, not pointers.
