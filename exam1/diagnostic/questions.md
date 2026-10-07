@@ -1,9 +1,5 @@
 # Exam 1 foundation check
 
-Find what to review before you start. This four-page check is practice, not a grade or an exam prediction.
-
-Try questions 1 to 13 without notes, including page 4. All efficiency questions ask for worst-case costs. Use pseudocode for sorting; Python syntax is not required there. Mark confidence as sure, unsure, or guessed. Aim for 22 minutes in class. Speed is not scored.
-
 ## Yes or no
 
 ### 1 Shared lists
