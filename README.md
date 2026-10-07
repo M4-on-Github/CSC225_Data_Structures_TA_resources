@@ -1,6 +1,6 @@
-# Data Structures — TA resources
+# Data Structures — study resources
 
-Study material I prepare as the course TA.
+Study material for CSC225 Exam 1.
 
 ## Download and open
 
@@ -80,8 +80,6 @@ from the repository root. That helper resolves its test files relative to itself
 
 **Answer guide:** [PDF](exam1/diagnostic/answers.pdf) · [Markdown](exam1/diagnostic/answers.md) · [Word draft](exam1/diagnostic/answers.docx)
 
-**For the TA:** [45-minute review plan](exam1/diagnostic/class_review.md) · [Sources and scope](exam1/sources.md)
-
 Try the four-page check first, then use the answer guide to choose a [study path](exam1/study_paths.md).
 It covers worst-case efficiency, sorting pseudocode, and an optional paper heap exercise.
 
@@ -120,4 +118,4 @@ Do problem 3 before 4, and finish problem 5's MinHeap before 6.
 
 ## About these materials
 
-These are ungraded TA practice materials, not exam questions. Confirm exam coverage with your instructor, especially for heaps. The lecture slides are not included here.
+These are ungraded practice materials, not exam questions. Confirm exam coverage with your instructor, especially for heaps. The lecture slides are not included here.

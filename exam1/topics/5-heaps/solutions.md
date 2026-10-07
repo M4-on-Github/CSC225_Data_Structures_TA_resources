@@ -1,7 +1,5 @@
 # Topic 5 — solutions: heaps
 
-These extended heap answers are TA practice; see [sources and scope](../../sources.md).
-
 Try the [questions](mock.md) before checking these answers.
 
 ---

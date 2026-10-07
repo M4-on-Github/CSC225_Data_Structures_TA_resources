@@ -223,4 +223,4 @@ Why the steps above give that cost: __________________________
 
 ________________________________________________________
 
-Next: open [the answer guide](answers.md) when your TA asks. Review a flagged concept, then try a fresh question without notes.
+Next: check [the answer guide](answers.md) after your attempt. Review a flagged concept, then try a fresh question without notes.

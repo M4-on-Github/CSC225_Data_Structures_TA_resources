@@ -1,7 +1,6 @@
 # Topic 5 — Heaps
 
-Confirm heap coverage with your instructor. The heap implementations and extended
-exercises here are TA-authored; see [sources and scope](../../sources.md).
+Confirm heap coverage with your instructor before prioritizing these exercises.
 
 A **min-heap** is a complete binary tree in which every parent is no greater than its
 children. It is **not** a sorted list. Store its levels from left to right in a list:
@@ -45,5 +44,4 @@ sift down. Its worst-case time is O(n log n) and its auxiliary space is O(1).
 
 Try the [mock](mock.md) and [solutions](solutions.md). Code [MinHeap
 practice](../../practice/p5_min_heap.py) before the [triage
-queue](../../practice/p6_triage_queue.py). Source: Deck 6 slides 32 and 35 for heap
-property and basic costs; extended algorithms are TA practice.
+queue](../../practice/p6_triage_queue.py).
