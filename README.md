@@ -16,7 +16,7 @@ python --version
 ```
 
 In VS Code, choose **File → Open Folder** and select the cloned repository folder.
-Start with [the foundation check](exam1/START_HERE.md),
+Start with [the foundation check](exam1/diagnostic/questions.md),
 then edit the matching `exam1/practice/p*.py` starter file. Replace its `pass  # TODO`
 lines, save, and run its tests below. Keep the filenames and test files unchanged.
 
@@ -29,7 +29,7 @@ repository folder before running commands.
 
 **No Markdown extension is needed.** VS Code includes a Markdown preview.
 
-1. Open `exam1/START_HERE.md` in the Explorer sidebar.
+1. Open `exam1/diagnostic/questions.md` in the Explorer sidebar.
 2. Right-click the file's **editor tab** and choose **Open Preview**.
    Alternatively, press **Ctrl+Shift+V** on Windows/Linux or **Cmd+Shift+V** on Mac.
 3. Read the formatted page and follow its links to the exercises.
@@ -76,16 +76,14 @@ from the repository root. That helper resolves its test files relative to itself
 
 ## Exam 1
 
-**[Start here: foundation check and study paths](exam1/START_HERE.md)**
-
 **Foundation check:** [Print PDF](exam1/diagnostic/questions.pdf) · [Read in VS Code](exam1/diagnostic/questions.md) · [Editable Word draft](exam1/diagnostic/questions.docx)
 
 **Answer guide:** [PDF](exam1/diagnostic/answers.pdf) · [Markdown](exam1/diagnostic/answers.md) · [Word draft](exam1/diagnostic/answers.docx)
 
 **For the TA:** [45-minute review plan](exam1/diagnostic/class_review.md) · [Sources and scope](exam1/sources.md)
 
-The four-page check uses worst-case efficiency, sorting pseudocode, and a paper heap
-exercise if heaps are included. Attempt it first, then use the guide to choose what to review.
+Try the four-page check first, then use the answer guide to choose a [study path](exam1/study_paths.md).
+It covers worst-case efficiency, sorting pseudocode, and an optional paper heap exercise.
 
 ### Study and review
 
@@ -93,7 +91,6 @@ exercise if heaps are included. Attempt it first, then use the guide to choose w
 - [Guided practice](exam1/guided_practice.md) · [Hints and worked examples](exam1/hints.md)
 - [Quick reference](exam1/quick_reference.md)
 - [Mixed readiness check](exam1/mock_exam/questions.md) · [Solutions](exam1/mock_exam/solutions.md)
-- [Exam 1 overview](exam1/README.md)
 
 Start with the foundation check, then study the topic you need. The longer mocks and coding tasks are optional practice. Heaps depend on course coverage.
 
