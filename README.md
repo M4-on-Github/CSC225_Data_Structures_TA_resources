@@ -78,25 +78,49 @@ from the repository root. That helper resolves its test files relative to itself
 
 **[Start here: foundation check and study paths](exam1/START_HERE.md)**
 
-Begin with 12 short questions, choose one area to review, and use hints when needed.
-The diagnostic is available in Markdown, Word and printable PDF, with a separate answer guide.
+**Foundation check:** [Print PDF](exam1/diagnostic/questions.pdf) · [Read in VS Code](exam1/diagnostic/questions.md) · [Editable Word draft](exam1/diagnostic/questions.docx)
 
-Five topics, each with a review sheet, a mock test and a solutions file, plus six practice
-coding problems with `unittest` checks:
+**Answer guide:** [PDF](exam1/diagnostic/answers.pdf) · [Markdown](exam1/diagnostic/answers.md) · [Word draft](exam1/diagnostic/answers.docx)
 
-| | Topic |
-|---|---|
-| 1 | Python review — classes and argument passing |
-| 2 | Big-O and counting operations |
-| 3 | Arrays, Python lists, and search |
-| 4 | Sorting — all five algorithms |
-| 5 | Heaps |
+**For the TA:** [45-minute review plan](exam1/diagnostic/class_review.md) · [Sources and scope](exam1/sources.md)
 
-## Notes
+The four-page check uses worst-case efficiency, sorting pseudocode, and a paper heap
+exercise if heaps are included. Attempt it first, then use the guide to choose what to review.
 
-- This is **practice material I wrote**, not the professor's exam and not a prediction of
-  one. Nothing here is drawn from a real paper.
-- Nothing is scored. There are no marks on any question — the mocks are there to show
-  whether a topic is understood.
-- The lecture slides themselves are **not** in this repo. They are the professor's
-  material; the files cite them by deck and slide number instead.
+### Study and review
+
+- [Study paths and coding checkpoints](exam1/study_paths.md)
+- [Guided practice](exam1/guided_practice.md) · [Hints and worked examples](exam1/hints.md)
+- [Quick reference](exam1/quick_reference.md)
+- [Mixed readiness check](exam1/mock_exam/questions.md) · [Solutions](exam1/mock_exam/solutions.md)
+- [Exam 1 overview](exam1/README.md)
+
+Start with the foundation check, then study the topic you need. The longer mocks and coding tasks are optional practice. Heaps depend on course coverage.
+
+| Topic | Review | Mock questions | Solutions |
+|---|---|---|---|
+| Python classes and argument passing | [Review](exam1/topics/1-python-review/review.md) | [Questions](exam1/topics/1-python-review/mock.md) | [Solutions](exam1/topics/1-python-review/solutions.md) |
+| Big-O and counting operations | [Review](exam1/topics/2-big-o/review.md) | [Questions](exam1/topics/2-big-o/mock.md) | [Solutions](exam1/topics/2-big-o/solutions.md) |
+| Arrays, lists, and search | [Review](exam1/topics/3-arrays/review.md) | [Questions](exam1/topics/3-arrays/mock.md) | [Solutions](exam1/topics/3-arrays/solutions.md) |
+| Sorting | [Review](exam1/topics/4-sorting/review.md) | [Questions](exam1/topics/4-sorting/mock.md) | [Solutions](exam1/topics/4-sorting/solutions.md) |
+| Heaps | [Review](exam1/topics/5-heaps/review.md) | [Questions](exam1/topics/5-heaps/mock.md) | [Solutions](exam1/topics/5-heaps/solutions.md) |
+
+### Coding practice
+
+[Practice instructions](exam1/practice/README.md) · [Test commands](#run-your-tests) · [Summary checker](exam1/practice/check.py)
+
+Open a starter to read its task. Use the tests to check your attempt; consult a reference answer only after trying.
+Do problem 3 before 4, and finish problem 5's MinHeap before 6.
+
+| Problem | Starter and task | Tests | Reference answer |
+|---|---|---|---|
+| 1 | [Bank account](exam1/practice/p1_bank_account.py) | [Tests](exam1/practice/test_p1_bank_account.py) | [Answer](exam1/practice/solutions/p1_bank_account.py) |
+| 2 | [Search](exam1/practice/p2_search.py) | [Tests](exam1/practice/test_p2_search.py) | [Answer](exam1/practice/solutions/p2_search.py) |
+| 3 | [Sorting functions](exam1/practice/p3_sorts.py) | [Tests](exam1/practice/test_p3_sorts.py) | [Answer](exam1/practice/solutions/p3_sorts.py) |
+| 4 | [Sortable list](exam1/practice/p4_sortable_list.py) | [Tests](exam1/practice/test_p4_sortable_list.py) | [Answer](exam1/practice/solutions/p4_sortable_list.py) |
+| 5 | [Min-heap](exam1/practice/p5_min_heap.py) | [Tests](exam1/practice/test_p5_min_heap.py) | [Answer](exam1/practice/solutions/p5_min_heap.py) |
+| 6 | [Triage queue](exam1/practice/p6_triage_queue.py) | [Tests](exam1/practice/test_p6_triage_queue.py) | [Answer](exam1/practice/solutions/p6_triage_queue.py) |
+
+## About these materials
+
+These are ungraded TA practice materials, not exam questions. Confirm exam coverage with your instructor, especially for heaps. The lecture slides are not included here.

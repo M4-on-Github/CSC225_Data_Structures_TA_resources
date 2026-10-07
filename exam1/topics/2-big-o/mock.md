@@ -1,14 +1,8 @@
 # Topic 2 — mock test: Big-O and counting operations
 
-Part 1 is five quick drills, Part 2 is five exam-style questions.
+Try the drills and questions before opening [solutions](solutions.md). Work at your own pace.
 
-**Try each question before opening [solutions.md](solutions.md).** If stuck, read one relevant explanation, close it, and retry. You may type or write your answers.
-
-No time limit is printed here on purpose. Work until you are done, note how long it took,
-and compare that with however long you get in the real exam.
-
-**Throughout:** give the Big-O **and one line of justification**. A bare `O(...)` with no
-reason is only half an answer — the reasoning is the part worth practising.
+**Throughout:** give each Big-O cost with one sentence of reasoning.
 Use worst-case costs unless another case is requested. Assume individual arithmetic,
 comparison and output operations take constant time.
 

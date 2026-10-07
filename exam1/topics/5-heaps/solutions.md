@@ -1,14 +1,8 @@
 # Topic 5 — solutions: heaps
 
-> ⚠ **Heap provenance.** The heap property and the three costs are slide-derived
-> (Deck 6 s32, s35). **Everything else below — the index arithmetic, the sift code,
-> `build_heap`, both heap sorts and every trace — is your TA's**, written to the course
-> conventions. No dedicated heap deck was available for this package. Practice, not a prediction. Full
-> explanation in [review.md](review.md).
+These extended heap answers are TA practice; see [sources and scope](../../sources.md).
 
-Answers to [mock.md](mock.md), in order, each followed by what a complete answer needs.
-**Attempt the paper first.** Every heap list in this file was produced by running
-`practice/solutions/p5_min_heap.py`, not written from memory.
+Try the [questions](mock.md) before checking these answers.
 
 ---
 
@@ -18,13 +12,12 @@ Answers to [mock.md](mock.md), in order, each followed by what a complete answer
 children**. This also orders ancestors before descendants, but says **nothing** about
 the order between separate branches. A sorted structure pins down the order of
 every pair; a heap does not. That is exactly why a heap is cheap to
-maintain and why index `k - 1` need not hold the k-th smallest value. (Deck 6 s32 is the slide-derived
-statement of the property; the comparison is your TA's.)
+maintain and why index `k - 1` need not hold the k-th smallest value.
 
 **5.2** Because the property is **local**. `[1, 3, 2, 9, 7, 8, 5]` is a perfectly valid
 min-heap — every parent is ≤ its children — and it is not in sorted order. The slides on
 s35 say: *"a heap list is not fully sorted. It only maintains the heap property."* Index 0 is
-the only position you can read off directly. (Deck 6 s35.)
+the only position you can read off directly.
 
 **5.3** `parent_index(i)` = **`(i - 1) // 2`** · `left_index(i)` = **`2i + 1`** ·
 `right_index(i)` = **`2i + 2`**. For index 4: parent **1**, left child **9**, right child
@@ -86,7 +79,7 @@ min-heap would build the list backwards. (Authored.)
 **(a)** **Every node is less than or equal to both of its children.** Nothing is promised
 about left versus right, and nothing is promised between cousins — the property is
 **local**. It follows that the **minimum is at the root**, which is what makes `peek` O(1).
-(Deck 6 s32.)
+
 
 **(b)** **Complete** = every level is full except possibly the last, and the last fills
 **left to right** with no gaps. No gaps means the nodes map onto list indices `0, 1, 2, …`
@@ -188,7 +181,7 @@ order is **2, 1, 0** — backwards to the root. Final list: **`[1, 3, 2, 9, 7, 8
 **No, it is not sorted.** The heap property compares each node
 against **its own children**, so `9` sits happily at index 3 in front of `7`, `8` and `5` —
 none of them is its child. The slides again: *"a heap list is not fully sorted. It only
-maintains the heap property."* (Deck 6 s35.)
+maintains the heap property."*
 
 **What a complete answer needs**
 
@@ -296,8 +289,7 @@ Seven things in the code:
 sub-linear, and the question says both happen constantly. The other two are each excellent
 at one operation and linear at the other, so whichever you choose, the ER spends its day in
 the O(n) half. A heap is slightly worse than either at that one operation and far better
-than either overall — that trade is the answer. (Deck 6 s30, s32: *"a heap gives us exactly
-the operations a priority queue needs."*)
+than either overall — that trade is the answer.
 
 **(b)** **No.** The heap property is **local** — each node is only ordered against its own
 children — so the list is in heap order, not sorted order. Only index 0 is guaranteed to be
@@ -308,7 +300,7 @@ newspaper.
 To get the real order it must **copy the heap and drain the copy** with repeated
 `remove_min()` — n removals at O(log n) each, so **O(n log n)**. That is heap sort, and it
 is where heap sort comes from. The copy matters: draining the live heap empties the waiting
-list. (Deck 6 s35: *"a heap list is not fully sorted."*)
+list.
 
 **(c)** Any of: the **k-th most urgent** patient directly by index, in O(1) for arbitrary k;
 the **whole order for free**, with no draining;
@@ -335,18 +327,6 @@ value is a special case: it is the smaller of the root's children, so it can be 
 
 ---
 
-## If you got it wrong
+## Next
 
-- Anything wrong in **Q1(a) or Q2(a)'s last cell** — those two are the heap. The property is
-  local, and searching a heap for an arbitrary value is O(n) in the worst case. Everything else in the topic follows from them.
-- Anything wrong in **Q3** — redo the trace, then check it with `to_list()` in
-  `practice/solutions/p5_min_heap.py`. Paper first, code second; the point is to find out
-  where your version diverges.
-- Anything wrong in **Q4** — write the whole class: `practice/p5_min_heap.py`, checked by
-  `python -m unittest discover -s . -p "test_p5_min_heap.py" -v`. The tests check the heap property after **every** operation,
-  which catches the larger-child bug described above.
-- Anything wrong in **Q5** — `practice/p6_triage_queue.py` is that question, built for real.
-- And remember what this topic is: the costs and the property are slide-derived, the rest
-  is your TA's.
-  If your revision time is short, [Topic 4](../4-sorting/review.md) has the better claim on
-  it.
+If a step is unclear, revisit the [short review](review.md), then try a similar question without notes. Use the [coding guide](../../practice/README.md) when you are ready to implement it.

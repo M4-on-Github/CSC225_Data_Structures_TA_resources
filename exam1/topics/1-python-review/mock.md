@@ -1,11 +1,6 @@
 # Topic 1 — mock test: classes and argument passing
 
-Part 1 is eight quick drills, Part 2 is three exam-style questions.
-
-**Try each question before opening [solutions.md](solutions.md).** If stuck, read one relevant explanation, close it, and retry. You may type or write your answers.
-
-No time limit is printed here on purpose. Work until you are done, note how long it took,
-and compare that with however long you get in the real exam.
+Try the drills and questions before opening [solutions](solutions.md). Work at your own pace.
 
 ---
 

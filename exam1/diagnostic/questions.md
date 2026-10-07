@@ -1,8 +1,8 @@
 # Exam 1 foundation check
 
-Find what to review before you start. This is practice, not a grade or an exam prediction. There is no time limit.
+Find what to review before you start. This four-page check is practice, not a grade or an exam prediction.
 
-Try questions 1 to 12 without notes. Type or write your answers. For every answer, mark confidence as sure, unsure, or guessed. Use “not sure” whenever needed. Then open the separate answer guide.
+Try questions 1 to 13 without notes, including page 4. All efficiency questions ask for worst-case costs. Use pseudocode for sorting; Python syntax is not required there. Mark confidence as sure, unsure, or guessed. Aim for 22 minutes in class. Speed is not scored.
 
 ## Yes or no
 
@@ -65,7 +65,7 @@ Choose one answer per question, or write “not sure”.
 
 ### 6 Nested loops
 
-An outer loop runs n times. For each outer iteration, an inner loop runs n times and does constant work per iteration. What is the tightest growth class?
+An outer loop runs n times. For each outer iteration, an inner loop runs n times and does constant work per iteration. What is its tightest worst-case Big-O cost?
 
 A. O(1)
 B. O(n)
@@ -76,12 +76,12 @@ Answer: ______  Confidence: ______
 
 ### 7 Dynamic array append
 
-A dynamic array doubles its capacity when full. Which statement is correct?
+A dynamic array doubles its capacity when full. With n items already stored, what is the worst-case cost of one append?
 
-A. Every append takes constant time.
-B. One append can take O(n); n appends from empty take O(n) total.
-C. Every append copies all existing items.
-D. Appending at the end takes O(log n).
+A. O(1)
+B. O(n)
+C. O(n squared)
+D. O(log n)
 
 Answer: ______  Confidence: ______
 
@@ -109,12 +109,18 @@ Answer: ______  Confidence: ______
 
 ### 10 Bubble sort
 
-Why does bubble sort with an early-exit flag take O(n) on already-sorted input?
+Trace this pseudocode on [4, 1, 3, 2]. What is the list after this single pass?
 
-A. It makes no comparisons.
-B. It halves the list on every pass.
-C. One pass makes no swaps, so it stops.
-D. All sorting algorithms take O(n) on sorted input.
+```text
+FOR each adjacent pair, from left to right
+    IF the left value is greater than the right value
+        SWAP the two values
+```
+
+A. [1, 2, 3, 4]
+B. [4, 1, 3, 2]
+C. [1, 3, 2, 4]
+D. [4, 3, 2, 1]
 
 Answer: ______  Confidence: ______
 
@@ -157,27 +163,68 @@ Output: ______  Confidence: ______
 
 Values of n after each division: ___________________________
 
-## Optional heap check
+## Heap work on paper
 
-Skip questions 13 and 14 unless your instructor includes heaps. They do not affect your core review route.
+### H1 Draw and update a heap
 
-### 13 Heap order
+If heaps are included, draw the binary tree stored by this min-heap list: [2, 5, 3, 9, 7, 8, 4]. Put one value at each node. Otherwise, continue to question 13 on the next page.
 
-Must a min-heap's underlying list be fully sorted?
+Use the space below for your drawing. You may instead describe the levels and parent-child links in text.
 
-Answer: Yes / No / Not sure. Confidence: ______
+________________________________________________________
 
-Reason: _________________________________________________
+________________________________________________________
 
-### 14 Heap insertion
+________________________________________________________
 
-After appending an item to a min-heap, which action restores its order?
+Now remove the minimum. Show the last item moving to the root, then each sift-down swap. Use arrows on your drawing or write the intermediate lists.
 
-A. Sift up toward the parent.
-B. Sort the entire list.
-C. Swap with the root every time.
-D. Always leave it in place.
+Steps: __________________________________________________
 
-Answer: ______  Confidence: ______
+________________________________________________________
 
-Next: open [the answer guide](answers.md). Choose one review area to start with.
+Returned value: ______  Final list: __________________________
+
+Confidence: ______
+
+<!-- pagebreak -->
+
+## Sorting costs and reasoning
+
+### 13 Derive the running time
+
+Fill in the tightest worst-case Big-O cost and give a short derivation for each sort. Use n for the number of items. Comparisons and moves take constant time. Assume distinct keys.
+
+Use the taught versions: bubble sort may stop after a pass with no swaps; merge sort splits and merges; quick sort uses the last item as pivot and builds three lists. Write “not sure” when needed.
+
+| Algorithm | Worst case | Derivation or repeated work |
+|---|---|---|
+| Selection | ______ | __________________________ |
+| Bubble | ______ | __________________________ |
+| Insertion | ______ | __________________________ |
+| Merge | ______ | __________________________ |
+| Quick | ______ | __________________________ |
+
+## Explain one sort in pseudocode
+
+Choose one algorithm from the table. Write its steps in plain-language pseudocode, using indentation for loops or decisions. Do not write Python code. Then connect those steps to its worst-case cost.
+
+Chosen algorithm: __________________  Confidence: ______
+
+________________________________________________________
+
+________________________________________________________
+
+________________________________________________________
+
+________________________________________________________
+
+________________________________________________________
+
+An input pattern that reaches its worst case: __________________
+
+Why the steps above give that cost: __________________________
+
+________________________________________________________
+
+Next: open [the answer guide](answers.md) when your TA asks. Review a flagged concept, then try a fresh question without notes.

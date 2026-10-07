@@ -1,17 +1,8 @@
 # Topic 4 — mock test: sorting
 
-Part 1 is ten drills, Part 2 is nine exam-style questions. This is the
-longest paper in the package, with particular emphasis on writing and tracing code.
+Try the drills and questions before opening [solutions](solutions.md). Work at your own pace.
 
-**Try each question before opening [solutions.md](solutions.md).** If stuck, read one relevant explanation, close it, and retry. You may type or write your answers.
-
-No time limit is printed here on purpose. Work until you are done, note how long it took,
-and compare that with however long you get in the real exam.
-
-**Throughout:** use the **lecture versions** of the sorts. Quick sort takes its pivot as
-`values[-1]` and splits three ways; bubble sort has the `swapped` early exit; insertion
-sort's outer loop starts at 1. **No `sort()`, no `sorted()`, no imports** anywhere you
-write code.
+**Throughout:** quick sort uses the last item as pivot and three partitions; bubble sort stops after a pass with no swaps. Write sorting explanations in pseudocode. For coding tasks, do not use `sort()`, `sorted()`, or imports.
 
 ---
 
@@ -23,7 +14,7 @@ to n−1. How many inner iterations in total, and what Big-O is that?
 **4.2** One pass of bubble sort on `[5, 1, 4, 2, 8]`. Write the list after the pass and say
 how many swaps happened.
 
-**4.3** What does the `swapped` flag buy you, and which case does it change?
+**4.3** What does the `swapped` flag do after a pass with no swaps?
 
 **4.4** Selection sort on `[5, 2, 9, 1]`: what does one pass do, and how many comparisons
 does the whole sort make?
@@ -35,19 +26,17 @@ does the whole sort make?
 **4.7** Quick sort partitions `[7, 2, 9, 1, 5, 4, 6]` with the pivot the lecture version picks. Name
 the pivot and write the three groups.
 
-**4.8** Quick sort is O(n log n) on average but O(n²) in the worst case. What input causes
-the worst case for *that* pivot choice, and why?
+**4.8** What input gives this quick sort its O(n²) worst case, and why?
 
-**4.9** Fill in the summary table from memory — best / average / worst for all five sorts.
-For quick sort, distinguish all-equal input from input with distinct values.
+**4.9** Fill in the tightest worst-case cost for each sort. Give one reason per row.
 
-| Sort | Best | Average | Worst |
-|---|---|---|---|
-| Selection | | | |
-| Bubble | | | |
-| Insertion | | | |
-| Merge | | | |
-| Quick | | | |
+| Sort | Worst case | Why |
+|---|---|---|
+| Selection | | |
+| Bubble | | |
+| Insertion | | |
+| Merge | | |
+| Quick | | |
 
 **4.10** Which of the five build a new list, and which sort in place? Note any base-case
 exceptions, and explain why the return convention matters.
@@ -62,25 +51,19 @@ exceptions, and explain why the return convention matters.
 **(b)** Name one of the five sorts that is stable but **not** O(n log n) in the worst
 case.
 
-### Q2 — Best cases
-**(a)** Bubble sort's best case is O(n). What one feature gives it that, and why does
-selection sort not have it?
+### Q2 — Selection sort's repeated work
+**(a)** Why does selection sort compare the same number of pairs on sorted and reversed inputs?
 
-**(b)** You run a counting selection sort on ten distinct items in sorted order, and again on
-the same ten items reversed. It counts comparisons and swaps between different positions.
-One of the two counts it reports is identical both times and
-one is not. Which is which, and why?
+**(b)** A counting selection sort runs on ten distinct items in sorted order, then in reversed order. How many comparisons does each run make? Why can their swap counts differ?
 
 ### Q3 — Where the growth rates come from
-**(a)** Quick sort averages O(n log n) but is O(n²) in the worst case. Give a list of
-five numbers that triggers the worst case, show what the first split produces, and say why
-that shape costs O(n²).
+**(a)** Give a list of five numbers that triggers quick sort's O(n²) worst case,
+show what the first split produces, and explain the repeated work.
 
 **(b)** Merge sort is O(n log n) on **every** input. Where does the `log n` come from,
 and where does the `n` come from?
 
-**(c)** You have 10,000 items **already in sorted order**. Of bubble sort and merge
-sort, which finishes first, and why?
+**(c)** On 10,000 items in reverse order, which has the better worst-case bound: bubble sort or merge sort? Why?
 
 ### Q4 — Sorting by hand
 **(a)** Bubble sort `[5, 1, 4, 2, 8]`. Write the whole list after each **complete
@@ -194,15 +177,13 @@ assert SortableList([2, 2, 1]).insertion_sort() == [1, 2, 2]
 
 **(a)** Write the method.
 
-**(b)** Give its best case and worst case, and say what input produces the best case.
+**(b)** Give its worst-case cost and an input that produces it.
 
 **(c)** Insertion sort is **stable**. In one sentence, what does that mean about
 `[2, 2, 1]`?
 
 ### Q9 — Choosing a sort for a real list
-**(a)** A registrar's file of 40,000 student records is **already sorted by ID**.
-Twelve late registrations are appended at the end, and the file must be sorted again. Which
-of the five sorts would you run, and which operation inside it decides the matter?
+**(a)** A registrar must sort 40,000 student records by ID. Records with equal IDs must keep their original order, and a predictable worst-case bound matters more than saving memory. Which of the five sorts fits? Explain.
 
 **(b)** A different list: **2 million items in random order**, and you may **not** hold
 a second copy of it in memory. Of the five sorts, which can you use and what does it cost

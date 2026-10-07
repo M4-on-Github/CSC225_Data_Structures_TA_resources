@@ -1,20 +1,10 @@
 # Topic 5 — mock test: heaps
 
-> ⚠ **Heap provenance.** The heap property and the three costs are slide-derived
-> (Deck 6 s32, s35). **The index arithmetic, the sift code, `build_heap` and both heap
-> sorts are your TA's** — no dedicated heap deck was available for this package. Practice, not a prediction.
-> Confirm with your instructor that heaps are on the exam. Full explanation in
-> [review.md](review.md).
+Confirm heap coverage with your instructor. See [review](review.md) for the heap conventions.
 
-Part 1 is eleven drills; Part 2 is five exam-style questions.
+Try the drills and questions before opening [solutions](solutions.md). Work at your own pace.
 
-**Try each question before opening [solutions.md](solutions.md).** If stuck, read one relevant explanation, close it, and retry. You may type or write your answers.
-
-No time limit is printed here on purpose. Work until you are done, note how long it took,
-and compare that with however long you get in the real exam.
-
-**Throughout:** write every heap as a **list**, index 0 first, exactly as the
-implementation stores it. **No imports, no `heapq`, no `sort()`, no `sorted()`.**
+**Throughout:** you may draw a heap, but give its final list order (index 0 first). For coding tasks, do not use `heapq`, `sort()`, or `sorted()`.
 
 ---
 

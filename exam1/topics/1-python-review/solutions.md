@@ -1,7 +1,6 @@
 # Topic 1 — solutions: classes and argument passing
 
-Answers to [mock.md](mock.md), in order, each followed by what a complete answer needs.
-**Attempt the paper first.** Every code answer here has been executed, not typed from memory.
+Try the [questions](mock.md) before checking these answers.
 
 ---
 
@@ -9,37 +8,37 @@ Answers to [mock.md](mock.md), in order, each followed by what a complete answer
 
 **1.1** `account = BankAccount("Ada", 100)` then `account.deposit(50)`. Note you pass
 **two** arguments to a 3-parameter `__init__`, and **one** to a 2-parameter `deposit`:
-`self` is supplied by Python. (Deck 2 s9.)
+`self` is supplied by Python.
 
 **1.2** It runs **automatically when you create an instance of these classes** — you do
 not need to call it by name. It returns `None`; its job is to initialise attributes on
-`self`. (Deck 2 s7–s8.)
+`self`.
 
 **1.3** The underscore is a **convention meaning "internal — don't touch from outside"**.
 Python does not enforce it. The point is that the balance should only change through
 `deposit` and `withdraw`, which can refuse a bad amount; `owner` has no such rule to
-protect. (Deck 2 s11.)
+protect.
 
 **1.4** `[1, 2, 3, 4]`. `append` **mutates** the list the caller still points at, so the
-change is visible outside the function. (Deck 2 s31, the side-by-side pair.)
+change is visible outside the function.
 
 **1.5** `[1, 2, 3]`. The assignment **rebinds the local name** `items` to a brand-new
-list. The caller's `nums` was never touched. (Deck 2 s31, the other half of the same pair.)
+list. The caller's `nums` was never touched.
 
 **1.6** `+=` on a list is **in-place mutation**, so the caller sees `[1, 2, 3, 4]`.
 `values = values + [4]` **builds a new list and rebinds the local name**, so the caller
 still sees `[1, 2, 3]`. The diagnostic question is exactly this: *"Did the code change the
-object, or did it move the local name?"* (Deck 2 s31–s32.)
+object, or did it move the local name?"*
 
 **1.7** `x` is still **5**. Integers are **immutable**: there is no operation that changes
 a 5 into a 6, so `y = 6` can only rebind. With a list, rebinding and mutating are two
 different things you have to tell apart. *Mutability is about the object, not the variable
-name.* (Deck 2 s23, s27.)
+name.*
 
 **1.8** **Rebinding** points a name at a different object; the old object is unchanged and
 anyone else holding it sees no change. **Mutating** changes the object itself, so every name
 pointing at it sees the change. A variable is a **name tag attached to an object** —
-rebinding moves the tag, mutating alters the thing the tag is stuck to. (Deck 2 s61.)
+rebinding moves the tag, mutating alters the thing the tag is stuck to.
 
 ---
 
@@ -47,16 +46,16 @@ rebinding moves the tag, mutating alters the thing the tag is stuck to. (Deck 2 
 
 ### Q1 — Classes and objects
 **(a)** A class is a **blueprint**; an object is **one thing built from that blueprint**.
-(Deck 2 s7.)
+
 
 **(b)** `self` is passed **automatically** by Python: it is the object the method was
 called on. `account.deposit(50)` is equivalent to `BankAccount.deposit(account, 50)`, so
-the one visible argument lands in `amount`. (Deck 2 s9.)
+the one visible argument lands in `amount`.
 
 **(c)** The leading underscore is a **convention meaning "internal, do not touch from
 outside"**. Python does not enforce it. The point is that the balance should only change
 through `deposit` and `withdraw`, which can refuse a bad amount. `owner` has no such rule
-to protect. (Deck 2 s11.)
+to protect.
 
 **What a complete answer needs**
 
@@ -77,11 +76,11 @@ to protect. (Deck 2 s11.)
 
 **`mutate`** changes the list the caller still points at — visible outside. **`rebind`**
 points the local name at a brand-new list; the caller's list was never touched.
-(Deck 2 s27–s34.)
+
 
 **`plus_equal`** is the surprising one: `items += [99]` **mutates in place** (like
 `extend`), so the caller sees it. **`plus`** builds a new list and rebinds, so the caller
-does not. `+=` and `x = x + ...` are **not** the same operation on a list. (Deck 2 s32.)
+does not. `+=` and `x = x + ...` are **not** the same operation on a list.
 
 **What a complete answer needs**
 
@@ -157,12 +156,6 @@ live bug in it, and that is exactly the shape of the argument-passing questions 
 
 ---
 
-## If you got it wrong
+## Next
 
-- Anything wrong in **1.4 to 1.8 or Q2** — Deck 2 s27–s34, then redo them. This family is
-  half the topic.
-- Anything wrong in **Q1 or Q3** — Deck 2 s7–s12 for the mechanics, s11 for the
-  underscore.
-- Then write it: `practice/p1_bank_account.py`, checked by
-  `python -m unittest discover -s . -p "test_p1_bank_account.py" -v`. The `transfer` method there is Q3's delegation idea
-  with money at stake.
+If a step is unclear, revisit the [short review](review.md), then try a similar question without notes. Use the [coding guide](../../practice/README.md) when you are ready to implement it.

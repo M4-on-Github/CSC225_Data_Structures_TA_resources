@@ -7,10 +7,13 @@ from pathlib import Path
 from html import escape
 from docx import Document
 from docx.oxml.ns import qn
+from docx.text.paragraph import Paragraph as WordParagraph
+from docx.table import Table as WordTable
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.styles import ParagraphStyle
-from reportlab.platypus import SimpleDocTemplate, Paragraph, PageBreak
+from reportlab.platypus import SimpleDocTemplate, Paragraph, PageBreak, Table, TableStyle
+from reportlab.lib import colors
 
 ROOT = Path(__file__).resolve().parents[1]
 FONTS = Path('C:/Windows/Fonts')
@@ -25,7 +28,33 @@ else:
 def build(stem):
     source = Document(ROOT / 'diagnostic' / (stem + '.docx'))
     flow = []
-    for p in source.paragraphs:
+    for element in source.element.body:
+        if element.tag == qn('w:tbl'):
+            word_table = WordTable(element, source)
+            rows = []
+            for r, row in enumerate(word_table.rows):
+                cells = []
+                for c, cell in enumerate(row.cells):
+                    style = ParagraphStyle('cell', fontName=BOLD if r == 0 else BODY,
+                                           fontSize=12, leading=13, alignment=0 if c == 0 else 1)
+                    cells.append(Paragraph(escape(cell.text), style))
+                rows.append(cells)
+            table = Table(rows, colWidths=[col.width.pt for col in word_table.columns],
+                          repeatRows=1, hAlign='LEFT', spaceAfter=5)
+            table.setStyle(TableStyle([
+                ('GRID', (0, 0), (-1, -1), 0.6, colors.HexColor('#D9D9D9')),
+                ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#E8E8E8')),
+                ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+                ('LEFTPADDING', (0, 0), (-1, -1), 5),
+                ('RIGHTPADDING', (0, 0), (-1, -1), 5),
+                ('TOPPADDING', (0, 0), (-1, -1), 6),
+                ('BOTTOMPADDING', (0, 0), (-1, -1), 6),
+            ]))
+            flow.append(table)
+            continue
+        if element.tag != qn('w:p'):
+            continue
+        p = WordParagraph(element, source)
         if any(b.get(qn('w:type')) == 'page' for b in p._p.iter(qn('w:br'))):
             flow.append(PageBreak())
             continue

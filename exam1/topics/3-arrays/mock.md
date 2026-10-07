@@ -1,14 +1,8 @@
 # Topic 3 — mock test: arrays, Python lists, and search
 
-Part 1 is eight quick drills, Part 2 is four exam-style questions.
+Try the drills and questions before opening [solutions](solutions.md). Work at your own pace.
 
-**Try each question before opening [solutions.md](solutions.md).** If stuck, read one relevant explanation, close it, and retry. You may type or write your answers.
-
-No time limit is printed here on purpose. Work until you are done, note how long it took,
-and compare that with however long you get in the real exam.
-
-**Throughout:** give the Big-O **and one line of justification**. A bare `O(...)` with no
-reason is only half an answer — the reasoning is the part worth practising.
+**Throughout:** give each Big-O cost with one sentence of reasoning.
 
 ---
 

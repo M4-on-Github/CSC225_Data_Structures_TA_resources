@@ -32,7 +32,7 @@ The inner work repeats n times for each of n outer iterations: n times n. B coun
 
 ### 7 B
 
-A full array must copy its items into larger storage. Doubling spreads that copying across many appends. A confuses amortized cost with a guarantee for each call; C ignores spare capacity; D confuses growth with binary search.
+A full array must copy its n existing items into larger storage before adding the new item, so one append can take O(n). A ignores resizing; C adds an unnecessary second factor of n; D confuses resizing with halving a search range.
 
 <!-- pagebreak -->
 
@@ -48,7 +48,7 @@ Bo comes first because 1 is smaller than 2. Ada stays before Cy because equal ke
 
 ### 10 C
 
-One pass makes n minus 1 comparisons and no swaps. The flag then stops the algorithm. A confuses swaps with comparisons; B describes halving; D incorrectly applies this behavior to every sort.
+The pass goes [4, 1, 3, 2] → [1, 4, 3, 2] → [1, 3, 4, 2] → [1, 3, 2, 4]. It places the largest item at the end, but need not finish the whole sort. A assumes one pass completes sorting; B skips the swaps; D reverses the comparison direction.
 
 ### 11 Output is 1 0
 
@@ -58,13 +58,21 @@ Each instance receives its own value attribute. Calling a.add() changes a.value 
 
 The values after division are 4, 2, 1. Count the three divisions, not the four numbers including the starting 8. Repeated halving gives logarithmic growth.
 
-### 13 No
+### H1 Draw and update a heap
 
-A min-heap orders each parent before or equal to its children. Separate branches need not be in order. For example, [1, 3, 2] is a valid min-heap.
+The initial tree is:
 
-### 14 A
+```text
+        2
+      /   \
+     5     3
+    / \   / \
+   9   7 8   4
+```
 
-The appended item may be smaller than its parent. Swap upward while needed, stopping when the parent is smaller or equal or the item reaches the root. B does unnecessary work; C ignores intermediate parents; D can leave the heap property broken.
+Text equivalent: root 2 has children 5 and 3; 5 has children 9 and 7; 3 has children 8 and 4.
+
+Return 2. Move the last item, 4, to the root: [4, 5, 3, 9, 7, 8]. Swap with the smaller child, 3: [3, 5, 4, 9, 7, 8]. Stop because 4 is less than its only child, 8. Keeping the last slot empty preserves the complete-tree layout.
 
 ## Use the result
 
@@ -73,10 +81,48 @@ Start with the earliest area below that has a marked question. One mistake is a 
 - Questions 1, 5, 11: [Topic 1 Python](../topics/1-python-review/review.md). Then try mock Q2 and Q3.
 - Questions 2, 6, 12: [Topic 2 complexity](../topics/2-big-o/review.md). Then try mock Q1 and Q3.
 - Questions 3, 7, 8: [Topic 3 arrays and search](../topics/3-arrays/review.md). Then try mock Q1 and Q4.
-- Questions 4, 9, 10: [Topic 4 sorting](../topics/4-sorting/review.md). Then try mock Q1, Q2 and Q4.
-- Questions 13, 14: [Topic 5 heaps](../topics/5-heaps/review.md), if included. Then try mock Q1 and Q3.
+- Questions 4, 9, 10, 13: [Topic 4 sorting](../topics/4-sorting/review.md). Use question 13's explanations on the next page to identify the algorithm or reasoning step to review.
+- Question H1: [Topic 5 heaps](../topics/5-heaps/review.md), if included. Review array-to-tree mapping, then removal and sifting.
 
 The topic folders are inside exam1/topics. Their review.md files teach the material; mock.md contains the questions. Keep these documents with the folder so their links can work.
+
+<!-- pagebreak -->
+
+## 13 Sorting costs and reasoning
+
+These are tight worst-case bounds for the stated implementations with distinct keys. A derivation must connect the algorithm's steps to the amount of work.
+
+| Algorithm | Worst case | Derivation or repeated work |
+|---|---|---|
+| Selection | O(n squared) | Scan lengths n - 1, n - 2, ..., 1. |
+| Bubble | O(n squared) | Reversed input requires quadratically many adjacent swaps. |
+| Insertion | O(n squared) | Reversed input requires 1 + 2 + ... + (n - 1) shifts. |
+| Merge | O(n log n) | About log n levels, with O(n) total work per level. |
+| Quick | O(n squared) | Extreme pivots give sizes n, n - 1, ..., 1. |
+
+## Example pseudocode and explanation
+
+Selection sort is one valid choice:
+
+```text
+FOR each position from first to next-to-last
+    REMEMBER that position as the smallest so far
+    SCAN every later position
+        IF its value is smaller, remember its position
+    SWAP the smallest value into the current position
+```
+
+Even on reversed input, it scans (n - 1) + ... + 1 positions: n(n - 1)/2 comparisons. That sum grows quadratically. Any input order reaches this comparison count.
+
+Other choices are valid if the pseudocode correctly describes the algorithm and the reasoning matches the table. Bubble and insertion reach quadratic work on reversed distinct input. Merge performs all splitting and merging levels. Last-pivot quick sort reaches quadratic work on sorted distinct input because each partition removes only one item from the next recursive call.
+
+## Find the missing idea
+
+- Wrong cost: trace a worst-case input and count the repeated comparisons or moves.
+- Merge or quick errors: draw two recursion levels and explain how their sizes change.
+- Correct cells but unclear reasons: connect each loop or recursive call in the pseudocode to the count. Recognizing a formula is not yet deriving it.
+
+For review, use [Topic 4](../topics/4-sorting/review.md), especially “Where the growth rates come from”. Focus on worst-case derivations for this class session.
 
 <!-- pagebreak -->
 
